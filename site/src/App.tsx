@@ -2,12 +2,19 @@ import { FormEvent, ReactNode, useEffect, useRef, useState } from "react";
 import { DraftBanner, PasswordGate, usePasswordGate } from "./PasswordGate";
 import { LegalOverlay } from "./legal";
 
+/* Statt import.meta.env.BASE_URL (das vite-plugin-singlefile ohnehin auf "./" erzwingt):
+   der Tailscale-Funnel gibt beim Aufruf ohne Trailing-Slash (/diana statt /diana/) keinen
+   Redirect an den Browser weiter, dadurch loesen relative "./"-Pfade falsch auf.
+   Per VITE_DEPLOY_BASE steuerbar: "/diana/" fuer servermitte, "/" fuer die eigene Domain
+   (Root-Deployment via GitHub Pages). */
+const DEPLOY_BASE = import.meta.env.VITE_DEPLOY_BASE ?? "/diana/";
+
 /* ------------------------------------------------------------------ */
 /*  CMS Datenstruktur                                                  */
 /* ------------------------------------------------------------------ */
 
 type ServiceItem = { number: string; title: string; description: string; action: string };
-type ProjectItem = { label: string; title: string; copy: string; note: string };
+type ProjectItem = { label: string; title: string; copy: string; note: string; href?: string; linkLabel?: string };
 type QualificationItem = [string, string];
 
 type Content = {
@@ -97,7 +104,7 @@ export default function App() {
 
   /* Inhalte laden */
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}content/data.json`)
+    fetch(`${DEPLOY_BASE}content/data.json`)
       .then((r) => r.json())
       .then((d: Content) => { setData(d); setEditData(JSON.parse(JSON.stringify(d))); })
       .catch(() => setLoading(false))
@@ -128,10 +135,12 @@ export default function App() {
 
   const submitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formId = import.meta.env.VITE_FORMSPREE_ID as string | undefined;
+    const formId = formMode === "feedback"
+      ? (import.meta.env.VITE_FORMSPREE_FEEDBACK_ID as string | undefined)
+      : (import.meta.env.VITE_FORMSPREE_CONTACT_ID as string | undefined);
     const form = e.currentTarget;
     if (!formId) {
-      console.info("VITE_FORMSPREE_ID ist nicht gesetzt – Formular wird nur simuliert, es wird nichts verschickt.");
+      console.info(`VITE_FORMSPREE_${formMode === "feedback" ? "FEEDBACK" : "CONTACT"}_ID ist nicht gesetzt – Formular wird nur simuliert, es wird nichts verschickt.`);
       setFormSubmitted(true);
       return;
     }
@@ -328,7 +337,7 @@ export default function App() {
 
       {/* ============ HERO ============ */}
       <section id="start" className="relative flex min-h-[100svh] items-end overflow-hidden bg-[#173530] text-white">
-        <img src={`${import.meta.env.BASE_URL}images/hero.png`} alt={d.hero.imageAlt} className="hero-image absolute inset-0 h-full w-full object-cover object-[60%_center]" />
+        <img src={`${DEPLOY_BASE}images/hero.png`} alt={d.hero.imageAlt} className="hero-image absolute inset-0 h-full w-full object-cover object-[60%_center]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,27,24,0.9)_0%,rgba(8,27,24,0.65)_43%,rgba(8,27,24,0.23)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(8,27,24,0.38)_0%,transparent_36%)]" />
         <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col px-5 pb-10 pt-36 sm:px-8 sm:pb-12 lg:px-12 lg:pb-14">
@@ -417,7 +426,14 @@ export default function App() {
                     <h3 className="font-serif text-[clamp(1.8rem,3.4vw,3.2rem)] leading-[0.98] tracking-[-0.055em]">{project.title}</h3>
                     <p className="mt-4 max-w-xl text-[0.94rem] leading-7 text-white/72">{project.copy}</p>
                   </div>
-                  <p className="self-end border-l border-[#e9be5b]/70 pl-4 text-sm leading-6 text-[#e9be5b] lg:mb-1">{project.note}</p>
+                  <div className="self-end border-l border-[#e9be5b]/70 pl-4 lg:mb-1">
+                    <p className="text-sm leading-6 text-[#e9be5b]">{project.note}</p>
+                    {project.href && (
+                      <a href={project.href} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:text-[#e9be5b]">
+                        {project.linkLabel ?? "Projekt ansehen"} <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                  </div>
                 </article>
               </Reveal>
             ))}
@@ -453,7 +469,7 @@ export default function App() {
             <div className="max-w-[430px]">
               <div className="portrait-stage">
                 <div className="relative z-10 overflow-hidden bg-[#dce8dc]">
-                  <img src={`${import.meta.env.BASE_URL}images/portrait.jpg`} alt="Porträt von Diana Jeske-Siegel" loading="lazy" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} className="portrait-img aspect-[4/5] w-full object-cover object-[50%_18%]" />
+                  <img src={`${DEPLOY_BASE}images/portrait.jpg`} alt="Porträt von Diana Jeske-Siegel" loading="lazy" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} className="portrait-img aspect-[4/5] w-full object-cover object-[50%_18%]" />
                 </div>
               </div>
               <div className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1 pr-4">

@@ -186,6 +186,17 @@ export function LegalOverlay({ page, onClose }: { page: "datenschutz" | "impress
         </button>
         <h2 className="mt-6 font-serif text-4xl tracking-[-0.05em] text-[#173530] sm:text-5xl">{title}</h2>
         <div className="mt-10">{page && <Blocks sections={sections} />}</div>
+        {page === "impressum" && (
+          <section className="mt-10">
+            <h3 className="font-serif text-xl tracking-[-0.02em] text-[#173530]">Technische Umsetzung</h3>
+            <p className="mt-4 text-[0.95rem] leading-7 text-[#3e4a44]">
+              Friedrich Börner —{" "}
+              <a href="https://servermitte.tailecbf0f.ts.net/fb/" target="_blank" rel="noopener noreferrer" className="underline decoration-[#e9be5b] underline-offset-2 hover:text-[#173530]">
+                servermitte.tailecbf0f.ts.net/fb
+              </a>
+            </p>
+          </section>
+        )}
       </div>
     </div>
   );

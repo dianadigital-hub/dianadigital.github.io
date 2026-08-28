@@ -56,6 +56,14 @@
     "headline": "Innovation wird wirksam, wenn sie Haltung zeigt.",
     "items": [
       {
+        "label": "Berufsorientierung",
+        "title": "JobImpact",
+        "copy": "Ein Bewerbungs-Coach für Schüler:innen der 9. Klasse: Stärken entdecken, Lebenslauf, Anschreiben und Vorstellungsgespräch üben - anonym, DSGVO-sicher und kostenlos für Schulen.",
+        "note": "Gemeinsam mit meinem Bruder entwickelt - aktuell im Pilotbetrieb in Berlin.",
+        "href": "https://servermitte.tailecbf0f.ts.net/pilot",
+        "linkLabel": "Pilot ansehen"
+      },
+      {
         "label": "Demokratiebildung",
         "title": "Social Shift",
         "copy": "Ein medienpädagogisches Projekt für Medienkompetenz, gesellschaftliche Teilhabe und reflektierte Meinungsbildung.",
