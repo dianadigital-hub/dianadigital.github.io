@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.local
+site/.env
+site/.env.local
+VibeCoderOutput/
+vibe-session.log
+.omc/

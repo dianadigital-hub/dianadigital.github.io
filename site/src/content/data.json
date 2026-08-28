@@ -1,0 +1,123 @@
+{
+  "meta": {
+    "brand": "diana.",
+    "brandSubtitle": "JESKE-SIEGEL",
+    "navLabelLeistungen": "Leistungen",
+    "navLabelProjekte": "Projekte",
+    "navLabelUeberMich": "Über mich",
+    "navLabelKontakt": "Kontakt"
+  },
+  "hero": {
+    "tagline": "Digitale Unterrichtsentwicklung. KI. Medienbildung.",
+    "headline": "Schule gestalten, die Menschen auf eine digitale Zukunft vorbereitet.",
+    "subheadline": "Beratung, Fortbildung und Impulse für eine digitale Bildung, die menschlich bleibt.",
+    "ctaPrimary": "Zusammenarbeit anfragen",
+    "ctaSecondary": "Leistungen entdecken",
+    "scrollHint": "Scroll to explore",
+    "imageAlt": "Fortbildungssituation mit Lehrkräften an einem digitalen Whiteboard"
+  },
+  "philosophy": {
+    "label": "Haltung",
+    "quote": "Digitalisierung ist Teil unserer Zukunft. Bildung ist und bleibt jedoch mehr als Technologie.",
+    "body": "Lernen braucht Beziehung, Kommunikation, soziale Erfahrung und echte Begegnung. Gleichzeitig sollen junge Menschen digitale Entwicklungen kritisch beurteilen, verantwortungsvoll handeln und ethische Urteilskraft entwickeln."
+  },
+  "services": {
+    "label": "Expertise",
+    "headline": "Digital denken.\nPädagogisch handeln.",
+    "subheadline": "Praxisnahe Fortbildung und strategische Beratung für Lehrkräfte, Schulen und Schulleitungen.",
+    "items": [
+      {
+        "number": "01",
+        "title": "Fortbildungen für Lehrkräfte",
+        "description": "Praxisnahe Formate zu KI, digitaler Unterrichtsentwicklung, Medienbildung und neuen Lernformen. Immer mit Blick auf den didaktischen Mehrwert.",
+        "action": "Fortbildung anfragen"
+      },
+      {
+        "number": "02",
+        "title": "Beratung von Schulen",
+        "description": "Digitale Strategien entwickeln, Prozesse gestalten und Strukturen im Schulalltag verankern - gemeinsam, realistisch und nachhaltig.",
+        "action": "Schulentwicklung besprechen"
+      },
+      {
+        "number": "03",
+        "title": "Beratung von Schulleitungen",
+        "description": "Strategische Klarheit für Digitalisierung, KI und Schulentwicklung. Pädagogische, organisatorische und technische Perspektiven kommen zusammen.",
+        "action": "Gespräch vereinbaren"
+      }
+    ],
+    "focus": {
+      "label": "Fokus",
+      "title": "KI, Medienbildung und ethische Urteilskraft.",
+      "description": "KI verändert Lernen, Arbeiten und gesellschaftliche Entscheidungsprozesse. Schule muss digitale Kompetenzen, kritisches Denken, Medienkompetenz und ethische Urteilskraft gleichermaßen fördern."
+    }
+  },
+  "projects": {
+    "label": "Ausgewählte Projekte",
+    "headline": "Innovation wird wirksam, wenn sie Haltung zeigt.",
+    "items": [
+      {
+        "label": "Demokratiebildung",
+        "title": "Social Shift",
+        "copy": "Ein medienpädagogisches Projekt für Medienkompetenz, gesellschaftliche Teilhabe und reflektierte Meinungsbildung.",
+        "note": "Ausgezeichnet mit dem Förderpreis Medienkompetenz stärkt Brandenburg."
+      },
+      {
+        "label": "Virtual Reality",
+        "title": "Holocaustvermittlung in VR",
+        "copy": "Didaktische Materialien für immersive Zeitzeugeninterviews, entwickelt in Kooperation mit dem Fraunhofer-Institut und der Humboldt-Universität zu Berlin.",
+        "note": "Historisches Lernen verantwortungsvoll in neue Erfahrungsräume übersetzen."
+      },
+      {
+        "label": "Schulentwicklung",
+        "title": "Steuergruppe Digitalisierung",
+        "copy": "Leitung und Koordination eines Entwicklungsteams mit Fokus auf Strategie, Evaluation, Fortbildungsplanung und Projektinitiierung.",
+        "note": "Entwicklung braucht Orientierung, Beteiligung und einen tragfähigen Prozess."
+      },
+      {
+        "label": "Unterrichtsentwicklung",
+        "title": "Digitale Lern- und Fortbildungsformate",
+        "copy": "Entwicklung und Erprobung digitaler Lernsettings sowie Fortbildungsformate für neue Medien, KI und zeitgemäße Unterrichtsgestaltung.",
+        "note": "Vom einzelnen Impuls zur nachhaltig gelebten Praxis."
+      }
+    ]
+  },
+  "qualifications": {
+    "label": "Qualifikation & Erfahrung",
+    "headline": "Fundiert. Erfahren. Zugewandt.",
+    "items": [
+      ["Digitale Unterrichtsentwicklung", "Zusatzstudium und kontinuierliche fachliche Arbeit an digitalen Lehr- und Lernprozessen."],
+      ["Schulentwicklung & Prozessbegleitung", "Zertifizierte Schulberaterin mit Erfahrung in Moderation und der Begleitung von Entwicklungsprozessen."],
+      ["Künstliche Intelligenz (M.E.T.A. AI)", "Zusatzqualifikation zu KI, Bildung und verantwortungsvoller Anwendung digitaler Systeme."],
+      ["Beratung, Steuerung & Fortbildung", "Mehrjährige Erfahrung in Digitalberatung, Unterrichtsentwicklung, Fortbildung und Teamkoordination."]
+    ]
+  },
+  "about": {
+    "label": "Über mich",
+    "name": "Diana",
+    "surname": "Jeske-Siegel",
+    "role": "Oberstudienrätin, Lehrerin, Beraterin und Fortbildnerin",
+    "headline": "Digitaler Wandel braucht einen menschlichen Kompass.",
+    "paragraphs": [
+      "Schulentwicklungsprozesse sind heute nicht mehr ohne digitale Transformation zu denken. Als Lehrerin kenne ich Chancen und ganz praktische Herausforderungen im Schulalltag.",
+      "Ausgangspunkt sind immer vorhandene Ressourcen und konkrete Entwicklungsbedarfe. Daraus entstehen realistische Ziele, passende Formate und nachhaltige Strukturen.",
+      "Es geht nicht darum, möglichst viel Technologie in den Unterricht zu bringen. Digitale Werkzeuge sollen Lernen, Lehren und schulische Prozesse sinnvoll unterstützen.",
+      "Digitale Gesundheit und AI Literacy bilden dabei ein wichtiges Fundament - für einen selbstbestimmten, kritischen und verantwortungsvollen Umgang mit Technologie."
+    ],
+    "quote": "Gute digitale Bildung beginnt für mich nicht mit einem Gerät oder einer App. Sie beginnt mit der Frage, was junge Menschen für ihre Zukunft brauchen und wie Schule sie dabei bestmöglich unterstützen kann."
+  },
+  "contact": {
+    "label": "Kontakt & Feedback",
+    "headline": "Lassen Sie uns Schule weiterdenken.",
+    "body": "Ob Fortbildung, strategische Beratung, Projekt oder fachlicher Austausch: Ich freue mich auf Ihre Nachricht.",
+    "topics": [
+      "Fortbildung für das Kollegium",
+      "Beratung einer Schule",
+      "Beratung einer Schulleitung",
+      "Projekt oder Kooperation",
+      "Vortrag oder Veranstaltung",
+      "Fachlicher Austausch"
+    ],
+    "successMessageContact": "Ihre Anfrage wurde vorgemerkt. Diese Demo zeigt die Formularbestätigung; für den Livebetrieb kann das Formular an Ihre bevorzugte E-Mail- oder Formularlösung angebunden werden.",
+    "successMessageFeedback": "Ihre Rückmeldung wurde vorgemerkt. Diese Demo zeigt die Formularbestätigung; für den Livebetrieb kann das Formular an Ihre bevorzugte E-Mail- oder Formularlösung angebunden werden."
+  }
+}
