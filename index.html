@@ -144,6 +144,48 @@
             font-size: 0.95rem;
         }
 
+        /* Feedback Styles */
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feedback-card {
+            background-color: rgba(255, 255, 255, 0.01);
+            border-left: 3px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .feedback-text {
+            font-style: italic;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feedback-author {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feedback-invite {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .feedback-invite a {
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-color);
+        }
+
         .contact-box {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -203,7 +245,7 @@
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
         }
 
@@ -215,10 +257,11 @@
             font-size: 0.9rem;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .quote { font-size: 1.6rem; }
             header { flex-direction: column; text-align: center; gap: 1rem; }
-            nav a { margin: 0 0.75rem; }
+            nav a { margin: 0 0.5rem; }
+            .feedback-grid { grid-template-columns: 1fr; }
             .btn-container { grid-template-columns: 1fr; }
             .btn-full { grid-column: span 1; }
         }
@@ -231,6 +274,7 @@
         <nav>
             <a href="#portfolio">Portfolio</a>
             <a href="#projekte">Projekte</a>
+            <a href="#feedback">Feedback</a>
             <a href="#kontakt">Kontakt</a>
         </nav>
     </header>
@@ -239,59 +283,43 @@
         <div class="quote">„Nichts ist so beständig wie der Wandel“</div>
         <div class="author">Heraklit von Ephesus</div>
         <h1 class="main-title">Diana Jeske-Siegel</h1>
-        <p class="tagline">Oberstudienrätin &amp; Fachbereichsleitung Digitalisierung<br>Beraterin für Schul- und Unterrichtsentwicklung mit dem Schwerpunkt Digitalberatung und Geschichte</p>
+        <p class="tagline">Oberstudienrätin &amp; Fachbereichsleitung Digitalisierung<br>Beratung und Fortbildung mit dem Schwerpunkt Digitalität (Berlin) und Geschichte (Brandenburg)</p>
     </section>
 
     <main class="container">
         
         <section id="portfolio">
-            <h2 class="section-title">Portfolio &amp; Kompetenzen</h2>
+            <h2 class="section-title">Aktuelle Tätigkeiten &amp; Fokus</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>Schul- &amp; Unterrichtsentwicklung</h3>
-                    <p>Umfassende Beratung und Begleitung von Schulen bei Innovationsprozessen, Schulentwicklungsstrategien sowie der Evaluation von Unterrichtsqualität.</p>
+                    <h3>Sartre-Gymnasium</h3>
+                    <p>Tätigkeit als Oberstudienrätin und Lehrkraft für die Fachbereiche Sport, Geschichte und Informationstechnische Grundbildung (ITG).</p>
                 </div>
                 <div class="card">
-                    <h3>Digitale Medienbildung &amp; KI</h3>
-                    <p>Konzeptionierung digitaler Strategien, Fortbildungen zur KI-Didaktik (M.E.T.A. AI / Stanford) und Implementierung von zeitgemäßen Lernplattformen.</p>
+                    <h3>Fachbereichsleitung Digitalisierung</h3>
+                    <p>Strategische Koordination, medienpädagogische Weiterentwicklung und Steuerung digitaler Innovationsprozesse direkt am Sartre-Gymnasium.</p>
                 </div>
                 <div class="card">
-                    <h3>Akademische Lehre</h3>
-                    <p>Erfahrung in der universitären Ausbildung angehender Lehrkräfte als Gastdozentin an der Humboldt-Universität zu Berlin im Bereich digitale Unterrichtsentwicklung.</p>
+                    <h3>BliQ Berlin</h3>
+                    <p>Beratung und Fortbildung regionaler Schulen und Lehrkräfte mit einem klaren und zukunftsorientierten Schwerpunkt auf Digitalität.</p>
                 </div>
                 <div class="card">
-                    <h3>Demokratieförderung</h3>
-                    <p>Initiierung praxisnaher Projekte zur Stärkung der Medienkompetenz und Resilienz von Jugendlichen gegen antidemokratische Strukturen im digitalen Raum.</p>
+                    <h3>Fachberatung Geschichte (Brandenburg)</h3>
+                    <p>Langjährige beraterische Expertise im Fachbereich Geschichte zur Integration moderner und zeitgemäßer Vermittlungsmethoden.</p>
                 </div>
             </div>
         </section>
 
         <section id="projekte">
-            <h2 class="section-title">Projekte &amp; Netzwerke</h2>
+            <h2 class="section-title">Projekte &amp; Meilensteine</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>BliQ Berlin / Brandenburg</h3>
-                    <p>Beratungstätigkeit zur digitalen Unterrichtsentwicklung im Netzwerk und Koordination medienpädagogischer Initiativen.</p>
+                    <h3>Förderpreis Medienkompetenz</h3>
+                    <p>Auszeichnung mit dem Förderpreis „Medienkompetenz stärkt Brandenburg“ für das medienpädagogische Demokratieprojekt „Social Shift“.</p>
+                </div>
+                <div class="card">
+                    <h3>Holocaust-Vermittlung in VR</h3>
+                    <p>Kooperationsprojekt mit dem Fraunhofer-Institut und der HU Berlin zur Entwicklung innovativer didaktischer Materialien für VR-Interviews mit Zeitzeugen.</p>
                 </div>
                 <div class="card">
                     <h3>M.E.T.A. AI Zusatzqualifikation</h3>
-                    <p>Zertifizierte Expertise in Kooperation mit der Stanford Universität und der Bosch-Stiftung zu künstlicher Intelligenz in Bildungsprozessen.</p>
-                </div>
-                <div class="card">
-                    <h3>Humboldt-Universität zu Berlin</h3>
-                    <p>Leitung von Masterseminaren zur Vorbereitung von Lehramtsstudierenden auf die Schule der Zukunft.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="kontakt">
-            <h2 class="section-title">Anfrage &amp; Kontakt</h2>
-            <div class="contact-box">
-                <p>Wählen Sie den passenden Bereich für Ihre Anfrage aus. Es öffnet sich direkt ein vorbereitetes Formular in Ihrem E-Mail-Programm.</p>
-                
-                <div class="btn-container">
-                    <a href="mailto:kontakt@dianadigital.de?subject=Anfrage%20Lehrkraefte-Fortbildung%20(Raum%20Berlin)" class="btn">Fortbildung Lehrkräfte (Berlin)</a>
-                    <a href="mailto:kontakt@dianadigital.de?subject=Anfrage%20Schulleitungs-Beratung%20(Raum%20Berlin)" class="btn">Schulleitungs-Beratung (Berlin)</a>
-                    <a href="mailto:kontakt@dianadigital.de?subject=Bundesweite%20Anfrage%20(Fortbildung/Beratung)" class="btn btn-full">Bundesweite Anfrage</a>
-                    <a href="mailto:kontakt@dianadigital.de?subject=Sonstige%20Anfrage" class="btn btn-full">Sonstige Anfrage</a>
-                </div>
