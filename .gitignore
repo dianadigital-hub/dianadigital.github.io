@@ -7,3 +7,4 @@ site/.env.local
 VibeCoderOutput/
 vibe-session.log
 .omc/
+assets/docs/router.txt
