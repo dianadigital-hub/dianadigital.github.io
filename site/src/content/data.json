@@ -5,7 +5,8 @@
     "navLabelLeistungen": "Angebote",
     "navLabelProjekte": "Projekte",
     "navLabelUeberMich": "Über mich",
-    "navLabelKontakt": "Kontakt"
+    "navLabelKontakt": "Kontakt",
+    "cvDownloadUrl": "/assets/diana-jeske-siegel-vita.pdf"
   },
   "hero": {
     "tagline": "Digitale Unterrichtsentwicklung · KI im Bildungskontext · Medienbildung",
@@ -16,6 +17,44 @@
     "scrollHint": "Scroll to explore",
     "imageAlt": "Fortbildungssituation mit Lehrkräften an einem digitalen Whiteboard"
   },
+  "heroSlides": [
+    {
+      "id": "jobimpact",
+      "badge": "Pilotprojekt Berlin",
+      "type": "Projekt & Chancengerechtigkeit",
+      "title": "JobImpact: KI-Bewerbungscoach im Praxistest",
+      "teaser": "Schüler:innen der 9. Klasse trainieren Anschreiben, Lebenslauf und Vorstellungsgespräche interaktiv und DSGVO-sicher. Kostenlos für Schulen.",
+      "date": "Herbst 2026",
+      "location": "Berlin & Online",
+      "ctaLabel": "Projekt entdecken",
+      "ctaLink": "/projekte",
+      "active": true
+    },
+    {
+      "id": "fortbildung-ki",
+      "badge": "Fortbildungsreihe",
+      "type": "Fortbildung für Kollegien",
+      "title": "KI als Lernbegleitung im Fachunterricht",
+      "teaser": "Praxisnahe Methodik für Lehrkräfte: Prompt-Laboratorien und ethische Urteilskraft für Schüler:innen didaktisch gewinnbringend verbinden.",
+      "date": "Schuljahr 2026/27",
+      "location": "Berlin & Brandenburg",
+      "ctaLabel": "Fortbildung anfragen",
+      "ctaLink": "/kontakt",
+      "active": true
+    },
+    {
+      "id": "schulentwicklung",
+      "badge": "Prozessbegleitung",
+      "type": "Schul- & Steuergruppenberatung",
+      "title": "Digitale Schulentwicklung nachhaltig verankern",
+      "teaser": "Medienentwicklungsplanung, Teambildung und verlässliche Entlastung: Wie Veränderungsprozesse gemeinsam mit dem Kollegium gelingen.",
+      "date": "Ganzjährig",
+      "location": "Vor Ort & Digital",
+      "ctaLabel": "Angebote ansehen",
+      "ctaLink": "/angebote",
+      "active": true
+    }
+  ],
   "philosophy": {
     "label": "Haltung",
     "quote": "Digitalisierung ist Teil unserer Zukunft. Bildung ist und bleibt jedoch mehr als Technologie.",
@@ -30,19 +69,55 @@
         "number": "01",
         "title": "Fortbildungen für Lehrkräfte",
         "description": "Praxisnahe Formate zu KI im Bildungskontext, digitaler Unterrichtsentwicklung, Medienbildung und neuen Lernformen – immer mit Blick auf den didaktischen Mehrwert.",
-        "action": "Fortbildung anfragen"
+        "action": "Fortbildung anfragen",
+        "targetAudience": "Fachkollegien, Jahrgangsteams, Gesamtkollegien",
+        "keyTopics": [
+          "KI-Werkzeuge im Fachunterricht sinnvoll einbinden",
+          "Prompting-Kompetenz und kritisches Prompt-Labor",
+          "Alternative, prozessorientierte Prüfungs- und Bewertungsformate",
+          "Medienkompetenzrahmen Berlin-Brandenburg praxisnah umsetzen"
+        ],
+        "formats": [
+          "Halbtages-Workshop (ca. 3–4 Stunden)",
+          "Ganztägige SchiLF (Schulinterne Lehrerfortbildung)",
+          "Begleitende Modulreihe über ein Schulhalbjahr"
+        ]
       },
       {
         "number": "02",
         "title": "Beratung von Schulen",
         "description": "Schul- und Unterrichtsentwicklung nachhaltig gestalten: Digitale Strategien entwickeln, Medienbildung verankern und Veränderungsprozesse gemeinsam mit dem Kollegium tragen.",
-        "action": "Schulentwicklung besprechen"
+        "action": "Schulentwicklung besprechen",
+        "targetAudience": "Steuergruppen, Schulentwicklungsteams, Fachkonferenzen",
+        "keyTopics": [
+          "Medienentwicklungsplan (MEP) als lebendiges Steuerungsinstrument",
+          "Bedarfsgerechte Fortbildungsplanung für das Gesamtkollegium",
+          "Ressourcenorientierte Teambildung und Akzeptanzförderung",
+          "Evaluation und didaktischer Qualitätstransfer"
+        ],
+        "formats": [
+          "Moderierte Klausurtage für Steuergruppen",
+          "Kontinuierliche Prozessbegleitung (Sprint-Termine)",
+          "Bedarfsanalyse und Bestandsaufnahme vor Ort"
+        ]
       },
       {
         "number": "03",
         "title": "Beratung von Schulleitungen",
         "description": "Strategische Klarheit für Digitalisierung, KI und Schulentwicklung. Pädagogische, organisatorische und menschliche Perspektiven auf Augenhöhe zusammenführen.",
-        "action": "Gespräch vereinbaren"
+        "action": "Gespräch vereinbaren",
+        "targetAudience": "Schulleitungen, Erweiterte Schulleitungen, Abteilungsleitungen",
+        "keyTopics": [
+          "Strategische Weichenstellung für Digitalisierung & KI",
+          "Rechtliche, datenschutzrechtliche und ethische Leitplanken",
+          "Entlastung von Schulleitung und Kollegium durch digitale Workflows",
+          "Verbindliche Qualitätsstandards in der Unterrichtsentwicklung"
+        ],
+        "formats": [
+          "Individuelles Sparring / Leitungs-Coaching",
+          "Strategie-Workshop mit der Schulleitungsrunde",
+          "Vertrauliche Beratung zu aktuellen Vorhaben"
+        ]
       }
     ],
     "focus": {
@@ -51,41 +126,112 @@
       "description": "Künstliche Intelligenz verändert Lernen, Arbeiten und gesellschaftliche Entscheidungsprozesse. Schule muss digitale Kompetenzen, kritisches Denken, Medienkompetenz und ethische Urteilskraft gleichermaßen fördern."
     }
   },
+  "detailedServices": {
+    "didacticStatement": "Guter digitaler Unterricht folgt der Pädagogik – nicht der Technik. Jedes Angebot orientiert sich an den realen Ressourcen der Schule und den konkreten Bedarfen der Schüler:innen.",
+    "processSteps": [
+      {
+        "step": "01",
+        "title": "Auftragsklärung & Bedarfsanalyse",
+        "text": "In einem unverbindlichen Vorgespräch erfassen wir Ihre Ausgangslage, vorhandene Ressourcen und das übergeordnete Entwicklungsziel Ihrer Schule."
+      },
+      {
+        "step": "02",
+        "title": "Maßgeschneidertes Format",
+        "text": "Gemeinsame Auswahl und Konzeption des passenden Formats – von der kompakten SchiLF über Steuergruppen-Klausuren bis zur modularen Begleitung."
+      },
+      {
+        "step": "03",
+        "title": "Praxisnahe Durchführung",
+        "text": "Interaktive Erprobung konkreter Methoden und digitaler Werkzeuge auf Augenhöhe mit spürbarem Alltagsbezug für den Schulunterricht."
+      },
+      {
+        "step": "04",
+        "title": "Nachhaltiger Transfer",
+        "text": "Konkrete Sicherung von Absprachen, Vorlagen und Routinen, damit gewonnene Erkenntnisse dauerhaft in den Fachkonferenzen ankommen."
+      }
+    ]
+  },
   "projects": {
     "label": "Ausgewählte Projekte",
     "headline": "Innovation wird wirksam, wenn sie Haltung zeigt.",
     "items": [
       {
+        "id": "jobimpact",
         "label": "Berufsorientierung",
+        "category": "ki",
         "title": "JobImpact",
         "copy": "Ein digitaler Bewerbungs-Coach für Schüler:innen: Eigene Stärken entdecken, Lebenslauf, Anschreiben und Vorstellungsgespräch interaktiv üben – anonym, DSGVO-sicher und kostenlos für Schulen.",
         "note": "Ein echtes Familienstück: Gemeinsam mit meinem Bruder entwickelt – aktuell im Pilotbetrieb in Berlin.",
         "href": "https://servermitte.tailecbf0f.ts.net/pilot",
-        "linkLabel": "Pilot ansehen"
+        "linkLabel": "Pilot ansehen",
+        "statusBadge": "Pilotbetrieb Berlin",
+        "fullDescription": "JobImpact unterstützt Jugendliche bei der praxisnahen Vorbereitung auf die Berufswelt. Ausgerichtet auf die 9. und 10. Klasse bietet die Anwendung einen geschützten, DSGVO-konformen Raum ohne Registrierungszwang, in dem Vorstellungsgespräche simuliert, Anschreiben strukturiert und Stärken formuliert werden.",
+        "highlights": [
+          "Vollständig DSGVO-konform & datensparsam konzipiert",
+          "Kostenfrei für öffentliche Schulen und Bildungsträger",
+          "Praxiserprobt im Berliner Schulalltag",
+          "Interaktive Rollenspiel-Simulation für Bewerbungsgespräche"
+        ]
       },
       {
+        "id": "social-shift",
         "label": "Demokratiebildung",
+        "category": "medien",
         "title": "Social Shift",
         "copy": "Ein medienpädagogisches Projekt für Medienkompetenz, gesellschaftliche Teilhabe und reflektierte Meinungsbildung.",
-        "note": "Ausgezeichnet mit dem Förderpreis Medienkompetenz stärkt Brandenburg."
+        "note": "Ausgezeichnet mit dem Förderpreis Medienkompetenz stärkt Brandenburg.",
+        "statusBadge": "Prämiert",
+        "fullDescription": "Social Shift widmet sich der aktiven Auseinandersetzung Jugendlicher mit digitaler Meinungsbildung, Filterblasen und Desinformation in sozialen Netzwerken. Jugendliche lernen, Quellen kritisch zu hinterfragen und konstruktive Debattenkultur digital zu leben.",
+        "highlights": [
+          "Förderpreis 'Medienkompetenz stärkt Brandenburg'",
+          "Handlungsorientierte Workshops für Klassen und Jugendgruppen",
+          "Fokus auf Desinformationsmechanismen und Algorithmen-Reflexion"
+        ]
       },
       {
+        "id": "vr-holocaust",
         "label": "Virtual Reality",
+        "category": "vr",
         "title": "Holocaustvermittlung in VR",
         "copy": "Didaktische Materialien für immersive Zeitzeugeninterviews, entwickelt in Kooperation mit dem Fraunhofer-Institut und der Humboldt-Universität zu Berlin.",
-        "note": "Historisches Lernen verantwortungsvoll in neue Erfahrungsräume übersetzen."
+        "note": "Historisches Lernen verantwortungsvoll in neue Erfahrungsräume übersetzen.",
+        "statusBadge": "Forschung & Didaktik",
+        "fullDescription": "Das Projekt untersucht die Potenziale und ethischen Grenzen von Extended Reality (XR) in der historischen Erinnerungskultur. Gemeinsam mit der Humboldt-Universität zu Berlin und dem Fraunhofer-Institut wurden didaktische Begleitmaterialien entwickelt, die emotionale Überwältigung vermeiden und reflektiertes historisches Urteilen ermöglichen.",
+        "highlights": [
+          "Kooperation mit Fraunhofer & Humboldt-Universität zu Berlin",
+          "Didaktische Leitlinien zur Vermeidung von Überwältigung",
+          "Ethische Reflexion von Zeitzeugenschaft im digitalen Raum"
+        ]
       },
       {
+        "id": "steuergruppe",
         "label": "Schulentwicklung",
+        "category": "schulentwicklung",
         "title": "Steuergruppe Digitalisierung",
         "copy": "Leitung und Koordination eines Entwicklungsteams mit Fokus auf Strategie, Evaluation, Fortbildungsplanung und Projektinitiierung.",
-        "note": "Entwicklung braucht Orientierung, Beteiligung und einen tragfähigen Prozess."
+        "note": "Entwicklung braucht Orientierung, Beteiligung und einen tragfähigen Prozess.",
+        "statusBadge": "Schulpraxis",
+        "fullDescription": "Als Leitung der Steuergruppe Digitalisierung wurde ein mehrjähriger Medienentwicklungsplan erarbeitet, partizipativ im Kollegium verankert und stetig evaluiert. Das Vorgehen verbindet die technische Ausstattung mit pädagogischen Schwerpunkten und SchiLF-Planungen.",
+        "highlights": [
+          "Erarbeitung und Fortschreibung des Medienentwicklungsplans",
+          "Partizipative Einbindung von Kollegium, Eltern und Schülerschaft",
+          "Verbindung von Infrastruktur mit Fortbildungsformaten"
+        ]
       },
       {
+        "id": "digitale-formate",
         "label": "Unterrichtsentwicklung",
+        "category": "ki",
         "title": "Digitale Lern- und Fortbildungsformate",
         "copy": "Entwicklung und Erprobung digitaler Lernsettings sowie Fortbildungsformate für neue Medien, KI und zeitgemäße Unterrichtsgestaltung.",
-        "note": "Vom einzelnen Impuls zur nachhaltig gelebten Praxis."
+        "note": "Vom einzelnen Impuls zur nachhaltig gelebten Praxis.",
+        "statusBadge": "Laufend",
+        "fullDescription": "Entwicklung, Pilotierung und Veröffentlichung digitaler Unterrichtsmaterialien, kollaborativer Padlets und Prompt-Bibliotheken für verschiedene Fachbereiche.",
+        "highlights": [
+          "Sofort einsetzbare Kopiervorlagen und digitale Canvas-Raster",
+          "Fokus auf kollaborative Gruppenarbeit und Lernerautonomie",
+          "Methoden für mediengestützte Feedback-Kulturen"
+        ]
       }
     ]
   },
@@ -124,6 +270,59 @@
       "Digitale Gesundheit, ethische Urteilskraft und AI Literacy bilden dabei mein pädagogisches Fundament – damit junge Menschen lernen, Technologien selbstbestimmt, kritisch und reflektiert für ihre Zukunft zu nutzen."
     ],
     "quote": "Gute digitale Bildung beginnt für mich nicht mit einem Gerät oder einer App. Sie beginnt mit der Frage, was junge Menschen für ihre Zukunft brauchen und wie Schule sie dabei bestmöglich unterstützen kann."
+  },
+  "curriculumVitae": {
+    "career": [
+      {
+        "period": "Seit 2022",
+        "role": "Beraterin für Schul- und Unterrichtsqualität (BliQ)",
+        "institution": "Senatsverwaltung für Bildung, Jugend und Familie Berlin",
+        "description": "Spezialisierung auf digitale Unterrichtsentwicklung, Fortbildung von Kollegien und Begleitung von Schulentwicklungsprozessen in Berlin und Brandenburg."
+      },
+      {
+        "period": "Seit 2018",
+        "role": "Oberstudienrätin & Leitung Steuergruppe Digitalisierung",
+        "institution": "Gymnasium Berlin",
+        "description": "Koordination von IT-Infrastruktur, Medienentwicklungsplan, schulinternen Lehrerfortbildungen (SchiLF) und didaktischer Unterrichtsentwicklung."
+      },
+      {
+        "period": "Seit 2012",
+        "role": "Studienrätin im gymnasialen Schuldienst",
+        "institution": "Land Berlin",
+        "description": "Fachunterricht, Medienbildung und Begleitung von Schülerprojekten mit Schwerpunkt auf selbstgesteuertem und digital gestütztem Lernen."
+      }
+    ],
+    "education": [
+      {
+        "period": "2010 – 2012",
+        "title": "Zweites Staatsexamen für das Lehramt an Gymnasien",
+        "institution": "Land Berlin",
+        "details": "Vorbereitungsdienst mit didaktischem Schwerpunkt auf neuen Unterrichtsformen und Medienbildung."
+      },
+      {
+        "period": "2004 – 2010",
+        "title": "Erstes Staatsexamen / Universitätsstudium für das Lehramt",
+        "institution": "Humboldt-Universität zu Berlin",
+        "details": "Lehramtsbezogenes Hochschulstudium mit pädagogischer und fachwissenschaftlicher Vertiefung."
+      }
+    ],
+    "qualifications": [
+      {
+        "year": "2024",
+        "title": "M.E.T.A. AI Zusatzqualifikation",
+        "details": "Künstliche Intelligenz in Bildungskontexten, ethische Urteilskraft und verantwortungsvoller Einsatz generativer Systeme."
+      },
+      {
+        "year": "2022",
+        "title": "Zertifizierte Beraterin für Schul- und Unterrichtsqualität",
+        "details": "Spezialkompetenz Digitale Unterrichtsentwicklung (BliQ / Senatsverwaltung Berlin)."
+      },
+      {
+        "year": "2020",
+        "title": "Moderation von Schulentwicklungsprozessen",
+        "details": "Methodik zur Steuerung von Steuergruppen und Großgruppenmoderation bei SchiLF-Tagen."
+      }
+    ]
   },
   "contact": {
     "label": "Kontakt & Feedback",

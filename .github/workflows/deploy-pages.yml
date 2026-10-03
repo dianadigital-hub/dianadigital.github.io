@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -26,7 +28,11 @@ jobs:
           cache-dependency-path: site/package-lock.json
       - run: npm ci
         working-directory: site
-      - run: npm run build
+      - name: Verify TypeScript Types
+        run: npm run typecheck
+        working-directory: site
+      - name: Build Single-File Distribution
+        run: npm run build
         working-directory: site
         env:
           VITE_DEPLOY_BASE: /
