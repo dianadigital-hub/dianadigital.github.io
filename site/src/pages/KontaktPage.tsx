@@ -114,8 +114,8 @@ export function KontaktPage({ data }: KontaktPageProps) {
           {/* Success State */}
           {formSubmitted ? (
             <div className="mt-10 rounded-2xl bg-white/10 p-8 text-center backdrop-blur-md">
-              <span className="text-3xl">✨</span>
-              <h2 className="mt-4 font-serif text-2xl text-[#fffaf0]">
+              <span className="font-serif text-2xl text-[#e9be5b]">Bestätigung</span>
+              <h2 className="mt-3 font-serif text-2xl text-[#fffaf0]">
                 Vielen Dank für Ihre Nachricht!
               </h2>
               <p className="mt-2 text-sm text-[#e9e6da]">

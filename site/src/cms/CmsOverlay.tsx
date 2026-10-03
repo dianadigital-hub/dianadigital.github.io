@@ -45,7 +45,7 @@ export function CmsOverlay({ open, onClose, data, onSaveData }: CmsOverlayProps)
     a.download = "data.json";
     a.click();
     URL.revokeObjectURL(url);
-    showStatus("✅ data.json erfolgreich heruntergeladen!");
+    showStatus("data.json erfolgreich heruntergeladen");
   };
 
   // Upload/Import data.json
@@ -58,7 +58,7 @@ export function CmsOverlay({ open, onClose, data, onSaveData }: CmsOverlayProps)
         const parsed = JSON.parse(evt.target?.result as string);
         setEditData(parsed);
         onSaveData(parsed);
-        showStatus("✅ data.json erfolgreich importiert und live angewendet!");
+        showStatus("data.json erfolgreich importiert und live angewendet");
       } catch (err) {
         alert("Fehler beim Parsen der JSON-Datei: Ungültiges Format.");
       }
@@ -70,7 +70,7 @@ export function CmsOverlay({ open, onClose, data, onSaveData }: CmsOverlayProps)
   // Quick Copy
   const handleCopy = () => {
     navigator.clipboard.writeText(JSON.stringify(editData, null, 2));
-    showStatus("📋 Komplettes JSON in die Zwischenablage kopiert!");
+    showStatus("Komplettes JSON in die Zwischenablage kopiert");
   };
 
   return (

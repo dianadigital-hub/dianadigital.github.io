@@ -83,8 +83,8 @@ export function AngebotePage({ data }: AngebotePageProps) {
                     </h3>
                     <ul className="mt-3 space-y-2">
                       {item.keyTopics.map((topic, tIdx) => (
-                        <li key={tIdx} className="flex items-start gap-2 text-xs text-[#527267]">
-                          <span className="mt-0.5 text-[#e9be5b]">✔</span>
+                        <li key={tIdx} className="flex items-start gap-2.5 text-xs text-[#527267]">
+                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e9be5b]" />
                           <span>{topic}</span>
                         </li>
                       ))}

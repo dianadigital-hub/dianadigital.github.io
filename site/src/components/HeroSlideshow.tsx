@@ -5,9 +5,10 @@ import { ChevronLeft, ChevronRight, PauseIcon, PlayIcon, ArrowUpRight } from "./
 
 interface HeroSlideshowProps {
   slides?: HeroSlide[];
+  onSlideChange?: (index: number) => void;
 }
 
-export function HeroSlideshow({ slides = [] }: HeroSlideshowProps) {
+export function HeroSlideshow({ slides = [], onSlideChange }: HeroSlideshowProps) {
   const { navigate } = useRoute();
   const activeSlides = slides.filter((s) => s.active);
 
@@ -16,7 +17,7 @@ export function HeroSlideshow({ slides = [] }: HeroSlideshowProps) {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
 
-  // Erkennung von prefers-reduced-motion
+  // prefers-reduced-motion
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setReducedMotion(mediaQuery.matches);
@@ -29,15 +30,23 @@ export function HeroSlideshow({ slides = [] }: HeroSlideshowProps) {
 
   const nextSlide = useCallback(() => {
     if (total === 0) return;
-    setCurrentIndex((prev) => (prev + 1) % total);
-  }, [total]);
+    setCurrentIndex((prev) => {
+      const next = (prev + 1) % total;
+      onSlideChange?.(next);
+      return next;
+    });
+  }, [total, onSlideChange]);
 
   const prevSlide = useCallback(() => {
     if (total === 0) return;
-    setCurrentIndex((prev) => (prev - 1 + total) % total);
-  }, [total]);
+    setCurrentIndex((prev) => {
+      const prevIdx = (prev - 1 + total) % total;
+      onSlideChange?.(prevIdx);
+      return prevIdx;
+    });
+  }, [total, onSlideChange]);
 
-  // Autoplay Timer (8 Sekunden, pausiert bei Hover, Focus oder reduced-motion)
+  // Autoplay (8 Sekunden)
   useEffect(() => {
     if (total <= 1 || isPaused || reducedMotion) return;
 
@@ -48,7 +57,6 @@ export function HeroSlideshow({ slides = [] }: HeroSlideshowProps) {
     return () => clearInterval(timer);
   }, [total, isPaused, reducedMotion, nextSlide, currentIndex]);
 
-  // Touch Swipe Handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.touches[0].clientX);
   };
@@ -65,13 +73,9 @@ export function HeroSlideshow({ slides = [] }: HeroSlideshowProps) {
     setTouchStart(null);
   };
 
-  // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowRight") {
-      nextSlide();
-    } else if (e.key === "ArrowLeft") {
-      prevSlide();
-    }
+    if (e.key === "ArrowRight") nextSlide();
+    if (e.key === "ArrowLeft") prevSlide();
   };
 
   if (total === 0) return null;
@@ -91,7 +95,7 @@ export function HeroSlideshow({ slides = [] }: HeroSlideshowProps) {
   };
 
   return (
-    <section
+    <div
       role="region"
       aria-roledescription="carousel"
       aria-label="Aktuelle Impulse und Termine"
@@ -103,106 +107,101 @@ export function HeroSlideshow({ slides = [] }: HeroSlideshowProps) {
       onBlur={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative overflow-hidden rounded-2xl border border-[#173530]/20 bg-[#173530] p-6 text-[#fffaf0] shadow-xl transition-all duration-300 sm:p-8"
+      className="relative overflow-hidden rounded-2xl border border-white/20 bg-[#12221f]/85 p-5 text-white shadow-2xl backdrop-blur-md transition-all duration-300 sm:p-6"
     >
-      {/* Top Bar: Eyebrow Badge & Slide Counter */}
-      <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
-        <div className="flex items-center gap-2.5">
-          <span className="inline-flex items-center rounded-full bg-[#e9be5b]/20 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#e9be5b]">
+      {/* Top Header: Badge & Controls */}
+      <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-3">
+        <div className="flex items-center gap-2">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#e9be5b]" />
+          <span className="text-[0.62rem] font-bold uppercase tracking-[0.2em] text-[#e9be5b]">
             {slide.badge || "Aktueller Impuls"}
           </span>
-          <span className="hidden text-xs text-[#a9b9b0] sm:inline">
-            · {slide.type}
+          <span className="hidden text-[0.65rem] tracking-wider text-[#a9b9b0] sm:inline">
+            / {slide.type}
           </span>
         </div>
 
         <div className="flex items-center gap-2">
-          {/* Slide Zähler in edler Serife */}
-          <span className="font-serif text-sm tracking-wider text-[#e9e6da]">
+          <span className="font-serif text-xs tracking-wider text-white/70">
             {String(currentIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
           </span>
 
-          {/* Pause / Play Button */}
           <button
             type="button"
             onClick={() => setIsPaused(!isPaused)}
-            className="rounded p-1 text-[#a9b9b0] transition-colors hover:text-[#e9be5b] focus:outline-none"
-            aria-label={isPaused ? "Automatischen Wechsel fortsetzen" : "Automatischen Wechsel pausieren"}
+            className="p-1 text-white/50 transition-colors hover:text-[#e9be5b] focus:outline-none"
+            aria-label={isPaused ? "Fortsetzen" : "Pausieren"}
           >
-            {isPaused ? <PlayIcon className="h-3.5 w-3.5" /> : <PauseIcon className="h-3.5 w-3.5" />}
+            {isPaused ? <PlayIcon className="h-3 w-3" /> : <PauseIcon className="h-3 w-3" />}
           </button>
         </div>
       </div>
 
-      {/* Slide Content Area */}
+      {/* Content: Compact Headline & Teaser */}
       <div
         role="group"
         aria-roledescription="slide"
         aria-label={`Folie ${currentIndex + 1} von ${total}`}
-        className="py-5"
+        className="py-3.5"
       >
-        <h3 className="font-serif text-xl font-medium tracking-tight text-[#fffaf0] sm:text-2xl sm:leading-snug">
+        <h3 className="font-serif text-lg font-medium leading-snug tracking-tight text-white sm:text-xl">
           {slide.title}
         </h3>
 
-        <p className="mt-3 text-sm leading-relaxed text-[#e9e6da]/90">
+        <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-white/80 sm:text-[0.82rem]">
           {slide.teaser}
         </p>
 
         {(slide.date || slide.location) && (
-          <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-[#a9b9b0]">
-            {slide.date && <span>📅 {slide.date}</span>}
-            {slide.date && slide.location && <span>·</span>}
-            {slide.location && <span>📍 {slide.location}</span>}
-          </div>
+          <p className="mt-2 text-[0.68rem] tracking-wider uppercase text-[#a9b9b0]">
+            {slide.date} {slide.date && slide.location && "—"} {slide.location}
+          </p>
         )}
       </div>
 
-      {/* Bottom Controls: CTA Button & Prev/Next Arrows */}
-      <div className="flex items-center justify-between gap-4 pt-2">
+      {/* Footer: Action & Arrows */}
+      <div className="flex items-center justify-between gap-3 pt-1">
         <button
           type="button"
           onClick={() => handleCta(slide.ctaLink)}
-          className="group inline-flex items-center gap-1.5 rounded-full bg-[#e9be5b] px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-[#173530] transition-all hover:scale-[1.02] hover:bg-[#f3cc70] focus:outline-none"
+          className="group inline-flex items-center gap-1 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-[#e9be5b] transition-colors hover:text-white focus:outline-none"
         >
           <span>{slide.ctaLabel || "Mehr erfahren"}</span>
-          <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <ArrowUpRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </button>
 
         {total > 1 && (
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1">
             <button
               type="button"
               onClick={prevSlide}
-              className="rounded-full border border-white/20 p-2 text-white transition-colors hover:border-[#e9be5b] hover:text-[#e9be5b] focus:outline-none"
-              aria-label="Vorheriger Impuls"
+              className="rounded-full border border-white/20 p-1.5 text-white/70 transition-colors hover:border-[#e9be5b] hover:text-[#e9be5b] focus:outline-none"
+              aria-label="Vorherige"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-3.5 w-3.5" />
             </button>
             <button
               type="button"
               onClick={nextSlide}
-              className="rounded-full border border-white/20 p-2 text-white transition-colors hover:border-[#e9be5b] hover:text-[#e9be5b] focus:outline-none"
-              aria-label="Nächster Impuls"
+              className="rounded-full border border-white/20 p-1.5 text-white/70 transition-colors hover:border-[#e9be5b] hover:text-[#e9be5b] focus:outline-none"
+              aria-label="Nächste"
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-3.5 w-3.5" />
             </button>
           </div>
         )}
       </div>
 
-      {/* Linearer Zeitbalken am unteren Rand (wird nur bei laufendem Autoplay animiert) */}
+      {/* Progress Bar */}
       {total > 1 && !reducedMotion && !isPaused && (
-        <div className="absolute inset-x-0 bottom-0 h-1 bg-white/10">
+        <div className="absolute inset-x-0 bottom-0 h-0.5 bg-white/10">
           <div
             key={currentIndex}
             className="h-full bg-[#e9be5b]"
-            style={{
-              animation: "progress 8000ms linear forwards",
-            }}
+            style={{ animation: "progress 8000ms linear forwards" }}
           />
         </div>
       )}
-    </section>
+    </div>
   );
 }

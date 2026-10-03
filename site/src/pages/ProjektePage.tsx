@@ -102,8 +102,8 @@ export function ProjektePage({ data }: ProjektePageProps) {
                     </h3>
                     <ul className="mt-2.5 space-y-1.5">
                       {item.highlights.map((h, hIdx) => (
-                        <li key={hIdx} className="flex items-start gap-2 text-xs text-[#527267]">
-                          <span className="mt-0.5 text-[#e9be5b]">✔</span>
+                        <li key={hIdx} className="flex items-start gap-2.5 text-xs text-[#527267]">
+                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e9be5b]" />
                           <span>{h}</span>
                         </li>
                       ))}

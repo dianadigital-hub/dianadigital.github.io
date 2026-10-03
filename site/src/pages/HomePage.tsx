@@ -16,205 +16,257 @@ export function HomePage({ data }: HomePageProps) {
   return (
     <>
       {/* ===================== HERO SECTION ===================== */}
-      <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-[#173530] text-[#fffaf0] pt-24 pb-16 sm:pt-28 sm:pb-20">
-        {/* Background Atmosphere */}
-        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-          <img
-            src={`${DEPLOY_BASE}images/hero.png`}
-            alt=""
-            className="hero-image h-full w-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#173530] via-[#173530]/80 to-transparent" />
-        </div>
+      <section className="relative flex min-h-[94vh] flex-col justify-between overflow-hidden bg-[#12221f] px-5 pb-8 pt-28 text-white sm:px-8 sm:pb-12 sm:pt-36 lg:min-h-screen lg:px-12 lg:pb-16 lg:pt-40">
+        {/* Cinematic Photographic Background */}
+        <img
+          src={`${DEPLOY_BASE}images/hero.png`}
+          alt={d.hero.imageAlt}
+          className="hero-image absolute inset-0 h-full w-full object-cover object-[60%_center]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#12221f]/95 via-[#12221f]/85 to-[#12221f]/35 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#12221f] via-transparent to-transparent pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 w-full">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            {/* Linke Spalte: Hauptbotschaft der Marke (7 Cols) */}
-            <div className="lg:col-span-7">
-              <span className="hero-reveal inline-block text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#e9be5b]">
+        {/* Hero Top / Main Content Area */}
+        <div className="relative z-10 mx-auto w-full max-w-[1400px]">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
+            {/* Left: Signature Brand & Headline Typography (8 Cols) */}
+            <div className="max-w-4xl lg:col-span-8">
+              <p className="hero-reveal mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-[#e9be5b] sm:mb-5">
                 {d.hero.tagline}
-              </span>
-
-              <h1 className="hero-reveal mt-5 font-serif text-4xl font-medium tracking-[-0.04em] text-[#fffaf0] sm:text-5xl sm:leading-[1.12] lg:text-6xl">
-                {d.hero.headline}
+              </p>
+              <h1 className="hero-reveal hero-brand font-serif text-[clamp(5.7rem,17vw,15rem)] leading-[0.67] tracking-[-0.095em]">
+                {d.meta.brand}
               </h1>
-
-              <p className="hero-reveal mt-6 max-w-xl text-base leading-relaxed text-[#e9e6da] sm:text-lg">
+              <p className="hero-reveal mt-7 max-w-2xl text-[clamp(1.45rem,3vw,2.65rem)] font-medium leading-[1.08] tracking-[-0.045em] text-white sm:mt-10 text-balance">
+                {d.hero.headline}
+              </p>
+              <p className="hero-reveal mt-5 max-w-xl text-sm leading-6 text-white/80 sm:text-[0.98rem] sm:leading-7 text-pretty">
                 {d.hero.subheadline}
               </p>
 
-              <div className="hero-reveal mt-8 flex flex-wrap items-center gap-4">
+              <div className="hero-reveal mt-7 flex flex-wrap gap-3 sm:mt-9">
                 <button
                   type="button"
                   onClick={() => navigate("/kontakt")}
-                  className="button-primary rounded-full px-6 py-3"
+                  className="button-primary"
                 >
                   <span>{d.hero.ctaPrimary}</span>
-                  <ArrowUpRight className="h-3.5 w-3.5" />
+                  <ArrowUpRight className="h-4 w-4" />
                 </button>
-
                 <button
                   type="button"
                   onClick={() => navigate("/angebote")}
-                  className="button-quiet rounded-full px-6 py-3"
+                  className="button-quiet"
                 >
                   <span>{d.hero.ctaSecondary}</span>
                 </button>
               </div>
             </div>
 
-            {/* Rechte Spalte: Redaktionelle Impuls-Bühne / Slideshow (5 Cols) */}
-            <div className="hero-reveal lg:col-span-5">
+            {/* Right: Floating Sleek News & Highlight Capsule (4 Cols) */}
+            <div className="hero-reveal lg:col-span-4 lg:mb-2">
               <HeroSlideshow slides={d.heroSlides} />
             </div>
           </div>
+        </div>
 
-          {/* Scroll Hint */}
-          <div className="mt-12 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-[#a9b9b0]">
-            <span className="h-4 w-4 animate-bounce text-[#e9be5b]">
+        {/* Hero Bottom / Scroll Hint */}
+        <div className="relative z-10 mx-auto w-full max-w-[1400px] pt-8">
+          <button
+            type="button"
+            onClick={() => {
+              document.querySelector("#haltung")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="group flex w-fit items-center gap-3 text-[0.63rem] font-semibold uppercase tracking-[0.2em] text-white/75 transition-colors hover:text-white"
+          >
+            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/35 transition-colors duration-300 group-hover:border-[#e9be5b] group-hover:text-[#e9be5b]">
               <ArrowDown />
             </span>
             <span>{d.hero.scrollHint}</span>
-          </div>
+          </button>
         </div>
       </section>
 
       {/* ===================== PHILOSOPHIE / HALTUNG ===================== */}
-      <section className="bg-[#f6f5ef] py-20 text-[#12221f] sm:py-28">
-        <div className="mx-auto max-w-5xl px-6 sm:px-10">
-          <Reveal>
-            <span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#c85d35]">
+      <section id="haltung" className="relative overflow-hidden bg-[#dce8dc] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+        <span
+          className="absolute -right-6 -top-14 font-serif text-[15rem] leading-none tracking-[-0.13em] text-[#b8d0bd]/65 sm:text-[23rem] pointer-events-none select-none"
+          aria-hidden="true"
+        >
+          “
+        </span>
+        <Reveal className="relative mx-auto max-w-[1120px]">
+          <div className="grid gap-10 lg:grid-cols-[minmax(150px,0.35fr)_1fr] lg:gap-20">
+            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#527267]">
               {d.philosophy.label}
-            </span>
-            <blockquote className="mt-4 font-serif text-2xl font-medium leading-snug tracking-tight text-[#173530] sm:text-3xl lg:text-4xl">
-              „{d.philosophy.quote}“
-            </blockquote>
-            <p className="mt-6 text-base leading-relaxed text-[#527267] sm:text-lg">
-              {d.philosophy.body}
             </p>
-          </Reveal>
-        </div>
+            <div>
+              <blockquote className="max-w-4xl font-serif text-[clamp(2.15rem,4.6vw,4.55rem)] leading-[1.02] tracking-[-0.055em] text-[#173530] text-balance">
+                {d.philosophy.quote}
+              </blockquote>
+              <p className="mt-8 max-w-2xl text-[0.98rem] leading-7 text-[#315448] text-pretty">
+                {d.philosophy.body}
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* ===================== ANGEBOTE DIGEST ===================== */}
-      <section className="border-t border-[#173530]/10 bg-[#fbfaf6] py-20 text-[#12221f] sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
-          <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-            <div>
-              <span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#527267]">
-                {d.services.label}
-              </span>
-              <h2 className="mt-2 font-serif text-3xl font-medium tracking-tight text-[#173530] sm:text-4xl">
-                {d.services.headline}
-              </h2>
+      <section className="bg-[#f6f5ef] px-5 py-24 text-[#12221f] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+        <div className="mx-auto max-w-[1400px]">
+          <Reveal className="grid gap-5 border-b border-[#173530]/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-end lg:pb-16">
+            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">
+              {d.services.label}
+            </p>
+            <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+              <div>
+                <h2 className="max-w-4xl font-serif text-[clamp(2.7rem,5.8vw,5.8rem)] leading-[0.93] tracking-[-0.065em] text-[#173530] text-balance">
+                  {d.services.headline}
+                </h2>
+                <p className="mt-6 max-w-xl text-[0.98rem] leading-7 text-[#5c6962] text-pretty">
+                  {d.services.subheadline}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => navigate("/angebote")}
+                className="inline-flex shrink-0 items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#173530] hover:text-[#c85d35]"
+              >
+                <span>Alle Formate ansehen</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => navigate("/angebote")}
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#173530] hover:text-[#c85d35]"
-            >
-              <span>Alle Formate & Ablauf ansehen</span>
-              <ArrowUpRight className="h-4 w-4" />
-            </button>
-          </div>
+          </Reveal>
 
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
-            {d.services.items.map((item, idx) => (
-              <Reveal key={item.number} delay={idx * 120} className="flex flex-col justify-between rounded-xl border border-[#173530]/10 bg-white p-8 shadow-sm transition-all hover:border-[#173530]/30 hover:shadow-md">
-                <div>
-                  <span className="font-serif text-2xl font-bold text-[#e9be5b]">
-                    {item.number}
+          {/* Service Rows */}
+          <div>
+            {d.services.items.map((service) => (
+              <Reveal key={service.number}>
+                <article className="group grid gap-5 border-b border-[#173530]/20 py-9 sm:grid-cols-[86px_1fr_auto] sm:items-start sm:gap-8 sm:py-11">
+                  <span className="font-serif text-2xl tracking-[-0.06em] text-[#c85d35]">
+                    {service.number}
                   </span>
-                  <h3 className="mt-3 font-serif text-xl font-semibold text-[#173530]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#527267]">
-                    {item.description}
-                  </p>
-                </div>
-                <div className="mt-8 border-t border-[#173530]/10 pt-4">
+                  <div>
+                    <h3 className="font-serif text-[clamp(1.8rem,3.2vw,3rem)] leading-[1.05] tracking-[-0.055em] text-[#173530] text-balance">
+                      {service.title}
+                    </h3>
+                    <p className="mt-4 max-w-2xl text-sm leading-6 text-[#5c6962] sm:text-[0.95rem] sm:leading-7 text-pretty">
+                      {service.description}
+                    </p>
+                  </div>
                   <button
                     type="button"
                     onClick={() => navigate("/angebote")}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[#173530] hover:text-[#c85d35]"
+                    className="inline-flex w-fit items-center gap-2 self-start text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-[#173530] transition-transform duration-300 hover:translate-x-1 sm:pt-2"
                   >
-                    <span>Details & Bausteine</span>
-                    <ArrowUpRight className="h-3 w-3" />
+                    <span>{service.action}</span>
+                    <ArrowUpRight className="h-4 w-4 text-[#c85d35]" />
                   </button>
-                </div>
+                </article>
               </Reveal>
             ))}
           </div>
 
-          {/* Fokus Box */}
-          <Reveal className="mt-12 rounded-2xl bg-[#173530] p-8 text-[#fffaf0] sm:p-12">
-            <span className="text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[#e9be5b]">
+          {/* Focus Block */}
+          <Reveal className="grid gap-5 pt-12 lg:grid-cols-[0.65fr_1.35fr] lg:pt-16">
+            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">
               {d.services.focus.label}
-            </span>
-            <h3 className="mt-2 font-serif text-2xl font-medium sm:text-3xl">
-              {d.services.focus.title}
-            </h3>
-            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[#e9e6da] sm:text-base">
-              {d.services.focus.description}
             </p>
+            <div>
+              <h3 className="font-serif text-[clamp(1.9rem,3.5vw,3.2rem)] leading-[1.05] tracking-[-0.055em] text-[#173530] text-balance">
+                {d.services.focus.title}
+              </h3>
+              <p className="mt-5 max-w-2xl text-[0.98rem] leading-7 text-[#5c6962] text-pretty">
+                {d.services.focus.description}
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>
 
       {/* ===================== PROJEKTE HIGHLIGHTS ===================== */}
-      <section className="bg-[#f6f5ef] py-20 text-[#12221f] sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
-          <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-            <div>
-              <span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#527267]">
-                {d.projects.label}
-              </span>
-              <h2 className="mt-2 font-serif text-3xl font-medium tracking-tight text-[#173530] sm:text-4xl">
+      <section className="bg-[#173530] px-5 py-24 text-white sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+        <div className="mx-auto max-w-[1400px]">
+          <Reveal className="grid gap-5 border-b border-white/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-end lg:pb-16">
+            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#e9be5b]">
+              {d.projects.label}
+            </p>
+            <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+              <h2 className="max-w-4xl font-serif text-[clamp(2.7rem,5.8vw,5.8rem)] leading-[0.93] tracking-[-0.065em] text-white text-balance">
                 {d.projects.headline}
               </h2>
+              <button
+                type="button"
+                onClick={() => navigate("/projekte")}
+                className="inline-flex shrink-0 items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#e9be5b] hover:text-white"
+              >
+                <span>Alle Fallstudien ansehen</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => navigate("/projekte")}
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#173530] hover:text-[#c85d35]"
-            >
-              <span>Alle Fallstudien im Projektarchiv</span>
-              <ArrowUpRight className="h-4 w-4" />
-            </button>
-          </div>
+          </Reveal>
 
-          <div className="mt-12 divide-y divide-[#173530]/15">
-            {d.projects.items.slice(0, 3).map((item, idx) => (
-              <Reveal key={item.title} delay={idx * 100}>
-                <div className="project-row flex flex-col justify-between gap-4 py-8 lg:flex-row lg:items-baseline">
-                  <div className="w-full shrink-0 lg:w-56">
-                    <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#c85d35]">
-                      {item.label}
-                    </span>
-                  </div>
-                  <div className="max-w-2xl flex-1">
-                    <h3 className="font-serif text-xl font-semibold text-[#173530] sm:text-2xl">
-                      {item.title}
+          {/* Project Rows */}
+          <div>
+            {d.projects.items.slice(0, 3).map((project) => (
+              <Reveal key={project.title}>
+                <article className="project-row grid gap-5 border-b border-white/20 py-9 sm:grid-cols-[200px_1fr_auto] sm:items-baseline sm:gap-8 sm:py-11">
+                  <span className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#e9be5b]">
+                    {project.label}
+                  </span>
+                  <div>
+                    <h3 className="font-serif text-[clamp(1.7rem,2.8vw,2.65rem)] leading-[1.08] tracking-[-0.055em] text-white text-balance">
+                      {project.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[#527267]">
-                      {item.copy}
+                    <p className="mt-4 max-w-2xl text-sm leading-6 text-white/80 sm:text-[0.95rem] sm:leading-7 text-pretty">
+                      {project.copy}
                     </p>
-                    {item.note && (
-                      <p className="mt-2 text-xs italic text-[#527267]/80">
-                        {item.note}
+                    {project.note && (
+                      <p className="mt-3 text-xs leading-5 text-white/60 text-pretty">
+                        {project.note}
                       </p>
                     )}
                   </div>
-                  <div className="shrink-0 self-start pt-2">
+                  <div className="sm:self-start sm:pt-2">
                     <button
                       type="button"
                       onClick={() => navigate("/projekte")}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-[#173530]/20 px-4 py-1.5 text-xs font-semibold text-[#173530] hover:border-[#173530] hover:bg-[#173530] hover:text-white transition-colors"
+                      className="button-quiet text-xs"
                     >
                       <span>Mehr erfahren</span>
-                      <ArrowUpRight className="h-3 w-3" />
+                      <ArrowUpRight className="h-3.5 w-3.5" />
                     </button>
                   </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== QUALIFIKATION & ERFAHRUNG ===================== */}
+      <section className="bg-[#f6f5ef] px-5 py-24 text-[#12221f] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+        <div className="mx-auto max-w-[1400px]">
+          <Reveal className="grid gap-5 border-b border-[#173530]/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-end lg:pb-16">
+            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">
+              {d.qualifications.label}
+            </p>
+            <h2 className="max-w-4xl font-serif text-[clamp(2.5rem,5vw,5rem)] leading-[0.95] tracking-[-0.06em] text-[#173530] text-balance">
+              {d.qualifications.headline}
+            </h2>
+          </Reveal>
+
+          <div>
+            {d.qualifications.items.map(([topic, description]) => (
+              <Reveal key={topic}>
+                <div className="grid gap-4 border-b border-[#173530]/20 py-7 sm:grid-cols-[minmax(220px,0.85fr)_1.15fr] sm:gap-8 sm:py-9">
+                  <h3 className="font-serif text-lg leading-snug tracking-[-0.035em] text-[#173530] sm:text-xl">
+                    {topic}
+                  </h3>
+                  <p className="text-sm leading-6 text-[#5c6962] sm:text-[0.95rem] sm:leading-7 text-pretty">
+                    {description}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -222,15 +274,15 @@ export function HomePage({ data }: HomePageProps) {
         </div>
       </section>
 
-      {/* ===================== ÜBER MICH & QUALIFIKATION TEASER ===================== */}
-      <section className="border-t border-[#173530]/10 bg-[#fbfaf6] py-20 text-[#12221f] sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
+      {/* ===================== ÜBER MICH ===================== */}
+      <section className="bg-[#fbfaf6] px-5 py-24 text-[#12221f] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+        <div className="mx-auto max-w-[1400px]">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            {/* Portrait (5 Cols) */}
+            {/* Portrait Stage */}
             <div className="lg:col-span-5">
               <Reveal>
                 <div className="portrait-stage mx-auto max-w-sm">
-                  <div className="relative z-10 overflow-hidden rounded-lg bg-[#173530] shadow-xl">
+                  <div className="relative z-10 overflow-hidden bg-[#173530] shadow-xl">
                     <img
                       src={`${DEPLOY_BASE}images/portrait.jpg`}
                       alt={`${d.about.name} ${d.about.surname}`}
@@ -241,50 +293,42 @@ export function HomePage({ data }: HomePageProps) {
               </Reveal>
             </div>
 
-            {/* Bio & Vita Teaser (7 Cols) */}
+            {/* About Content */}
             <div className="lg:col-span-7">
               <Reveal>
-                <span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#527267]">
+                <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">
                   {d.about.label}
-                </span>
-                <h2 className="mt-2 font-serif text-3xl font-medium tracking-tight text-[#173530] sm:text-4xl">
+                </p>
+                <h2 className="mt-3 font-serif text-[clamp(2.7rem,5.8vw,5.8rem)] leading-[0.92] tracking-[-0.065em] text-[#173530]">
                   {d.about.name} {d.about.surname}
                 </h2>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#c85d35]">
+                <p className="mt-2 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#c85d35]">
                   {d.about.role}
                 </p>
 
-                <p className="mt-5 text-base leading-relaxed text-[#527267]">
-                  {d.about.paragraphs[0]}
+                <p className="mt-7 font-serif text-[clamp(1.4rem,2.4vw,2.1rem)] italic leading-[1.25] tracking-[-0.03em] text-[#173530]">
+                  „{d.about.quote}“
                 </p>
 
-                {/* Qualifikations-Auszug */}
-                <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                  {d.qualifications.items.slice(0, 2).map(([title, desc], idx) => (
-                    <div key={idx} className="rounded-lg border border-[#173530]/10 bg-white p-4">
-                      <h4 className="text-xs font-bold uppercase tracking-[0.1em] text-[#173530]">
-                        {title}
-                      </h4>
-                      <p className="mt-1 text-xs text-[#527267]">
-                        {desc}
-                      </p>
-                    </div>
+                <div className="mt-8 space-y-5 text-sm leading-6 text-[#5c6962] sm:text-[0.95rem] sm:leading-7 text-pretty">
+                  {d.about.paragraphs.map((p, idx) => (
+                    <p key={idx}>{p}</p>
                   ))}
                 </div>
 
-                <div className="mt-8 flex flex-wrap items-center gap-4">
+                <div className="mt-10 flex flex-wrap items-center gap-4">
                   <button
                     type="button"
                     onClick={() => navigate("/ueber-mich")}
-                    className="inline-flex items-center gap-2 rounded-full bg-[#173530] px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#fffaf0] shadow transition-all hover:bg-[#12221f]"
+                    className="button-primary"
                   >
-                    <span>Ausführliche Biografie & Lebenslauf</span>
-                    <ArrowUpRight className="h-3.5 w-3.5" />
+                    <span>Ausführlicher Werdegang (CV)</span>
+                    <ArrowUpRight className="h-4 w-4" />
                   </button>
                   <button
                     type="button"
                     onClick={() => navigate("/kontakt")}
-                    className="inline-flex items-center gap-2 rounded-full border border-[#173530]/30 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#173530] hover:bg-[#173530]/5"
+                    className="button-quiet !border-[#173530]/30 !text-[#173530] hover:!border-[#173530] hover:!bg-[#173530] hover:!text-white"
                   >
                     <span>Kontakt aufnehmen</span>
                   </button>
@@ -296,23 +340,23 @@ export function HomePage({ data }: HomePageProps) {
       </section>
 
       {/* ===================== FAST CONTACT BANNER ===================== */}
-      <section className="bg-[#173530] py-16 text-[#fffaf0] sm:py-20">
-        <div className="mx-auto max-w-5xl px-6 text-center sm:px-10">
+      <section className="bg-[#12221f] px-5 py-24 text-white sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+        <div className="mx-auto max-w-[1120px] text-center">
           <Reveal>
-            <span className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[#e9be5b]">
+            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-[#e9be5b]">
               Zusammenarbeit & Schulentwicklung
-            </span>
-            <h2 className="mt-3 font-serif text-3xl font-medium sm:text-4xl">
+            </p>
+            <h2 className="mt-4 font-serif text-[clamp(2.6rem,5.4vw,5.4rem)] leading-[0.95] tracking-[-0.06em] text-white text-balance">
               Lassen Sie uns Schule zukunftsfähig weiterdenken.
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#e9e6da]">
+            <p className="mx-auto mt-6 max-w-2xl text-[0.98rem] leading-7 text-white/80 text-pretty">
               Ob Fortbildung für Ihr Kollegium, Prozessbegleitung einer Steuergruppe oder fachlicher Austausch – ich freue mich auf Ihre Nachricht.
             </p>
-            <div className="mt-8">
+            <div className="mt-10">
               <button
                 type="button"
                 onClick={() => navigate("/kontakt")}
-                className="button-primary rounded-full px-8 py-3.5 text-xs"
+                className="button-primary"
               >
                 <span>Jetzt Nachricht senden</span>
                 <ArrowUpRight className="h-4 w-4" />
