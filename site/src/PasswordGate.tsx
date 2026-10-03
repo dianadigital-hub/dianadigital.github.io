@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { DEPLOY_BASE } from "./deployBase";
 
 const DRAFT_PASSWORD = "DianaEntwurf26!";
 const STORAGE_KEY = "diana-draft-unlocked";
@@ -27,8 +28,8 @@ export function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#173530] px-6">
       <form onSubmit={submit} className="w-full max-w-sm text-center">
-        <span className="font-serif text-5xl tracking-[-0.08em] text-white">diana.</span>
-        <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[#e9be5b]">Entwurf — nicht öffentlich</p>
+        <img src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-dark.svg`} alt="diana." className="mx-auto h-12 w-auto" />
+        <p className="mt-5 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[#e9be5b]">Entwurf — nicht öffentlich</p>
         <p className="mt-6 text-sm leading-6 text-white/70">Diese Website befindet sich in Vorbereitung. Bitte Zugangspasswort eingeben.</p>
         <input
           type="password"

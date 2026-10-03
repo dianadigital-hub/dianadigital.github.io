@@ -1,13 +1,8 @@
 import { FormEvent, ReactNode, useEffect, useRef, useState } from "react";
 import { DraftBanner, PasswordGate, usePasswordGate } from "./PasswordGate";
 import { LegalOverlay } from "./legal";
-
-/* Statt import.meta.env.BASE_URL (das vite-plugin-singlefile ohnehin auf "./" erzwingt):
-   der Tailscale-Funnel gibt beim Aufruf ohne Trailing-Slash (/diana statt /diana/) keinen
-   Redirect an den Browser weiter, dadurch loesen relative "./"-Pfade falsch auf.
-   Per VITE_DEPLOY_BASE steuerbar: "/diana/" fuer servermitte, "/" fuer die eigene Domain
-   (Root-Deployment via GitHub Pages). */
-const DEPLOY_BASE = import.meta.env.VITE_DEPLOY_BASE ?? "/diana/";
+import { DEPLOY_BASE } from "./deployBase";
+import defaultContent from "./content/data.json";
 
 /* ------------------------------------------------------------------ */
 /*  CMS Datenstruktur                                                  */
@@ -91,25 +86,27 @@ function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; 
 
 export default function App() {
   const { unlocked, unlock } = usePasswordGate();
-  const [data, setData] = useState<Content | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Content>(defaultContent as Content);
+  const [loading, setLoading] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [formMode, setFormMode] = useState<"contact" | "feedback">("contact");
   const [selectedTopic, setSelectedTopic] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [adminOpen, setAdminOpen] = useState(false);
-  const [editData, setEditData] = useState<Content | null>(null);
+  const [editData, setEditData] = useState<Content | null>(defaultContent as Content);
   const [legalOpen, setLegalOpen] = useState<"datenschutz" | "impressum" | null>(null);
 
-  /* Inhalte laden */
+  /* Inhalte nachladen (z. B. bei Live-Bearbeitung) mit Cache-Busting */
   useEffect(() => {
-    fetch(`${DEPLOY_BASE}content/data.json`)
+    fetch(`${DEPLOY_BASE}content/data.json?t=${Date.now()}`, { cache: "no-store" })
       .then((r) => r.json())
-      .then((d: Content) => { setData(d); setEditData(JSON.parse(JSON.stringify(d))); })
-      .catch(() => setLoading(false))
-      .finally(() => setLoading(false));
-  }, []);
+      .then((d: Content) => {
+        setData(d);
+        if (!adminOpen) setEditData(JSON.parse(JSON.stringify(d)));
+      })
+      .catch(() => {});
+  }, [adminOpen]);
 
   useEffect(() => {
     const onScroll = () => setHasScrolled(window.scrollY > 24);
@@ -183,7 +180,7 @@ export default function App() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#f6f5ef]">
         <div className="text-center">
-          <span className="font-serif text-6xl tracking-[-0.1em] text-[#173530]">diana.</span>
+          <img src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-light.svg`} alt="diana." className="mx-auto h-16 w-auto" />
           <p className="mt-4 text-sm text-[#527267]">Inhalte werden geladen …</p>
         </div>
       </div>
@@ -241,9 +238,9 @@ export default function App() {
               <textarea value={editData?.philosophy.body ?? ""} onChange={e => setText("philosophy.body", e.target.value)} className="mt-1 w-full bg-[#173530]/50 p-2 text-sm text-white" />
             </section>
 
-            {/* Services */}
+            {/* Services / Angebote */}
             <section>
-              <h3 className="mb-3 text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[#e9be5b]">Leistungen</h3>
+              <h3 className="mb-3 text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[#e9be5b]">Angebote</h3>
               {editData?.services.items.map((s, i) => (
                 <div key={i} className="mb-6 border border-[#173530] p-4">
                   <h4 className="text-sm font-bold text-[#fffaf0]">{s.number} {s.title}</h4>
@@ -301,12 +298,15 @@ export default function App() {
         }`}
       >
         <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
-          <a href="#start" className={`group leading-none ${hasScrolled ? "text-[#173530]" : "text-white"}`} aria-label="Zur Startseite">
-            <span className="block font-serif text-[1.45rem] tracking-[-0.08em]">{d.meta.brand}</span>
-            <span className="mt-1 block pl-0.5 text-[0.51rem] font-semibold tracking-[0.22em]">{d.meta.brandSubtitle}</span>
+          <a href="#start" className="leading-none" aria-label="Zur Startseite">
+            <img
+              src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-${hasScrolled ? "light" : "dark"}.svg`}
+              alt={`${d.meta.brand} ${d.meta.brandSubtitle}`}
+              className="h-9 w-auto sm:h-10"
+            />
           </a>
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Hauptnavigation">
-            {[{ label: d.meta.navLabelLeistungen, href: "#leistungen" }, { label: d.meta.navLabelProjekte, href: "#projekte" }, { label: d.meta.navLabelUeberMich, href: "#ueber-mich" }].map((item) => (
+            {[{ label: d.meta.navLabelLeistungen, href: "#angebote" }, { label: d.meta.navLabelProjekte, href: "#projekte" }, { label: d.meta.navLabelUeberMich, href: "#ueber-mich" }].map((item) => (
               <a key={item.href} href={item.href} className={`nav-link text-[0.72rem] font-semibold uppercase tracking-[0.14em] ${hasScrolled ? "text-[#173530]" : "text-white"}`}>
                 {item.label}
               </a>
@@ -326,7 +326,12 @@ export default function App() {
       {/* Mobile Menu */}
       <div id="mobile-menu" className={`fixed inset-0 z-40 flex items-center bg-[#f6f5ef] px-8 transition-all duration-500 lg:hidden ${menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}>
         <nav className="flex w-full flex-col gap-6" aria-label="Mobile Navigation">
-          {[{ label: d.meta.navLabelLeistungen, href: "#leistungen" }, { label: d.meta.navLabelProjekte, href: "#projekte" }, { label: d.meta.navLabelUeberMich, href: "#ueber-mich" }].map((item, i) => (
+          <img
+            src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-light.svg`}
+            alt={`${d.meta.brand} ${d.meta.brandSubtitle}`}
+            className={`h-10 w-auto transition-all duration-500 ${menuOpen ? "translate-x-0 opacity-100" : "translate-x-5 opacity-0"}`}
+          />
+          {[{ label: d.meta.navLabelLeistungen, href: "#angebote" }, { label: d.meta.navLabelProjekte, href: "#projekte" }, { label: d.meta.navLabelUeberMich, href: "#ueber-mich" }].map((item, i) => (
             <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className={`font-serif text-4xl text-[#173530] transition-all duration-500 ${menuOpen ? "translate-x-0 opacity-100" : "translate-x-5 opacity-0"}`} style={{ transitionDelay: menuOpen ? `${100 + i * 70}ms` : "0ms" }}>{item.label}</a>
           ))}
           <button type="button" onClick={() => openContact()} className={`mt-3 text-left font-serif text-4xl text-[#c85d35] transition-all duration-500 ${menuOpen ? "translate-x-0 opacity-100" : "translate-x-5 opacity-0"}`} style={{ transitionDelay: menuOpen ? "310ms" : "0ms" }}>
@@ -348,7 +353,7 @@ export default function App() {
             <p className="hero-reveal mt-5 max-w-xl text-sm leading-6 text-white/80 sm:text-[0.98rem] sm:leading-7">{d.hero.subheadline}</p>
             <div className="hero-reveal mt-7 flex flex-wrap gap-3 sm:mt-9">
               <button type="button" onClick={() => openContact("Fortbildung für das Kollegium")} className="button-primary">{d.hero.ctaPrimary} <ArrowUpRight className="h-4 w-4" /></button>
-              <a href="#leistungen" className="button-quiet">{d.hero.ctaSecondary}</a>
+              <a href="#angebote" className="button-quiet">{d.hero.ctaSecondary}</a>
             </div>
           </div>
           <a href="#haltung" className="group mt-12 flex w-fit items-center gap-3 text-[0.63rem] font-semibold uppercase tracking-[0.2em] text-white/75 sm:mt-16">
@@ -372,8 +377,9 @@ export default function App() {
         </Reveal>
       </section>
 
-      {/* ============ LEISTUNGEN ============ */}
-      <section id="leistungen" className="bg-[#f6f5ef] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+      {/* ============ ANGEBOTE ============ */}
+      <section id="angebote" className="relative bg-[#f6f5ef] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+        <div id="leistungen" className="absolute -top-28" />
         <div className="mx-auto max-w-[1280px]">
           <Reveal className="grid gap-5 border-b border-[#173530]/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-end lg:pb-16">
             <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">{d.services.label}</p>
@@ -388,10 +394,10 @@ export default function App() {
                 <article className="group grid gap-5 border-b border-[#173530]/20 py-9 sm:grid-cols-[86px_1fr_auto] sm:items-start sm:gap-8 sm:py-11">
                   <span className="font-serif text-2xl tracking-[-0.06em] text-[#c85d35]">{service.number}</span>
                   <div>
-                    <h3 className="font-serif text-[clamp(1.8rem,3.2vw,3rem)] leading-[1] tracking-[-0.055em] text-[#173530]">{service.title}</h3>
-                    <p className="mt-4 max-w-2xl text-sm leading-6 text-[#5c6962] sm:text-[0.95rem] sm:leading-7">{service.description}</p>
+                    <h3 className="font-serif text-[clamp(1.8rem,3.2vw,3rem)] leading-[1.05] tracking-[-0.055em] text-[#173530] text-balance">{service.title}</h3>
+                    <p className="mt-4 max-w-2xl text-sm leading-6 text-[#5c6962] sm:text-[0.95rem] sm:leading-7 text-pretty">{service.description}</p>
                   </div>
-                  <button type="button" onClick={() => openContact(service.title)} className="inline-flex w-fit items-center gap-2 self-end text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-[#173530] transition-transform duration-300 hover:translate-x-1 sm:self-center">
+                  <button type="button" onClick={() => openContact(service.title)} className="inline-flex w-fit items-center gap-2 self-start text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-[#173530] transition-transform duration-300 hover:translate-x-1 sm:pt-2">
                     {service.action} <ArrowUpRight className="h-4 w-4 text-[#c85d35]" />
                   </button>
                 </article>
@@ -401,8 +407,8 @@ export default function App() {
           <Reveal className="grid gap-5 pt-12 lg:grid-cols-[0.65fr_1.35fr] lg:pt-16">
             <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">{d.services.focus.label}</p>
             <div>
-              <h3 className="font-serif text-[clamp(1.9rem,3.5vw,3.2rem)] leading-[1.02] tracking-[-0.055em] text-[#173530]">{d.services.focus.title}</h3>
-              <p className="mt-5 max-w-2xl text-[0.98rem] leading-7 text-[#5c6962]">{d.services.focus.description}</p>
+              <h3 className="font-serif text-[clamp(1.9rem,3.5vw,3.2rem)] leading-[1.05] tracking-[-0.055em] text-[#173530] text-balance">{d.services.focus.title}</h3>
+              <p className="mt-5 max-w-2xl text-[0.98rem] leading-7 text-[#5c6962] text-pretty">{d.services.focus.description}</p>
             </div>
           </Reveal>
         </div>
@@ -414,20 +420,20 @@ export default function App() {
           <Reveal className="grid gap-5 border-b border-white/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-end lg:pb-16">
             <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#e9be5b]">{d.projects.label}</p>
             <div>
-              <h2 className="max-w-3xl font-serif text-[clamp(2.7rem,5.8vw,5.8rem)] leading-[0.93] tracking-[-0.065em]">{d.projects.headline}</h2>
+              <h2 className="max-w-3xl font-serif text-[clamp(2.7rem,5.8vw,5.8rem)] leading-[0.93] tracking-[-0.065em] text-balance">{d.projects.headline}</h2>
             </div>
           </Reveal>
           <div className="mt-2">
             {d.projects.items.map((project, index) => (
               <Reveal key={project.title} delay={index * 80}>
-                <article className="project-row group grid gap-5 border-b border-white/20 py-9 lg:grid-cols-[140px_1fr_0.72fr] lg:gap-10 lg:py-12">
-                  <p className="text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-[#a9c6b0]">{project.label}</p>
+                <article className="project-row group grid gap-5 border-b border-white/20 py-9 lg:grid-cols-[200px_1fr_0.75fr] lg:gap-10 lg:py-12">
+                  <p className="pr-4 text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-[#a9c6b0] break-words">{project.label}</p>
                   <div>
-                    <h3 className="font-serif text-[clamp(1.8rem,3.4vw,3.2rem)] leading-[0.98] tracking-[-0.055em]">{project.title}</h3>
-                    <p className="mt-4 max-w-xl text-[0.94rem] leading-7 text-white/72">{project.copy}</p>
+                    <h3 className="font-serif text-[clamp(1.75rem,3vw,2.85rem)] leading-[1.08] tracking-[-0.045em] text-balance">{project.title}</h3>
+                    <p className="mt-4 max-w-xl text-[0.94rem] leading-7 text-white/72 text-pretty">{project.copy}</p>
                   </div>
-                  <div className="self-end border-l border-[#e9be5b]/70 pl-4 lg:mb-1">
-                    <p className="text-sm leading-6 text-[#e9be5b]">{project.note}</p>
+                  <div className="self-start border-l border-[#e9be5b]/70 pl-4 lg:mt-1">
+                    <p className="text-sm leading-6 text-[#e9be5b] text-pretty">{project.note}</p>
                     {project.href && (
                       <a href={project.href} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:text-[#e9be5b]">
                         {project.linkLabel ?? "Projekt ansehen"} <ArrowUpRight className="h-3.5 w-3.5" />
@@ -441,27 +447,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ============ QUALIFIKATIONEN ============ */}
-      <section className="bg-[#e9be5b] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-36">
-        <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
-          <Reveal>
-            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#725528]">{d.qualifications.label}</p>
-            <h2 className="mt-5 max-w-md font-serif text-[clamp(2.6rem,4.3vw,4.4rem)] leading-[0.94] tracking-[-0.06em] text-[#173530]">{d.qualifications.headline}</h2>
-          </Reveal>
-          <div className="border-t border-[#173530]/25">
-            {d.qualifications.items.map(([title, copy], index) => (
-              <Reveal key={title} delay={index * 75}>
-                <article className="grid gap-3 border-b border-[#173530]/25 py-7 sm:grid-cols-[1fr_1.15fr] sm:gap-8 sm:py-8">
-                  <h3 className="font-serif text-[1.35rem] leading-6 tracking-[-0.035em] text-[#173530]">{title}</h3>
-                  <p className="text-sm leading-6 text-[#3e492f]">{copy}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ ÜBER MICH ============ */}
+      {/* ============ ÜBER MICH & VITA ============ */}
       <section id="ueber-mich" className="relative bg-[#f6f5ef] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-[1280px]">
           <Reveal className="grid gap-12 lg:grid-cols-[minmax(280px,0.8fr)_1.2fr] lg:gap-24">
@@ -479,8 +465,8 @@ export default function App() {
             </div>
             <div>
               <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">{d.about.label}</p>
-              <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2.5rem,5.15vw,5.25rem)] leading-[0.95] tracking-[-0.067em] text-[#173530]">{d.about.headline}</h2>
-              <div className="mt-9 grid max-w-4xl gap-x-14 gap-y-7 text-[0.97rem] leading-7 text-[#5c6962] sm:grid-cols-2">
+              <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2.5rem,5.15vw,5.25rem)] leading-[0.95] tracking-[-0.067em] text-[#173530] text-balance">{d.about.headline}</h2>
+              <div className="mt-9 grid max-w-4xl gap-x-14 gap-y-7 text-[0.97rem] leading-7 text-[#5c6962] sm:grid-cols-2 text-pretty">
                 {d.about.paragraphs.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
@@ -488,8 +474,28 @@ export default function App() {
             </div>
           </Reveal>
           <Reveal className="mt-20 border-l-2 border-[#c85d35] pl-6 sm:ml-[35%] sm:pl-8 lg:mt-28">
-            <blockquote className="max-w-3xl font-serif text-[clamp(1.85rem,3.7vw,3.65rem)] leading-[1.05] tracking-[-0.055em] text-[#173530]">“{d.about.quote}”</blockquote>
+            <blockquote className="max-w-3xl font-serif text-[clamp(1.85rem,3.7vw,3.65rem)] leading-[1.05] tracking-[-0.055em] text-[#173530] text-balance">“{d.about.quote}”</blockquote>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ============ QUALIFIKATION & ERFAHRUNG (integrierter Abschluss von Über mich) ============ */}
+      <section className="bg-[#e9be5b] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-36">
+        <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
+          <Reveal>
+            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#725528]">{d.qualifications.label}</p>
+            <h2 className="mt-5 max-w-md font-serif text-[clamp(2.6rem,4.3vw,4.4rem)] leading-[0.94] tracking-[-0.06em] text-[#173530] text-balance">{d.qualifications.headline}</h2>
+          </Reveal>
+          <div className="border-t border-[#173530]/25">
+            {d.qualifications.items.map(([title, copy], index) => (
+              <Reveal key={title} delay={index * 75}>
+                <article className="grid gap-3 border-b border-[#173530]/25 py-7 sm:grid-cols-[1fr_1.15fr] sm:gap-8 sm:py-8">
+                  <h3 className="font-serif text-[1.35rem] leading-6 tracking-[-0.035em] text-[#173530] text-balance">{title}</h3>
+                  <p className="text-sm leading-6 text-[#3e492f] text-pretty">{copy}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -564,7 +570,13 @@ export default function App() {
       <footer className="bg-[#12221f] px-5 py-10 text-[#f6f5ef] sm:px-8 lg:px-12">
         <div className="mx-auto flex max-w-[1440px] flex-col justify-between gap-8 sm:flex-row sm:items-end">
           <div>
-            <a href="#start" className="font-serif text-4xl leading-none tracking-[-0.08em]">{d.meta.brand}</a>
+            <a href="#start" className="block leading-none">
+              <img
+                src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-dark.svg`}
+                alt={`${d.meta.brand} ${d.meta.brandSubtitle}`}
+                className="h-10 w-auto"
+              />
+            </a>
             <p className="mt-3 max-w-xs text-[0.65rem] font-medium uppercase leading-5 tracking-[0.15em] text-white/55">Digitale Unterrichtsentwicklung. KI. Medienbildung.</p>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-3 text-[0.67rem] font-semibold uppercase tracking-[0.14em] text-white/65">
