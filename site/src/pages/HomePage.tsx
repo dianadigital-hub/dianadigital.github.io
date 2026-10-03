@@ -331,28 +331,29 @@ export function HomePage({ data }: HomePageProps) {
 
       {/* ===================== ANGEBOTE DIGEST ===================== */}
       <section className="bg-[#f6f5ef] px-5 py-24 text-[#12221f] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
-        <div className="mx-auto max-w-[1400px]">
-          <Reveal className="grid gap-5 border-b border-[#173530]/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-end lg:pb-16">
-            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">
-              {d.services.label}
-            </p>
-            <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-              <div>
-                <h2 className="max-w-4xl font-serif text-[clamp(2.7rem,5.8vw,5.8rem)] leading-[0.93] tracking-[-0.065em] text-[#173530] text-balance">
-                  {d.services.headline}
-                </h2>
-                <p className="mt-6 max-w-xl text-[0.98rem] leading-7 text-[#5c6962] text-pretty">
-                  {d.services.subheadline}
-                </p>
-              </div>
+        <div className="mx-auto max-w-[1280px]">
+          <Reveal className="grid gap-8 border-b border-[#173530]/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:pb-16">
+            <div className="flex flex-col items-start gap-4">
+              <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">
+                {d.services.label}
+              </p>
               <button
                 type="button"
                 onClick={() => navigate("/angebote")}
-                className="inline-flex shrink-0 items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#173530] hover:text-[#c85d35]"
+                className="group inline-flex items-center gap-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[#173530] transition-colors hover:text-[#c85d35]"
               >
                 <span>Alle Formate ansehen</span>
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-3.5 w-3.5 text-[#c85d35] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </button>
+            </div>
+
+            <div>
+              <h2 className="max-w-3xl font-serif text-[clamp(2.7rem,5.5vw,5.5rem)] leading-[0.94] tracking-[-0.065em] text-[#173530] text-balance">
+                {d.services.headline}
+              </h2>
+              <p className="mt-6 max-w-xl text-[0.98rem] leading-7 text-[#5c6962] text-pretty">
+                {d.services.subheadline}
+              </p>
             </div>
           </Reveal>
 
@@ -403,55 +404,55 @@ export function HomePage({ data }: HomePageProps) {
       </section>
 
       {/* ===================== PROJEKTE HIGHLIGHTS ===================== */}
-      <section className="bg-[#173530] px-5 py-24 text-white sm:px-8 sm:py-32 lg:px-12 lg:py-40">
-        <div className="mx-auto max-w-[1400px]">
-          <Reveal className="grid gap-5 border-b border-white/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-end lg:pb-16">
-            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#e9be5b]">
-              {d.projects.label}
-            </p>
-            <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-              <h2 className="max-w-4xl font-serif text-[clamp(2.7rem,5.8vw,5.8rem)] leading-[0.93] tracking-[-0.065em] text-white text-balance">
-                {d.projects.headline}
-              </h2>
+      <section className="bg-[#173530] px-5 py-24 text-[#f6f5ef] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+        <div className="mx-auto max-w-[1280px]">
+          <Reveal className="grid gap-8 border-b border-white/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:pb-16">
+            <div className="flex flex-col items-start gap-4">
+              <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#e9be5b]">
+                {d.projects.label}
+              </p>
               <button
                 type="button"
                 onClick={() => navigate("/projekte")}
-                className="inline-flex shrink-0 items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#e9be5b] hover:text-white"
+                className="group inline-flex items-center gap-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[#e9be5b] transition-colors hover:text-white"
               >
                 <span>Alle Fallstudien ansehen</span>
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-3.5 w-3.5 text-[#e9be5b] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </button>
+            </div>
+            <div>
+              <h2 className="max-w-3xl font-serif text-[clamp(2.7rem,5.5vw,5.5rem)] leading-[0.94] tracking-[-0.065em] text-white text-balance">
+                {d.projects.headline}
+              </h2>
             </div>
           </Reveal>
 
           {/* Project Rows */}
-          <div>
-            {d.projects.items.slice(0, 3).map((project) => (
-              <Reveal key={project.title}>
-                <article className="project-row grid gap-5 border-b border-white/20 py-9 sm:grid-cols-[200px_1fr_auto] sm:items-baseline sm:gap-8 sm:py-11">
-                  <span className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#e9be5b]">
+          <div className="mt-2">
+            {d.projects.items.slice(0, 3).map((project, index) => (
+              <Reveal key={project.title} delay={index * 80}>
+                <article className="project-row group grid gap-5 border-b border-white/20 py-9 lg:grid-cols-[200px_1fr_0.75fr] lg:gap-10 lg:py-12">
+                  <p className="pr-4 text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-[#a9c6b0] break-words">
                     {project.label}
-                  </span>
+                  </p>
                   <div>
-                    <h3 className="font-serif text-[clamp(1.7rem,2.8vw,2.65rem)] leading-[1.08] tracking-[-0.055em] text-white text-balance">
+                    <h3 className="font-serif text-[clamp(1.75rem,3vw,2.85rem)] leading-[1.08] tracking-[-0.045em] text-balance text-white">
                       {project.title}
                     </h3>
-                    <p className="mt-4 max-w-2xl text-sm leading-6 text-white/80 sm:text-[0.95rem] sm:leading-7 text-pretty">
+                    <p className="mt-4 max-w-xl text-[0.94rem] leading-7 text-white/72 text-pretty">
                       {project.copy}
                     </p>
-                    {project.note && (
-                      <p className="mt-3 text-xs leading-5 text-white/60 text-pretty">
-                        {project.note}
-                      </p>
-                    )}
                   </div>
-                  <div className="sm:self-start sm:pt-2">
+                  <div className="self-start border-l border-[#e9be5b]/70 pl-4 lg:mt-1">
+                    <p className="text-sm leading-6 text-[#e9be5b] text-pretty">
+                      {project.note}
+                    </p>
                     <button
                       type="button"
                       onClick={() => navigate("/projekte")}
-                      className="button-quiet text-xs"
+                      className="mt-3 inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:text-[#e9be5b]"
                     >
-                      <span>Mehr erfahren</span>
+                      <span>Projekt ansehen</span>
                       <ArrowUpRight className="h-3.5 w-3.5" />
                     </button>
                   </div>
@@ -462,120 +463,112 @@ export function HomePage({ data }: HomePageProps) {
         </div>
       </section>
 
-      {/* ===================== QUALIFIKATION & ERFAHRUNG ===================== */}
+      {/* ===================== ÜBER MICH ===================== */}
       <section className="bg-[#f6f5ef] px-5 py-24 text-[#12221f] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
-        <div className="mx-auto max-w-[1400px]">
-          <Reveal className="grid gap-5 border-b border-[#173530]/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-end lg:pb-16">
-            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">
+        <div className="mx-auto max-w-[1280px]">
+          <Reveal className="grid gap-14 lg:grid-cols-[0.7fr_1.3fr] lg:items-start lg:gap-20">
+            <div>
+              <div className="portrait-stage mx-auto max-w-sm lg:mx-0">
+                <div className="relative z-10 overflow-hidden bg-[#173530] shadow-xl">
+                  <img
+                    src={`${DEPLOY_BASE}images/portrait.jpg`}
+                    alt={`${d.about.name} ${d.about.surname}`}
+                    className="portrait-img h-auto w-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1 pr-4">
+                <span className="text-sm font-semibold tracking-[-0.01em] text-[#173530]">
+                  {d.about.name} {d.about.surname}
+                </span>
+                <span className="text-[0.62rem] font-semibold uppercase tracking-[0.17em] text-[#527267]">
+                  {d.about.role}
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">
+                {d.about.label}
+              </p>
+              <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2.5rem,5.15vw,5.25rem)] leading-[0.95] tracking-[-0.067em] text-[#173530] text-balance">
+                {d.about.headline}
+              </h2>
+              <div className="mt-9 grid max-w-4xl gap-x-14 gap-y-7 text-[0.97rem] leading-7 text-[#5c6962] sm:grid-cols-2 text-pretty">
+                {d.about.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <button
+                  type="button"
+                  onClick={() => navigate("/ueber-mich")}
+                  className="button-primary"
+                >
+                  <span>Ausführlicher Werdegang (CV)</span>
+                  <ArrowUpRight className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal className="mt-20 border-l-2 border-[#c85d35] pl-6 sm:ml-[35%] sm:pl-8 lg:mt-28">
+            <blockquote className="max-w-3xl font-serif text-[clamp(1.85rem,3.7vw,3.65rem)] leading-[1.05] tracking-[-0.055em] text-[#173530] text-balance">
+              “{d.about.quote}”
+            </blockquote>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===================== QUALIFIKATION & ERFAHRUNG (Warmer Ocker-Block) ===================== */}
+      <section className="bg-[#e9be5b] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-36">
+        <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
+          <Reveal>
+            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#725528]">
               {d.qualifications.label}
             </p>
-            <h2 className="max-w-4xl font-serif text-[clamp(2.5rem,5vw,5rem)] leading-[0.95] tracking-[-0.06em] text-[#173530] text-balance">
+            <h2 className="mt-5 max-w-md font-serif text-[clamp(2.6rem,4.3vw,4.4rem)] leading-[0.94] tracking-[-0.06em] text-[#173530] text-balance">
               {d.qualifications.headline}
             </h2>
           </Reveal>
-
-          <div>
-            {d.qualifications.items.map(([topic, description]) => (
-              <Reveal key={topic}>
-                <div className="grid gap-4 border-b border-[#173530]/20 py-7 sm:grid-cols-[minmax(220px,0.85fr)_1.15fr] sm:gap-8 sm:py-9">
-                  <h3 className="font-serif text-lg leading-snug tracking-[-0.035em] text-[#173530] sm:text-xl">
-                    {topic}
+          <div className="border-t border-[#173530]/25">
+            {d.qualifications.items.map(([title, copy], index) => (
+              <Reveal key={title} delay={index * 75}>
+                <article className="grid gap-3 border-b border-[#173530]/25 py-7 sm:grid-cols-[1fr_1.15fr] sm:gap-8 sm:py-8">
+                  <h3 className="font-serif text-[1.35rem] leading-6 tracking-[-0.035em] text-[#173530] text-balance">
+                    {title}
                   </h3>
-                  <p className="text-sm leading-6 text-[#5c6962] sm:text-[0.95rem] sm:leading-7 text-pretty">
-                    {description}
+                  <p className="text-sm leading-6 text-[#3e492f] text-pretty">
+                    {copy}
                   </p>
-                </div>
+                </article>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===================== ÜBER MICH ===================== */}
-      <section className="bg-[#fbfaf6] px-5 py-24 text-[#12221f] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            {/* Portrait Stage */}
-            <div className="lg:col-span-5">
-              <Reveal>
-                <div className="portrait-stage mx-auto max-w-sm">
-                  <div className="relative z-10 overflow-hidden bg-[#173530] shadow-xl">
-                    <img
-                      src={`${DEPLOY_BASE}images/portrait.jpg`}
-                      alt={`${d.about.name} ${d.about.surname}`}
-                      className="portrait-img h-auto w-full object-cover"
-                    />
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-
-            {/* About Content */}
-            <div className="lg:col-span-7">
-              <Reveal>
-                <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#c85d35]">
-                  {d.about.label}
-                </p>
-                <h2 className="mt-3 font-serif text-[clamp(2.7rem,5.8vw,5.8rem)] leading-[0.92] tracking-[-0.065em] text-[#173530]">
-                  {d.about.name} {d.about.surname}
-                </h2>
-                <p className="mt-2 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#c85d35]">
-                  {d.about.role}
-                </p>
-
-                <p className="mt-7 font-serif text-[clamp(1.4rem,2.4vw,2.1rem)] italic leading-[1.25] tracking-[-0.03em] text-[#173530]">
-                  „{d.about.quote}“
-                </p>
-
-                <div className="mt-8 space-y-5 text-sm leading-6 text-[#5c6962] sm:text-[0.95rem] sm:leading-7 text-pretty">
-                  {d.about.paragraphs.map((p, idx) => (
-                    <p key={idx}>{p}</p>
-                  ))}
-                </div>
-
-                <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <button
-                    type="button"
-                    onClick={() => navigate("/ueber-mich")}
-                    className="button-primary"
-                  >
-                    <span>Ausführlicher Werdegang (CV)</span>
-                    <ArrowUpRight className="h-4 w-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => navigate("/kontakt")}
-                    className="button-quiet !border-[#173530]/30 !text-[#173530] hover:!border-[#173530] hover:!bg-[#173530] hover:!text-white"
-                  >
-                    <span>Kontakt aufnehmen</span>
-                  </button>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===================== FAST CONTACT BANNER ===================== */}
-      <section className="bg-[#12221f] px-5 py-24 text-white sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+      {/* ===================== FAST CONTACT BANNER (Signatur Terrakotta) ===================== */}
+      <section className="bg-[#c85d35] px-5 py-24 text-[#fffaf0] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-[1120px] text-center">
           <Reveal>
-            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-[#e9be5b]">
+            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-[#ffe0a0]">
               Zusammenarbeit & Schulentwicklung
             </p>
             <h2 className="mt-4 font-serif text-[clamp(2.6rem,5.4vw,5.4rem)] leading-[0.95] tracking-[-0.06em] text-white text-balance">
               Lassen Sie uns Schule zukunftsfähig weiterdenken.
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-[0.98rem] leading-7 text-white/80 text-pretty">
+            <p className="mx-auto mt-6 max-w-2xl text-[0.98rem] leading-7 text-white/85 text-pretty">
               Ob Fortbildung für Ihr Kollegium, Prozessbegleitung einer Steuergruppe oder fachlicher Austausch – ich freue mich auf Ihre Nachricht.
             </p>
             <div className="mt-10">
               <button
                 type="button"
                 onClick={() => navigate("/kontakt")}
-                className="button-primary"
+                className="inline-flex items-center gap-3 border border-white bg-white px-7 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#173530] transition-all duration-300 hover:bg-transparent hover:text-white"
               >
-                <span>Jetzt Nachricht senden</span>
+                <span>Jetzt Anfrage stellen</span>
                 <ArrowUpRight className="h-4 w-4" />
               </button>
             </div>

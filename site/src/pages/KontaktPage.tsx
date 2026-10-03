@@ -21,7 +21,6 @@ export function KontaktPage({ data }: KontaktPageProps) {
   useEffect(() => {
     const urlTopic = params.get("topic");
     if (urlTopic) {
-      // Prüfe, ob das Topic in d.contact.topics existiert oder füge es temporär hinzu
       const matched = d.contact.topics.find((t) =>
         t.toLowerCase().includes(urlTopic.toLowerCase())
       );
@@ -45,7 +44,6 @@ export function KontaktPage({ data }: KontaktPageProps) {
     const form = e.currentTarget;
 
     if (!formId) {
-      // Simulierter Erfolg im Entwicklungsmodus
       console.info(
         `VITE_FORMSPREE_${formMode === "feedback" ? "FEEDBACK" : "CONTACT"}_ID ist nicht gesetzt – Simulation erfolgreich.`
       );
@@ -74,169 +72,175 @@ export function KontaktPage({ data }: KontaktPageProps) {
   };
 
   return (
-    <div className="bg-[#173530] text-[#fffaf0] pt-28 pb-20">
-      <section className="mx-auto max-w-4xl px-6 sm:px-10">
-        <Reveal>
-          <span className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#e9be5b]">
-            {d.contact.label}
-          </span>
-          <h1 className="mt-3 font-serif text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
-            {d.contact.headline}
-          </h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#e9e6da] sm:text-lg">
-            {d.contact.body}
-          </p>
+    <div className="bg-[#c85d35] text-[#fffaf0]">
+      <section className="px-5 pt-36 pb-24 sm:px-8 sm:pt-44 sm:pb-32 lg:px-12">
+        <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+          {/* Left Column: Heading & Info */}
+          <Reveal>
+            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#ffe0a0]">
+              {d.contact.label}
+            </p>
+            <h1 className="mt-5 max-w-lg font-serif text-[clamp(2.8rem,5.3vw,5.4rem)] leading-[0.93] tracking-[-0.065em]">
+              {d.contact.headline}
+            </h1>
+            <p className="mt-7 max-w-md text-[0.98rem] leading-7 text-white/85">
+              {d.contact.body}
+            </p>
 
-          {/* Form Mode Tabs */}
-          <div className="mt-12 flex border-b border-white/20 pb-2">
-            <button
-              type="button"
-              onClick={() => {
-                setFormMode("contact");
-                setFormSubmitted(false);
-              }}
-              className={`form-tab ${formMode === "contact" ? "is-active" : ""}`}
-            >
-              Anfrage stellen
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setFormMode("feedback");
-                setFormSubmitted(false);
-              }}
-              className={`form-tab ${formMode === "feedback" ? "is-active" : ""}`}
-            >
-              Feedback geben
-            </button>
-          </div>
-
-          {/* Success State */}
-          {formSubmitted ? (
-            <div className="mt-10 rounded-2xl bg-white/10 p-8 text-center backdrop-blur-md">
-              <span className="font-serif text-2xl text-[#e9be5b]">Bestätigung</span>
-              <h2 className="mt-3 font-serif text-2xl text-[#fffaf0]">
-                Vielen Dank für Ihre Nachricht!
-              </h2>
-              <p className="mt-2 text-sm text-[#e9e6da]">
-                {formMode === "contact"
-                  ? d.contact.successMessageContact
-                  : d.contact.successMessageFeedback}
+            <div className="mt-12 border-t border-white/25 pt-6 text-xs text-white/80 space-y-2">
+              <p className="font-semibold uppercase tracking-wider text-[#ffe0a0]">
+                Direkter Kontakt & Reaktionszeit
               </p>
+              <p>
+                In der Regel erhalten Sie innerhalb von 24–48 Stunden eine persönliche Rückmeldung zur Abstimmung Ihres Anliegens.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Right Column: Mode Tabs & Form */}
+          <Reveal delay={100}>
+            <div className="flex border-b border-white/35" role="tablist" aria-label="Kontaktoptionen">
               <button
                 type="button"
-                onClick={() => setFormSubmitted(false)}
-                className="mt-6 rounded-full bg-[#e9be5b] px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-[#173530] hover:bg-[#f3cc70]"
+                role="tab"
+                aria-selected={formMode === "contact"}
+                onClick={() => {
+                  setFormMode("contact");
+                  setFormSubmitted(false);
+                }}
+                className={`form-tab ${formMode === "contact" ? "is-active" : ""}`}
               >
-                Weitere Nachricht senden
+                Anfrage stellen
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={formMode === "feedback"}
+                onClick={() => {
+                  setFormMode("feedback");
+                  setFormSubmitted(false);
+                }}
+                className={`form-tab ${formMode === "feedback" ? "is-active" : ""}`}
+              >
+                Feedback geben
               </button>
             </div>
-          ) : (
-            /* Form Fields */
-            <form onSubmit={submitForm} className="mt-10 grid gap-7">
-              <div className="grid gap-7 sm:grid-cols-2">
-                <label className="form-label">
-                  <span>Name *</span>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="Ihr vollständiger Name"
-                    className="focus:border-[#e9be5b]"
-                  />
-                </label>
 
-                <label className="form-label">
-                  <span>E-Mail *</span>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="ihre.adresse@schule.de"
-                    className="focus:border-[#e9be5b]"
-                  />
-                </label>
+            {formSubmitted ? (
+              <div className="py-14" aria-live="polite">
+                <p className="font-serif text-4xl tracking-[-0.055em]">Vielen Dank.</p>
+                <p className="mt-4 max-w-md text-[0.97rem] leading-7 text-white/85">
+                  {formMode === "feedback"
+                    ? d.contact.successMessageFeedback
+                    : d.contact.successMessageContact}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setFormSubmitted(false)}
+                  className="mt-7 border-b border-white pb-1 text-[0.7rem] font-semibold uppercase tracking-[0.15em] text-white hover:text-[#ffe0a0] hover:border-[#ffe0a0]"
+                >
+                  Weitere Nachricht senden
+                </button>
               </div>
-
-              <div className="grid gap-7 sm:grid-cols-2">
-                <label className="form-label">
-                  <span>Schule / Institution <em>(optional)</em></span>
-                  <input
-                    type="text"
-                    name="institution"
-                    placeholder="z. B. Gymnasium Berlin"
-                    className="focus:border-[#e9be5b]"
-                  />
-                </label>
-
-                <label className="form-label">
-                  <span>Thema / Anliegen *</span>
-                  <select
-                    name="topic"
-                    required
-                    value={selectedTopic}
-                    onChange={(e) => setSelectedTopic(e.target.value)}
-                    className="focus:border-[#e9be5b]"
-                  >
-                    <option value="" disabled className="bg-[#173530]">
-                      Bitte Thema wählen …
-                    </option>
-                    {d.contact.topics.map((t, idx) => (
-                      <option key={idx} value={t} className="bg-[#173530]">
-                        {t}
-                      </option>
-                    ))}
-                    {selectedTopic &&
-                      !d.contact.topics.includes(selectedTopic) && (
-                        <option value={selectedTopic} className="bg-[#173530]">
-                          {selectedTopic}
+            ) : (
+              <form className="mt-9" onSubmit={submitForm}>
+                <div className="grid gap-x-6 gap-y-7 sm:grid-cols-2">
+                  <label className="form-label">
+                    <span>Name {formMode === "feedback" && <em>(optional)</em>}</span>
+                    <input
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      required={formMode === "contact"}
+                    />
+                  </label>
+                  <label className="form-label">
+                    <span>E-Mail-Adresse</span>
+                    <input
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      required
+                    />
+                  </label>
+                  <label className="form-label sm:col-span-2">
+                    <span>
+                      {formMode === "feedback" ? "Kontext der Zusammenarbeit" : "Worum geht es?"}
+                    </span>
+                    {formMode === "contact" ? (
+                      <select
+                        name="topic"
+                        value={selectedTopic}
+                        onChange={(e) => setSelectedTopic(e.target.value)}
+                        required
+                        className="bg-[#c85d35] text-white"
+                      >
+                        <option value="" disabled className="bg-[#c85d35]">
+                          Bitte wählen …
                         </option>
-                      )}
-                  </select>
+                        {d.contact.topics.map((t) => (
+                          <option key={t} value={t} className="bg-[#c85d35]">
+                            {t}
+                          </option>
+                        ))}
+                      </select>
+                    ) : (
+                      <input
+                        name="context"
+                        type="text"
+                        placeholder="z. B. Fortbildung, Projekt, Kooperation"
+                      />
+                    )}
+                  </label>
+                  <label className="form-label sm:col-span-2">
+                    <span>
+                      {formMode === "feedback" ? "Ihre Rückmeldung" : "Ihre Nachricht"}
+                    </span>
+                    <textarea name="message" rows={4} required />
+                  </label>
+                </div>
+
+                {formMode === "feedback" && (
+                  <label className="mt-6 flex cursor-pointer items-start gap-3 text-sm leading-5 text-white/85">
+                    <input
+                      className="mt-1 h-4 w-4 accent-[#173530]"
+                      type="checkbox"
+                      name="permission"
+                    />
+                    <span>Meine Rückmeldung darf anonymisiert veröffentlicht werden.</span>
+                  </label>
+                )}
+
+                <label className="mt-5 flex cursor-pointer items-start gap-3 text-sm leading-5 text-white/85">
+                  <input
+                    className="mt-1 h-4 w-4 accent-[#173530]"
+                    type="checkbox"
+                    name="privacy"
+                    required
+                  />
+                  <span>
+                    Ich habe den Datenschutzhinweis zur Kenntnis genommen und stimme der Verarbeitung meiner Angaben zu.
+                  </span>
                 </label>
-              </div>
 
-              <label className="form-label">
-                <span>
-                  {formMode === "contact" ? "Ihre Nachricht *" : "Ihr Feedback *"}
-                </span>
-                <textarea
-                  name="message"
-                  required
-                  rows={4}
-                  placeholder={
-                    formMode === "contact"
-                      ? "Beschreiben Sie kurz Ihr Vorhaben, Ihre Zielgruppe und den zeitlichen Rahmen …"
-                      : "Was hat Ihnen gefallen, welche Anregungen haben Sie?"
-                  }
-                  className="focus:border-[#e9be5b]"
-                />
-              </label>
-
-              {/* DSGVO Consent */}
-              <p className="text-[0.72rem] leading-relaxed text-[#a9b9b0]">
-                Ihre Daten werden ausschließlich zur Bearbeitung und Beantwortung Ihrer Anfrage verarbeitet und vertraulich behandelt. Weitere Informationen finden Sie in der Datenschutzerklärung.
-              </p>
-
-              <div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="button-primary rounded-full px-8 py-3.5 text-xs font-bold uppercase tracking-[0.14em] disabled:opacity-50"
+                  className="mt-8 inline-flex items-center gap-3 border border-white bg-white px-7 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#173530] transition-all duration-300 hover:bg-transparent hover:text-white disabled:opacity-50"
                 >
                   <span>
                     {isSubmitting
-                      ? "Wird übertragen …"
-                      : formMode === "contact"
-                      ? "Anfrage absenden"
-                      : "Feedback senden"}
+                      ? "Wird gesendet …"
+                      : formMode === "feedback"
+                      ? "Feedback absenden"
+                      : "Anfrage senden"}
                   </span>
                   <ArrowUpRight className="h-4 w-4" />
                 </button>
-              </div>
-            </form>
-          )}
-        </Reveal>
+              </form>
+            )}
+          </Reveal>
+        </div>
       </section>
     </div>
   );

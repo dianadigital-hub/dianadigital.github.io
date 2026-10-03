@@ -23,8 +23,8 @@ export function Header({ data }: { data: Content }) {
     };
   }, [menuOpen]);
 
-  // Auf Home und Kontakt ist der Header-Hintergrund initial dunkel; auf Angebote, Projekte und Über mich hell
-  const isDarkInitial = path === "/" || path === "/kontakt";
+  // Theme determination: Home, Projekte and Kontakt start dark on initial load; Angebote and Über mich start light
+  const isDarkInitial = path === "/" || path === "/projekte" || path === "/kontakt";
   const showDarkTheme = isDarkInitial && !hasScrolled;
 
   const navLinks: { label: string; to: RoutePath }[] = [
@@ -40,36 +40,29 @@ export function Header({ data }: { data: Content }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-8 z-50 transition-all duration-300 ${
         hasScrolled
-          ? "bg-[#f6f5ef]/95 shadow-[0_1px_0_0_rgba(18,34,31,0.08)] backdrop-blur-md"
+          ? "border-b border-[#173530]/10 bg-[#f6f5ef]/95 py-3 shadow-[0_1px_0_0_rgba(18,34,31,0.08)] backdrop-blur-md"
           : isDarkInitial
-          ? "bg-transparent"
-          : "bg-[#f6f5ef]/80 backdrop-blur-sm shadow-[0_1px_0_0_rgba(18,34,31,0.05)]"
+          ? "bg-transparent py-5"
+          : "border-b border-[#173530]/10 bg-[#f6f5ef]/95 py-4 shadow-[0_1px_0_0_rgba(18,34,31,0.06)] backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        {/* Brand Logo */}
+      <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 sm:px-8 lg:px-12">
+        {/* Brand Logo - single source vector mark from SVG */}
         <button
           type="button"
           onClick={() => handleLinkClick("/")}
-          className="group flex flex-col text-left transition-opacity hover:opacity-90 focus:outline-none"
+          className="group flex items-center transition-opacity hover:opacity-90 focus:outline-none"
           aria-label="Startseite aufrufen"
         >
           <img
             src={`${DEPLOY_BASE}images/logo/${
               showDarkTheme ? "logo-horizontal-on-dark.svg" : "logo-horizontal-on-light.svg"
             }`}
-            alt={data.meta.brand}
-            className="h-8 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+            alt={`${data.meta.brand} ${data.meta.brandSubtitle}`}
+            className="h-9 w-auto object-contain transition-transform group-hover:scale-[1.02] sm:h-10"
           />
-          <span
-            className={`mt-1 text-[0.62rem] font-semibold tracking-[0.24em] transition-colors ${
-              showDarkTheme ? "text-[#e9be5b]" : "text-[#527267]"
-            }`}
-          >
-            {data.meta.brandSubtitle}
-          </span>
         </button>
 
         {/* Desktop Navigation */}

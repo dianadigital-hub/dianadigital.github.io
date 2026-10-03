@@ -29,142 +29,166 @@ export function ProjektePage({ data }: ProjektePageProps) {
   });
 
   return (
-    <div className="bg-[#f6f5ef] text-[#12221f] pt-28 pb-20">
+    <div className="bg-[#173530] text-[#f6f5ef]">
       {/* ===================== PAGE HEADER ===================== */}
-      <section className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
-        <Reveal>
-          <span className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#c85d35]">
-            Projektarchiv & Fallstudien
-          </span>
-          <h1 className="mt-3 font-serif text-4xl font-medium tracking-tight text-[#173530] sm:text-5xl lg:text-6xl">
-            {d.projects.headline}
-          </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#527267]">
-            Ein Einblick in konkrete Modellprojekte, medienpädagogische Initiativen und Praxiserprobungen an der Schnittstelle von Technologie, Didaktik und Demokratiebildung.
-          </p>
-        </Reveal>
-
-        {/* Filter Tabs */}
-        <div className="mt-10 flex flex-wrap gap-2.5 border-b border-[#173530]/10 pb-4">
-          {filterTabs.map((tab) => {
-            const isActive = filter === tab.key;
-            return (
+      <section className="px-5 pt-36 pb-16 sm:px-8 sm:pt-44 sm:pb-20 lg:px-12">
+        <div className="mx-auto max-w-[1280px]">
+          <Reveal className="grid gap-8 border-b border-white/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:pb-16">
+            <div className="flex flex-col items-start gap-4">
+              <span className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#e9be5b]">
+                Projektarchiv & Fallstudien
+              </span>
               <button
-                key={tab.key}
                 type="button"
-                onClick={() => setFilter(tab.key)}
-                className={`rounded-full px-4 py-2 text-xs font-semibold tracking-wider transition-all ${
-                  isActive
-                    ? "bg-[#173530] text-[#fffaf0] shadow-sm"
-                    : "bg-white text-[#527267] hover:bg-[#173530]/5 hover:text-[#173530]"
-                }`}
+                onClick={() => navigate("/kontakt", { topic: "Projektkooperation" })}
+                className="group inline-flex items-center gap-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[#e9be5b] transition-colors hover:text-white"
               >
-                {tab.label}
+                <span>Kooperation anfragen</span>
+                <ArrowUpRight className="h-3.5 w-3.5 text-[#e9be5b] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </button>
-            );
-          })}
-        </div>
-      </section>
+            </div>
+            <div>
+              <h1 className="max-w-3xl font-serif text-[clamp(2.7rem,5.5vw,5.5rem)] leading-[0.94] tracking-[-0.065em] text-white text-balance">
+                {d.projects.headline}
+              </h1>
+              <p className="mt-6 max-w-2xl text-[0.98rem] leading-7 text-white/80 text-pretty">
+                Einblick in konkrete Modellprojekte, medienpädagogische Initiativen und Praxiserprobungen an der Schnittstelle von Technologie, Didaktik und Schulentwicklung.
+              </p>
+            </div>
+          </Reveal>
 
-      {/* ===================== PROJECTS GRID ===================== */}
-      <section className="mx-auto mt-12 max-w-7xl px-6 sm:px-10 lg:px-16">
-        <div className="grid gap-10 md:grid-cols-2">
-          {filteredProjects.map((item, idx) => (
-            <Reveal
-              key={item.title}
-              delay={idx * 100}
-              className="flex flex-col justify-between rounded-2xl border border-[#173530]/15 bg-white p-8 shadow-sm transition-all hover:border-[#173530]/35 hover:shadow-md"
-            >
-              <div>
-                <div className="flex items-center justify-between border-b border-[#173530]/10 pb-4">
-                  <span className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#c85d35]">
-                    {item.label}
-                  </span>
-                  {item.statusBadge && (
-                    <span className="rounded-full bg-[#173530]/10 px-3 py-1 text-[0.65rem] font-semibold text-[#173530]">
-                      {item.statusBadge}
-                    </span>
-                  )}
-                </div>
-
-                <h2 className="mt-5 font-serif text-2xl font-semibold text-[#173530]">
-                  {item.title}
-                </h2>
-
-                <p className="mt-3 text-sm leading-relaxed text-[#527267]">
-                  {item.fullDescription || item.copy}
-                </p>
-
-                {item.highlights && item.highlights.length > 0 && (
-                  <div className="mt-6 border-t border-[#173530]/10 pt-4">
-                    <h3 className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#173530]">
-                      Schlüsselmerkmale:
-                    </h3>
-                    <ul className="mt-2.5 space-y-1.5">
-                      {item.highlights.map((h, hIdx) => (
-                        <li key={hIdx} className="flex items-start gap-2.5 text-xs text-[#527267]">
-                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e9be5b]" />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {item.note && (
-                  <div className="mt-6 rounded-lg bg-[#f6f5ef] p-4 text-xs italic text-[#527267]">
-                    {item.note}
-                  </div>
-                )}
-              </div>
-
-              {/* Action Buttons */}
-              <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-[#173530]/10 pt-6">
-                {item.href ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#173530] px-5 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-[#fffaf0] transition-colors hover:bg-[#12221f]"
-                  >
-                    <span>{item.linkLabel || "Projekt öffnen"}</span>
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
-                ) : null}
-
+          {/* Typographic Filter Tabs */}
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-b border-white/15 pb-4" role="tablist" aria-label="Projektkategorien">
+            {filterTabs.map((tab) => {
+              const isActive = filter === tab.key;
+              return (
                 <button
+                  key={tab.key}
                   type="button"
-                  onClick={() => navigate("/kontakt", { topic: `Projekt ${item.title}` })}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#173530]/20 px-4 py-2 text-xs font-semibold text-[#173530] hover:bg-[#173530]/5 transition-colors"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setFilter(tab.key)}
+                  className={`text-[0.72rem] font-semibold uppercase tracking-[0.15em] transition-colors pb-2 relative focus:outline-none ${
+                    isActive
+                      ? "text-[#e9be5b] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#e9be5b]"
+                      : "text-white/60 hover:text-white"
+                  }`}
                 >
-                  <span>Frage zu diesem Projekt</span>
+                  {tab.label}
                 </button>
-              </div>
-            </Reveal>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* ===================== CALL TO ACTION ===================== */}
-      <section className="mx-auto mt-24 max-w-5xl px-6 sm:px-10">
-        <Reveal className="rounded-2xl bg-[#173530] p-10 text-center text-[#fffaf0] sm:p-14">
-          <h2 className="font-serif text-3xl font-medium sm:text-4xl">
-            Möchten Sie ein innovatives Bildungsprojekt gemeinsam realisieren?
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#e9e6da]">
-            Ich begleite Schulen, Universitäten, Stiftungen und Bildungsinitiativen bei der didaktischen Konzeption und wissenschaftlichen Reflexion digitaler Lernformate.
-          </p>
-          <div className="mt-8">
-            <button
-              type="button"
-              onClick={() => navigate("/kontakt", { topic: "Projekt oder Kooperation" })}
-              className="button-primary rounded-full px-8 py-3.5 text-xs font-bold uppercase tracking-[0.14em]"
-            >
-              <span>Kooperation anfragen</span>
-              <ArrowUpRight className="h-4 w-4" />
-            </button>
+      {/* ===================== PROJECTS ARCHITECTURAL LIST ===================== */}
+      <section className="px-5 pb-24 sm:px-8 sm:pb-32 lg:px-12">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="divide-y divide-white/20">
+            {filteredProjects.map((item, idx) => (
+              <Reveal key={item.title} delay={idx * 70}>
+                <article className="project-row group grid gap-6 py-10 sm:py-12 lg:grid-cols-[200px_1fr_0.75fr] lg:gap-10">
+                  {/* Category & Status */}
+                  <div className="flex flex-col items-start gap-2 pr-4">
+                    <span className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#a9c6b0] break-words">
+                      {item.label}
+                    </span>
+                    {item.statusBadge && (
+                      <span className="rounded-full border border-white/20 px-2.5 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wider text-white/75">
+                        {item.statusBadge}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Title & Description */}
+                  <div>
+                    <h2 className="font-serif text-[clamp(1.8rem,3vw,2.85rem)] leading-[1.05] tracking-[-0.05em] text-white text-balance">
+                      {item.title}
+                    </h2>
+                    <p className="mt-4 max-w-xl text-[0.95rem] leading-7 text-white/80 text-pretty">
+                      {item.fullDescription || item.copy}
+                    </p>
+
+                    {item.highlights && item.highlights.length > 0 && (
+                      <div className="mt-6 border-t border-white/10 pt-4">
+                        <span className="text-[0.64rem] font-bold uppercase tracking-[0.16em] text-[#e9be5b]">
+                          Schwerpunkte & Resultate
+                        </span>
+                        <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                          {item.highlights.map((h, hIdx) => (
+                            <li key={hIdx} className="flex items-start gap-2.5 text-xs text-white/70">
+                              <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e9be5b]" />
+                              <span>{h}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Note / Quote & Action */}
+                  <div className="self-start border-l border-[#e9be5b]/70 pl-5 lg:mt-1">
+                    {item.note && (
+                      <p className="text-sm leading-6 text-[#e9be5b] text-pretty">
+                        {item.note}
+                      </p>
+                    )}
+
+                    <div className="mt-5 flex flex-wrap gap-3">
+                      {item.href && (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="button-quiet text-xs"
+                        >
+                          <span>{item.linkLabel || "Projekt öffnen"}</span>
+                          <ArrowUpRight className="h-3.5 w-3.5" />
+                        </a>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => navigate("/kontakt", { topic: `Projekt ${item.title}` })}
+                        className="inline-flex items-center gap-1.5 text-[0.67rem] font-semibold uppercase tracking-[0.15em] text-white/75 transition-colors hover:text-[#e9be5b]"
+                      >
+                        <span>Rückfrage stellen</span>
+                        <ArrowUpRight className="h-3 w-3" />
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
           </div>
-        </Reveal>
+        </div>
+      </section>
+
+      {/* ===================== CALL TO ACTION (Signatur Terrakotta) ===================== */}
+      <section className="bg-[#c85d35] px-5 py-24 text-[#fffaf0] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+        <div className="mx-auto max-w-[1120px] text-center">
+          <Reveal>
+            <p className="text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-[#ffe0a0]">
+              Zusammenarbeit & Schulentwicklung
+            </p>
+            <h2 className="mt-4 font-serif text-[clamp(2.6rem,5.4vw,5.4rem)] leading-[0.95] tracking-[-0.06em] text-white text-balance">
+              Möchten Sie ein Bildungsprojekt gemeinsam realisieren?
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-[0.98rem] leading-7 text-white/85 text-pretty">
+              Ich begleite Schulen, Universitäten, Stiftungen und Bildungsinitiativen bei der didaktischen Konzeption und wissenschaftlichen Reflexion innovativer Lernformate.
+            </p>
+            <div className="mt-10">
+              <button
+                type="button"
+                onClick={() => navigate("/kontakt", { topic: "Kooperationsanfrage" })}
+                className="inline-flex items-center gap-3 border border-white bg-white px-7 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#173530] transition-all duration-300 hover:bg-transparent hover:text-white"
+              >
+                <span>Kooperation anfragen</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
+            </div>
+          </Reveal>
+        </div>
       </section>
     </div>
   );
