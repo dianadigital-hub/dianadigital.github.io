@@ -39,6 +39,8 @@ export type HeroSlide = {
   ctaLabel: string;
   ctaLink: string;
   active: boolean;
+  image?: string;
+  imageAlt?: string;
 };
 
 export type CvStation = {

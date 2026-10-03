@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Content } from "../types/content";
 import { useRoute } from "../router";
 import { DEPLOY_BASE } from "../deployBase";
@@ -12,17 +13,39 @@ interface HomePageProps {
 export function HomePage({ data }: HomePageProps) {
   const { navigate } = useRoute();
   const d = data;
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const activeSlides = d.heroSlides?.filter((s) => s.active) || [];
 
   return (
     <>
       {/* ===================== HERO SECTION ===================== */}
       <section className="relative flex min-h-[94vh] flex-col justify-between overflow-hidden bg-[#12221f] px-5 pb-8 pt-28 text-white sm:px-8 sm:pb-12 sm:pt-36 lg:min-h-screen lg:px-12 lg:pb-16 lg:pt-40">
-        {/* Cinematic Photographic Background */}
-        <img
-          src={`${DEPLOY_BASE}images/hero.png`}
-          alt={d.hero.imageAlt}
-          className="hero-image absolute inset-0 h-full w-full object-cover object-[60%_center]"
-        />
+        {/* Cinematic Photographic Background with smooth crossfade */}
+        {activeSlides.length > 0 ? (
+          activeSlides.map((slide, idx) => {
+            const imgSrc = slide.image
+              ? slide.image.startsWith("http")
+                ? slide.image
+                : `${DEPLOY_BASE}${slide.image.replace(/^\//, "")}`
+              : `${DEPLOY_BASE}images/hero.png`;
+            return (
+              <img
+                key={slide.id || idx}
+                src={imgSrc}
+                alt={slide.imageAlt || slide.title || d.hero.imageAlt}
+                className={`hero-image absolute inset-0 h-full w-full object-cover object-[60%_center] transition-opacity duration-1000 ease-in-out ${
+                  idx === currentSlideIndex ? "opacity-100" : "opacity-0 pointer-events-none"
+                }`}
+              />
+            );
+          })
+        ) : (
+          <img
+            src={`${DEPLOY_BASE}images/hero.png`}
+            alt={d.hero.imageAlt}
+            className="hero-image absolute inset-0 h-full w-full object-cover object-[60%_center]"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-r from-[#12221f]/95 via-[#12221f]/85 to-[#12221f]/35 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#12221f] via-transparent to-transparent pointer-events-none" />
 
@@ -65,7 +88,7 @@ export function HomePage({ data }: HomePageProps) {
 
             {/* Right: Floating Sleek News & Highlight Capsule (4 Cols) */}
             <div className="hero-reveal lg:col-span-4 lg:mb-2">
-              <HeroSlideshow slides={d.heroSlides} />
+              <HeroSlideshow slides={d.heroSlides} onSlideChange={setCurrentSlideIndex} />
             </div>
           </div>
         </div>
