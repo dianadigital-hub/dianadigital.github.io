@@ -29,7 +29,7 @@
       "ctaLabel": "Projekt entdecken",
       "ctaLink": "/projekte",
       "active": true,
-      "image": "images/hero/hero-1-lernprojekt.png",
+      "image": "images/hero/hero-1-lernprojekt.webp",
       "imageAlt": "Jugendliche bei der Arbeit am digitalen Lernprojekt"
     },
     {
@@ -43,7 +43,7 @@
       "ctaLabel": "Fortbildung anfragen",
       "ctaLink": "/kontakt",
       "active": true,
-      "image": "images/hero/hero-2-whiteboard.png",
+      "image": "images/hero/hero-2-whiteboard.webp",
       "imageAlt": "Fortbildungssituation mit Lehrkräften am interaktiven Whiteboard"
     },
     {
@@ -57,7 +57,7 @@
       "ctaLabel": "Angebote ansehen",
       "ctaLink": "/angebote",
       "active": true,
-      "image": "images/hero/hero-3-workshop.png",
+      "image": "images/hero/hero-3-workshop.webp",
       "imageAlt": "Kollaborativer Workshop zur Schulentwicklung mit agilen Methoden"
     },
     {
@@ -71,7 +71,7 @@
       "ctaLabel": "Fallstudien erkunden",
       "ctaLink": "/projekte",
       "active": true,
-      "image": "images/hero/hero-4-vr-medien.png",
+      "image": "images/hero/hero-4-vr-medien.webp",
       "imageAlt": "Kreativer Medienworkshop mit Tablet und Virtual Reality"
     }
   ],
