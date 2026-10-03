@@ -28,7 +28,9 @@
       "location": "Berlin & Online",
       "ctaLabel": "Projekt entdecken",
       "ctaLink": "/projekte",
-      "active": true
+      "active": true,
+      "image": "images/hero/hero-1-lernprojekt.png",
+      "imageAlt": "Jugendliche bei der Arbeit am digitalen Lernprojekt"
     },
     {
       "id": "fortbildung-ki",
@@ -40,7 +42,9 @@
       "location": "Berlin & Brandenburg",
       "ctaLabel": "Fortbildung anfragen",
       "ctaLink": "/kontakt",
-      "active": true
+      "active": true,
+      "image": "images/hero/hero-2-whiteboard.png",
+      "imageAlt": "Fortbildungssituation mit Lehrkräften am interaktiven Whiteboard"
     },
     {
       "id": "schulentwicklung",
@@ -52,7 +56,23 @@
       "location": "Vor Ort & Digital",
       "ctaLabel": "Angebote ansehen",
       "ctaLink": "/angebote",
-      "active": true
+      "active": true,
+      "image": "images/hero/hero-3-workshop.png",
+      "imageAlt": "Kollaborativer Workshop zur Schulentwicklung mit agilen Methoden"
+    },
+    {
+      "id": "medien-vr",
+      "badge": "Zukunft & Didaktik",
+      "type": "Medienpädagogik & VR",
+      "title": "Immersive Lernräume & zeitgemäße Medienbildung",
+      "teaser": "Virtual Reality und innovative Medienformate reflektiert und verantwortungsvoll in den Fachunterricht und zeitgemäße Bildungsräume übersetzen.",
+      "date": "Laufende Kooperationen",
+      "location": "Berlin",
+      "ctaLabel": "Fallstudien erkunden",
+      "ctaLink": "/projekte",
+      "active": true,
+      "image": "images/hero/hero-4-vr-medien.png",
+      "imageAlt": "Kreativer Medienworkshop mit Tablet und Virtual Reality"
     }
   ],
   "philosophy": {

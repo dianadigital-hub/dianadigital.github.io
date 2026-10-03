@@ -343,6 +343,20 @@ export function CmsOverlay({ open, onClose, data, onSaveData }: CmsOverlayProps)
                       />
                     </label>
                   </div>
+
+                  <label className="block text-xs">
+                    <span className="text-[#a9b9b0]">Hintergrundbild Pfad (z.B. images/hero/hero-1-lernprojekt.png):</span>
+                    <input
+                      type="text"
+                      value={slide.image || ""}
+                      onChange={(e) => {
+                        const slides = [...(editData.heroSlides || [])];
+                        slides[idx].image = e.target.value;
+                        updateField("heroSlides", slides);
+                      }}
+                      className="mt-1 w-full rounded bg-[#173530] p-2 text-sm text-white border border-white/10"
+                    />
+                  </label>
                 </div>
               ))}
             </div>
