@@ -406,6 +406,7 @@ export function HomePage({ data }: HomePageProps) {
       {/* ===================== PROJEKTE HIGHLIGHTS ===================== */}
       <section className="bg-[#173530] px-5 py-24 text-[#f6f5ef] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-[1280px]">
+          {/* Section Header */}
           <Reveal className="grid gap-8 border-b border-white/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:pb-16">
             <div className="flex flex-col items-start gap-4">
               <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#e9be5b]">
@@ -427,38 +428,206 @@ export function HomePage({ data }: HomePageProps) {
             </div>
           </Reveal>
 
-          {/* Project Rows */}
-          <div className="mt-2">
-            {d.projects.items.slice(0, 3).map((project, index) => (
-              <Reveal key={project.title} delay={index * 80}>
-                <article className="project-row group grid gap-5 border-b border-white/20 py-9 lg:grid-cols-[200px_1fr_0.75fr] lg:gap-10 lg:py-12">
-                  <p className="pr-4 text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-[#a9c6b0] break-words">
-                    {project.label}
-                  </p>
-                  <div>
-                    <h3 className="font-serif text-[clamp(1.75rem,3vw,2.85rem)] leading-[1.08] tracking-[-0.045em] text-balance text-white">
-                      {project.title}
+          {/* ============ 1. FLAGSHIP BENTO CARD: JOBIMPACT ============ */}
+          {d.projects.items[0] && (
+            <Reveal className="mt-12">
+              <div className="group relative overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-[#1c403a] via-[#173530] to-[#12221f] p-8 shadow-2xl transition-all duration-500 hover:border-[#e9be5b]/60 sm:p-12">
+                <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+                  {/* Left Content (7 Cols) */}
+                  <div className="lg:col-span-7">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="rounded-full bg-[#e9be5b]/20 border border-[#e9be5b]/40 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#e9be5b]">
+                        Flagship Pilotprojekt
+                      </span>
+                      <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#a9c6b0]">
+                        {d.projects.items[0].label}
+                      </span>
+                    </div>
+
+                    <h3 className="mt-5 font-serif text-[clamp(2.2rem,4vw,3.6rem)] leading-[1.02] tracking-[-0.05em] text-white">
+                      {d.projects.items[0].title}
                     </h3>
-                    <p className="mt-4 max-w-xl text-[0.94rem] leading-7 text-white/72 text-pretty">
-                      {project.copy}
+
+                    <p className="mt-4 max-w-xl text-[0.98rem] leading-7 text-white/85 text-pretty">
+                      {d.projects.items[0].copy}
                     </p>
+
+                    {/* Highlights Chips */}
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      <span className="rounded-md bg-white/10 px-2.5 py-1 text-[0.68rem] text-white/90">
+                        ✦ 100% DSGVO-sicher
+                      </span>
+                      <span className="rounded-md bg-white/10 px-2.5 py-1 text-[0.68rem] text-white/90">
+                        ✦ KI-Bewerbungscoach
+                      </span>
+                      <span className="rounded-md bg-white/10 px-2.5 py-1 text-[0.68rem] text-white/90">
+                        ✦ Kostenfrei für Schulen
+                      </span>
+                    </div>
+
+                    {/* Personal Founder Note in Gold */}
+                    <div className="mt-7 border-l-2 border-[#e9be5b] pl-4 text-xs italic leading-relaxed text-[#e9be5b]">
+                      {d.projects.items[0].note}
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="mt-8 flex flex-wrap items-center gap-4">
+                      {d.projects.items[0].href && (
+                        <a
+                          href={d.projects.items[0].href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="button-primary"
+                        >
+                          <span>{d.projects.items[0].linkLabel || "Pilot live testen"}</span>
+                          <ArrowUpRight className="h-4 w-4" />
+                        </a>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => navigate("/projekte")}
+                        className="button-quiet text-xs"
+                      >
+                        <span>Fallstudie lesen</span>
+                      </button>
+                    </div>
                   </div>
-                  <div className="self-start border-l border-[#e9be5b]/70 pl-4 lg:mt-1">
-                    <p className="text-sm leading-6 text-[#e9be5b] text-pretty">
-                      {project.note}
+
+                  {/* Right Visual Image (5 Cols) */}
+                  <div className="relative overflow-hidden rounded-xl border border-white/15 lg:col-span-5">
+                    <div className="aspect-[16/10] overflow-hidden">
+                      <img
+                        src={`${DEPLOY_BASE}images/hero/hero-1-lernprojekt.webp`}
+                        alt="JobImpact Schüler-Lernprojekt"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#12221f]/80 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[0.65rem] font-semibold text-white/90">
+                      <span className="rounded bg-[#173530]/90 px-2.5 py-1 backdrop-blur-sm">
+                        Aktuell im Pilotbetrieb Berlin
+                      </span>
+                      <span className="text-[#e9be5b]">Klassen 9 & 10</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          )}
+
+          {/* ============ 2. ASYMMETRICAL 2-COLUMN SPOTLIGHT CARDS ============ */}
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+            {/* Project 2: Social Shift */}
+            {d.projects.items[1] && (
+              <Reveal delay={100}>
+                <div className="group flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-b from-[#1b3d37] to-[#142c27] p-8 transition-all duration-500 hover:border-[#e9be5b]/50">
+                  <div>
+                    <div className="relative -mx-8 -mt-8 mb-6 aspect-[16/9] overflow-hidden border-b border-white/15">
+                      <img
+                        src={`${DEPLOY_BASE}images/hero/hero-3-workshop.webp`}
+                        alt="Social Shift Workshop"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#142c27] via-[#142c27]/40 to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <span className="rounded-full bg-[#c85d35] px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-white shadow-md">
+                          🏆 Ausgezeichnet
+                        </span>
+                      </div>
+                    </div>
+
+                    <span className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#a9c6b0]">
+                      {d.projects.items[1].label}
+                    </span>
+                    <h3 className="mt-3 font-serif text-[clamp(1.75rem,2.5vw,2.4rem)] leading-[1.05] tracking-[-0.045em] text-white">
+                      {d.projects.items[1].title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-white/80 text-pretty">
+                      {d.projects.items[1].copy}
                     </p>
+
+                    {d.projects.items[1].note && (
+                      <div className="mt-5 border-l-2 border-[#e9be5b]/70 pl-3.5 text-xs text-[#e9be5b]">
+                        {d.projects.items[1].note}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="mt-8 border-t border-white/10 pt-5">
                     <button
                       type="button"
                       onClick={() => navigate("/projekte")}
-                      className="mt-3 inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:text-[#e9be5b]"
+                      className="group/btn inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#e9be5b] hover:text-white"
                     >
-                      <span>Projekt ansehen</span>
-                      <ArrowUpRight className="h-3.5 w-3.5" />
+                      <span>Mehr zum Projekt</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
                     </button>
                   </div>
-                </article>
+                </div>
               </Reveal>
-            ))}
+            )}
+
+            {/* Project 3: Holocaustvermittlung in VR */}
+            {d.projects.items[2] && (
+              <Reveal delay={200}>
+                <div className="group flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-b from-[#1b3d37] to-[#142c27] p-8 transition-all duration-500 hover:border-[#e9be5b]/50">
+                  <div>
+                    <div className="relative -mx-8 -mt-8 mb-6 aspect-[16/9] overflow-hidden border-b border-white/15">
+                      <img
+                        src={`${DEPLOY_BASE}images/hero/hero-4-vr-medien.webp`}
+                        alt="Holocaustvermittlung in VR"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#142c27] via-[#142c27]/40 to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <span className="rounded-full bg-[#173530]/90 border border-white/20 px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-[#e9be5b] shadow-md backdrop-blur-sm">
+                          Forschung & Didaktik
+                        </span>
+                      </div>
+                    </div>
+
+                    <span className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#a9c6b0]">
+                      {d.projects.items[2].label}
+                    </span>
+                    <h3 className="mt-3 font-serif text-[clamp(1.75rem,2.5vw,2.4rem)] leading-[1.05] tracking-[-0.045em] text-white">
+                      {d.projects.items[2].title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-white/80 text-pretty">
+                      {d.projects.items[2].copy}
+                    </p>
+
+                    {d.projects.items[2].note && (
+                      <div className="mt-5 border-l-2 border-[#e9be5b]/70 pl-3.5 text-xs text-[#e9be5b]">
+                        {d.projects.items[2].note}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="mt-8 border-t border-white/10 pt-5">
+                    <button
+                      type="button"
+                      onClick={() => navigate("/projekte")}
+                      className="group/btn inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#e9be5b] hover:text-white"
+                    >
+                      <span>Didaktische Kooperation ansehen</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
+                    </button>
+                  </div>
+                </div>
+              </Reveal>
+            )}
+          </div>
+
+          {/* Bottom Archive Link */}
+          <div className="mt-14 text-center">
+            <button
+              type="button"
+              onClick={() => navigate("/projekte")}
+              className="button-quiet text-xs"
+            >
+              <span>Alle 5 Projekte & Fallstudien im Detail ansehen</span>
+              <ArrowUpRight className="h-4 w-4" />
+            </button>
           </div>
         </div>
       </section>
