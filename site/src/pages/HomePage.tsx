@@ -1,113 +1,307 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { Content } from "../types/content";
-import { useRoute } from "../router";
+import { useRoute, RoutePath } from "../router";
 import { DEPLOY_BASE } from "../deployBase";
-import { HeroSlideshow } from "../components/HeroSlideshow";
 import { Reveal } from "../components/Reveal";
-import { ArrowUpRight, ArrowDown } from "../components/Icons";
+import { ArrowUpRight, ArrowDown, ChevronLeft, ChevronRight, PauseIcon, PlayIcon } from "../components/Icons";
 
 interface HomePageProps {
   data: Content;
 }
 
+interface HeroStoryItem {
+  id: string;
+  tagline: string;
+  headline: string;
+  subheadline: string;
+  image: string;
+  imageAlt: string;
+  ctaPrimaryLabel: string;
+  ctaPrimaryLink: string;
+  ctaSecondaryLabel?: string;
+  ctaSecondaryLink?: string;
+}
+
 export function HomePage({ data }: HomePageProps) {
   const { navigate } = useRoute();
   const d = data;
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const activeSlides = d.heroSlides?.filter((s) => s.active) || [];
+
+  // Erstelle die Liste der Hero-Stories:
+  // Folie 0 ist das fundamentale Marken-Leitbild (Startzustand aus Version 1).
+  // Danach folgen die thematischen Bild- & Themen-Geschichten.
+  const stories: HeroStoryItem[] = useMemo(() => {
+    const list: HeroStoryItem[] = [
+      {
+        id: "brand-intro",
+        tagline: d.hero.tagline,
+        headline: d.hero.headline,
+        subheadline: d.hero.subheadline,
+        image: "images/hero.png",
+        imageAlt: d.hero.imageAlt,
+        ctaPrimaryLabel: d.hero.ctaPrimary,
+        ctaPrimaryLink: "/kontakt",
+        ctaSecondaryLabel: d.hero.ctaSecondary,
+        ctaSecondaryLink: "/angebote",
+      },
+    ];
+
+    if (d.heroSlides && d.heroSlides.length > 0) {
+      d.heroSlides
+        .filter((s) => s.active)
+        .forEach((s) => {
+          list.push({
+            id: s.id,
+            tagline: s.badge ? `${s.badge} · ${s.type}` : s.type,
+            headline: s.title,
+            subheadline: s.teaser,
+            image: s.image || "images/hero.png",
+            imageAlt: s.imageAlt || s.title,
+            ctaPrimaryLabel: s.ctaLabel || "Mehr erfahren",
+            ctaPrimaryLink: s.ctaLink || "/projekte",
+            ctaSecondaryLabel: "Alle Angebote",
+            ctaSecondaryLink: "/angebote",
+          });
+        });
+    }
+
+    return list;
+  }, [d]);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  // prefers-reduced-motion
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  const total = stories.length;
+
+  const goToSlide = useCallback(
+    (nextIdx: number) => {
+      if (isTransitioning || nextIdx === currentIndex) return;
+      setIsTransitioning(true);
+      // Nach 400ms Text-Ausblendung wird der Index gewechselt und der neue Text eingeblendet
+      setTimeout(() => {
+        setCurrentIndex(nextIdx);
+        setIsTransitioning(false);
+      }, 450);
+    },
+    [currentIndex, isTransitioning]
+  );
+
+  const nextSlide = useCallback(() => {
+    goToSlide((currentIndex + 1) % total);
+  }, [currentIndex, goToSlide, total]);
+
+  const prevSlide = useCallback(() => {
+    goToSlide((currentIndex - 1 + total) % total);
+  }, [currentIndex, goToSlide, total]);
+
+  // Autoplay (12 Sekunden Verweildauer)
+  useEffect(() => {
+    if (total <= 1 || isPaused || reducedMotion) return;
+
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 12000);
+
+    return () => clearInterval(timer);
+  }, [total, isPaused, reducedMotion, nextSlide]);
+
+  const current = stories[currentIndex];
+
+  const handleLink = (link: string) => {
+    if (link.startsWith("http")) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    } else if (link.startsWith("#/")) {
+      navigate(link.replace(/^#/, "") as RoutePath);
+    } else if (link.startsWith("/")) {
+      navigate(link as RoutePath);
+    } else {
+      navigate(("/" + link) as RoutePath);
+    }
+  };
 
   return (
     <>
       {/* ===================== HERO SECTION ===================== */}
-      <section className="relative flex min-h-[94vh] flex-col justify-between overflow-hidden bg-[#12221f] px-5 pb-8 pt-28 text-white sm:px-8 sm:pb-12 sm:pt-36 lg:min-h-screen lg:px-12 lg:pb-16 lg:pt-40">
-        {/* Cinematic Photographic Background with smooth crossfade */}
-        {activeSlides.length > 0 ? (
-          activeSlides.map((slide, idx) => {
-            const imgSrc = slide.image
-              ? slide.image.startsWith("http")
-                ? slide.image
-                : `${DEPLOY_BASE}${slide.image.replace(/^\//, "")}`
-              : `${DEPLOY_BASE}images/hero.png`;
-            return (
-              <img
-                key={slide.id || idx}
-                src={imgSrc}
-                alt={slide.imageAlt || slide.title || d.hero.imageAlt}
-                className={`hero-image absolute inset-0 h-full w-full object-cover object-[60%_center] transition-opacity duration-1000 ease-in-out ${
-                  idx === currentSlideIndex ? "opacity-100" : "opacity-0 pointer-events-none"
-                }`}
-              />
-            );
-          })
-        ) : (
-          <img
-            src={`${DEPLOY_BASE}images/hero.png`}
-            alt={d.hero.imageAlt}
-            className="hero-image absolute inset-0 h-full w-full object-cover object-[60%_center]"
-          />
-        )}
+      <section
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        className="relative flex min-h-[94vh] flex-col justify-between overflow-hidden bg-[#12221f] px-5 pb-8 pt-28 text-white sm:px-8 sm:pb-12 sm:pt-36 lg:min-h-screen lg:px-12 lg:pb-16 lg:pt-40"
+      >
+        {/* ================= BACKGROUND IMAGES (Crossfade) ================= */}
+        {stories.map((story, idx) => {
+          const imgSrc = story.image.startsWith("http")
+            ? story.image
+            : `${DEPLOY_BASE}${story.image.replace(/^\//, "")}`;
+          return (
+            <img
+              key={story.id || idx}
+              src={imgSrc}
+              alt={story.imageAlt}
+              className={`hero-image absolute inset-0 h-full w-full object-cover object-[60%_center] transition-opacity duration-1000 ease-in-out ${
+                idx === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
+            />
+          );
+        })}
+
+        {/* Ambient Dark Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#12221f]/95 via-[#12221f]/85 to-[#12221f]/35 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#12221f] via-transparent to-transparent pointer-events-none" />
 
-        {/* Hero Top / Main Content Area */}
+        {/* ================= MAIN EDITORIAL HERO CONTENT ================= */}
         <div className="relative z-10 mx-auto w-full max-w-[1400px]">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
-            {/* Left: Signature Brand & Headline Typography (8 Cols) */}
-            <div className="max-w-4xl lg:col-span-8">
-              <p className="hero-reveal mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-[#e9be5b] sm:mb-5">
-                {d.hero.tagline}
-              </p>
-              <h1 className="hero-reveal hero-brand font-serif text-[clamp(5.7rem,17vw,15rem)] leading-[0.67] tracking-[-0.095em]">
-                {d.meta.brand}
-              </h1>
-              <p className="hero-reveal mt-7 max-w-2xl text-[clamp(1.45rem,3vw,2.65rem)] font-medium leading-[1.08] tracking-[-0.045em] text-white sm:mt-10 text-balance">
-                {d.hero.headline}
-              </p>
-              <p className="hero-reveal mt-5 max-w-xl text-sm leading-6 text-white/80 sm:text-[0.98rem] sm:leading-7 text-pretty">
-                {d.hero.subheadline}
+          <div className="max-w-4xl">
+            {/* Steady Brand Title */}
+            <h1 className="hero-reveal hero-brand font-serif text-[clamp(5.7rem,17vw,15rem)] leading-[0.67] tracking-[-0.095em]">
+              {d.meta.brand}
+            </h1>
+
+            {/* Dynamic Animated Content Slot */}
+            <div
+              className={`transition-all duration-500 ease-out ${
+                isTransitioning
+                  ? "-translate-y-3 opacity-0"
+                  : "translate-y-0 opacity-100"
+              }`}
+            >
+              {/* Tagline / Eyebrow */}
+              <p className="mt-8 text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-[#e9be5b] sm:mt-10">
+                {current.tagline}
               </p>
 
-              <div className="hero-reveal mt-7 flex flex-wrap gap-3 sm:mt-9">
+              {/* Dynamic Headline */}
+              <p className="mt-4 max-w-2xl text-[clamp(1.45rem,3vw,2.65rem)] font-medium leading-[1.08] tracking-[-0.045em] text-white sm:mt-6 text-balance">
+                {current.headline}
+              </p>
+
+              {/* Dynamic Subheadline */}
+              <p className="mt-5 max-w-xl text-sm leading-6 text-white/80 sm:text-[0.98rem] sm:leading-7 text-pretty">
+                {current.subheadline}
+              </p>
+
+              {/* Dynamic Action Buttons */}
+              <div className="mt-7 flex flex-wrap gap-3 sm:mt-9">
                 <button
                   type="button"
-                  onClick={() => navigate("/kontakt")}
+                  onClick={() => handleLink(current.ctaPrimaryLink)}
                   className="button-primary"
                 >
-                  <span>{d.hero.ctaPrimary}</span>
+                  <span>{current.ctaPrimaryLabel}</span>
                   <ArrowUpRight className="h-4 w-4" />
                 </button>
-                <button
-                  type="button"
-                  onClick={() => navigate("/angebote")}
-                  className="button-quiet"
-                >
-                  <span>{d.hero.ctaSecondary}</span>
-                </button>
+                {current.ctaSecondaryLabel && current.ctaSecondaryLink && (
+                  <button
+                    type="button"
+                    onClick={() => handleLink(current.ctaSecondaryLink!)}
+                    className="button-quiet"
+                  >
+                    <span>{current.ctaSecondaryLabel}</span>
+                  </button>
+                )}
               </div>
-            </div>
-
-            {/* Right: Floating Sleek News & Highlight Capsule (4 Cols) */}
-            <div className="hero-reveal lg:col-span-4 lg:mb-2">
-              <HeroSlideshow slides={d.heroSlides} onSlideChange={setCurrentSlideIndex} />
             </div>
           </div>
         </div>
 
-        {/* Hero Bottom / Scroll Hint */}
-        <div className="relative z-10 mx-auto w-full max-w-[1400px] pt-8">
+        {/* ================= HERO BOTTOM CONTROLS & PAGINATION ================= */}
+        <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-col items-start justify-between gap-6 border-t border-white/10 pt-6 sm:flex-row sm:items-center">
+          {/* Scroll Hint Left */}
           <button
             type="button"
             onClick={() => {
               document.querySelector("#haltung")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="group flex w-fit items-center gap-3 text-[0.63rem] font-semibold uppercase tracking-[0.2em] text-white/75 transition-colors hover:text-white"
+            className="group flex items-center gap-3 text-[0.63rem] font-semibold uppercase tracking-[0.2em] text-white/75 transition-colors hover:text-white"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/35 transition-colors duration-300 group-hover:border-[#e9be5b] group-hover:text-[#e9be5b]">
               <ArrowDown />
             </span>
             <span>{d.hero.scrollHint}</span>
           </button>
+
+          {/* Minimal Editorial Slide Pagination Right */}
+          {total > 1 && (
+            <div className="flex items-center gap-4">
+              {/* Progress Line Bars */}
+              <div className="flex items-center gap-1.5">
+                {stories.map((story, sIdx) => {
+                  const isActive = sIdx === currentIndex;
+                  return (
+                    <button
+                      key={story.id}
+                      type="button"
+                      onClick={() => goToSlide(sIdx)}
+                      className="group relative py-2 focus:outline-none"
+                      aria-label={`Zu Thema ${sIdx + 1} wechseln`}
+                    >
+                      <div
+                        className={`h-0.5 transition-all duration-500 ${
+                          isActive
+                            ? "w-8 bg-[#e9be5b]"
+                            : "w-4 bg-white/30 group-hover:bg-white/60"
+                        }`}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Counter Number */}
+              <span className="font-serif text-xs tracking-widest text-white/70">
+                {String(currentIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+              </span>
+
+              {/* Arrows & Pause Button */}
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={prevSlide}
+                  className="rounded-full border border-white/20 p-1.5 text-white/70 transition-colors hover:border-[#e9be5b] hover:text-[#e9be5b] focus:outline-none"
+                  aria-label="Vorheriges Thema"
+                >
+                  <ChevronLeft className="h-3.5 w-3.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={nextSlide}
+                  className="rounded-full border border-white/20 p-1.5 text-white/70 transition-colors hover:border-[#e9be5b] hover:text-[#e9be5b] focus:outline-none"
+                  aria-label="Nächstes Thema"
+                >
+                  <ChevronRight className="h-3.5 w-3.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsPaused(!isPaused)}
+                  className="p-1 text-white/40 transition-colors hover:text-[#e9be5b] focus:outline-none"
+                  aria-label={isPaused ? "Wechsel fortsetzen" : "Wechsel pausieren"}
+                >
+                  {isPaused ? <PlayIcon className="h-3 w-3" /> : <PauseIcon className="h-3 w-3" />}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
+
+        {/* Global Subtle Progress Line across the very bottom */}
+        {total > 1 && !reducedMotion && !isPaused && (
+          <div className="absolute inset-x-0 bottom-0 h-[2px] bg-white/5 pointer-events-none">
+            <div
+              key={currentIndex}
+              className="h-full bg-[#e9be5b]/70"
+              style={{ animation: "progress 12000ms linear forwards" }}
+            />
+          </div>
+        )}
       </section>
 
       {/* ===================== PHILOSOPHIE / HALTUNG ===================== */}
