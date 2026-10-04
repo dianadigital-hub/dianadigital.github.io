@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { DraftBanner, PasswordGate, usePasswordGate } from "./PasswordGate";
 import { LegalOverlay } from "./legal";
-import { DEPLOY_BASE } from "./deployBase";
+import { DEPLOY_BASE, IS_PREVIEW } from "./deployBase";
 import defaultContent from "./content/data.json";
 import { Content } from "./types/content";
 import { RouterProvider, useRoute } from "./router";
@@ -33,6 +33,32 @@ function AppView({
     };
   }, [adminOpen, legalOpen]);
 
+  // Impressum/Datenschutz bekommen einen eigenen Verlaufseintrag: Zurück-Taste/-Geste und Esc schließen
+  // die Einblendung, statt die Website zu verlassen.
+  useEffect(() => {
+    const onPop = () => setLegalOpen((window.history.state?.legal as "datenschutz" | "impressum") ?? null);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && window.history.state?.legal) window.history.back();
+    };
+    window.addEventListener("popstate", onPop);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("popstate", onPop);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  const openLegal = (page: "datenschutz" | "impressum") => {
+    if (window.history.state?.legal) window.history.replaceState({ legal: page }, "");
+    else window.history.pushState({ legal: page }, "");
+    setLegalOpen(page);
+  };
+
+  const closeLegal = () => {
+    if (window.history.state?.legal) window.history.back();
+    else setLegalOpen(null);
+  };
+
   // Route Switcher
   const renderCurrentPage = () => {
     switch (path) {
@@ -52,16 +78,17 @@ function AppView({
 
   return (
     <main className="overflow-x-clip bg-[#f6f5ef] text-[#12221f] selection:bg-[#e9be5b] selection:text-[#12221f]">
-      <DraftBanner />
+      {IS_PREVIEW && <DraftBanner />}
       <Header data={data} />
 
       {/* Dynamic Page View */}
       {renderCurrentPage()}
 
-      <Footer data={data} onOpenLegal={setLegalOpen} />
-      <LegalOverlay page={legalOpen} onClose={() => setLegalOpen(null)} />
+      <Footer data={data} onOpenLegal={openLegal} />
+      <LegalOverlay page={legalOpen} onClose={closeLegal} />
 
-      {/* ============ ADMIN CMS TOGGLE BUTTON ============ */}
+      {/* ============ ADMIN CMS TOGGLE BUTTON (nur Vorschau) ============ */}
+      {IS_PREVIEW && (
       <button
         type="button"
         onClick={() => setAdminOpen(true)}
@@ -70,6 +97,7 @@ function AppView({
       >
         CMS
       </button>
+      )}
 
       {/* ============ MODULAR ADMIN CMS STUDIO ============ */}
       <CmsOverlay
@@ -98,7 +126,7 @@ export default function App() {
       });
   }, []);
 
-  if (!unlocked) {
+  if (IS_PREVIEW && !unlocked) {
     return <PasswordGate onUnlock={unlock} />;
   }
 

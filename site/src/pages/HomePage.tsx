@@ -3,6 +3,7 @@ import { Content } from "../types/content";
 import { useRoute, RoutePath } from "../router";
 import { DEPLOY_BASE } from "../deployBase";
 import { Reveal } from "../components/Reveal";
+import { serviceTopic } from "./AngebotePage";
 import { ArrowUpRight, ArrowDown, ChevronLeft, ChevronRight, PauseIcon, PlayIcon } from "../components/Icons";
 
 interface HomePageProps {
@@ -375,7 +376,7 @@ export function HomePage({ data }: HomePageProps) {
                   </div>
                   <button
                     type="button"
-                    onClick={() => navigate("/angebote")}
+                    onClick={() => navigate("/kontakt", { topic: serviceTopic(service.title) })}
                     className="inline-flex w-fit items-center gap-2 self-start text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-[#173530] transition-transform duration-300 hover:translate-x-1 sm:pt-2"
                   >
                     <span>{service.action}</span>

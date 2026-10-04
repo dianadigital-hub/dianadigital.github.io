@@ -4,3 +4,7 @@
    Per VITE_DEPLOY_BASE steuerbar: "/diana/" fuer servermitte, "/" fuer die eigene Domain
    (Root-Deployment via GitHub Pages). */
 export const DEPLOY_BASE = import.meta.env.VITE_DEPLOY_BASE ?? "/diana/";
+
+/* Entwurfsfunktionen (Passwortsperre, Banner, CMS-Button) nur in der Vorschau unter /diana/,
+   nicht auf der eigenen Domain. */
+export const IS_PREVIEW = DEPLOY_BASE !== "/";

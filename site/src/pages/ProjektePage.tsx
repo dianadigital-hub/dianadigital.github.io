@@ -82,7 +82,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
               </span>
               <button
                 type="button"
-                onClick={() => navigate("/kontakt", { topic: "Projektkooperation" })}
+                onClick={() => navigate("/kontakt", { topic: "Projekt oder Kooperation" })}
                 className="group inline-flex items-center gap-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[#e9be5b] transition-colors hover:text-white"
               >
                 <span>Kooperation anfragen</span>
@@ -182,7 +182,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
                       </a>
                       <button
                         type="button"
-                        onClick={() => navigate("/kontakt", { topic: "JobImpact Schulpilot" })}
+                        onClick={() => navigate("/kontakt", { topic: "Projekt oder Kooperation" })}
                         className="button-quiet text-xs"
                       >
                         <span>Schulpilot für meine Schule anfragen</span>
@@ -299,7 +299,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
                         ) : (
                           <button
                             type="button"
-                            onClick={() => navigate("/kontakt", { topic: `Projekt ${item.title}` })}
+                            onClick={() => navigate("/kontakt", { topic: "Projekt oder Kooperation" })}
                             className="button-quiet text-xs"
                           >
                             <span>Frage zu diesem Projekt</span>
@@ -331,7 +331,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
             <div className="mt-10">
               <button
                 type="button"
-                onClick={() => navigate("/kontakt", { topic: "Kooperationsanfrage" })}
+                onClick={() => navigate("/kontakt", { topic: "Projekt oder Kooperation" })}
                 className="inline-flex items-center gap-3 border border-white bg-white px-7 py-3.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#173530] transition-all duration-300 hover:bg-transparent hover:text-white"
               >
                 <span>Kooperation anfragen</span>

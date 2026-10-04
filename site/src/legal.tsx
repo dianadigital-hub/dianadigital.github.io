@@ -1,3 +1,5 @@
+import { IS_PREVIEW } from "./deployBase";
+
 type Block = { heading: string; paragraphs: (string | string[])[] };
 
 /* Platzhalter wie [PLZ] oder [E-Mail-Adresse] gelb markieren, damit sie beim Review auffallen */
@@ -160,11 +162,19 @@ export function LegalOverlay({ page, onClose }: { page: "datenschutz" | "impress
       className={`fixed inset-0 z-[58] overflow-y-auto bg-[#f6f5ef] transition-all duration-400 ${page ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
       aria-hidden={!page}
     >
-      <div className="mx-auto max-w-3xl px-6 py-20 sm:py-24">
-        <button onClick={onClose} className="text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#527267] hover:text-[#173530]">
-          ← Zurück
-        </button>
-        <h2 className="mt-6 font-serif text-4xl tracking-[-0.05em] text-[#173530] sm:text-5xl">{title}</h2>
+      <div className={`sticky ${IS_PREVIEW ? "top-8" : "top-0"} z-10 border-b border-[#173530]/10 bg-[#f6f5ef]/95 backdrop-blur-md`}>
+        <div className="mx-auto max-w-3xl px-6">
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex min-h-11 items-center text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#527267] hover:text-[#173530]"
+          >
+            ← Zurück zur Seite
+          </button>
+        </div>
+      </div>
+      <div className="mx-auto max-w-3xl px-6 pb-20 pt-10 sm:pb-24 sm:pt-14">
+        <h2 className=" font-serif text-4xl tracking-[-0.05em] text-[#173530] sm:text-5xl">{title}</h2>
         <div className="mt-10">{page && <Blocks sections={sections} />}</div>
         {page === "impressum" && (
           <p className="mt-16 border-t border-[#173530]/10 pt-6 text-[0.7rem] leading-6 text-[#7a857f]">
@@ -176,6 +186,13 @@ export function LegalOverlay({ page, onClose }: { page: "datenschutz" | "impress
             </a>
           </p>
         )}
+        <button
+          type="button"
+          onClick={onClose}
+          className="mt-12 inline-flex min-h-11 items-center border border-[#173530]/30 px-5 text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#173530] transition-colors hover:border-[#173530] hover:bg-[#173530] hover:text-white"
+        >
+          ← Zurück zur Seite
+        </button>
       </div>
     </div>
   );

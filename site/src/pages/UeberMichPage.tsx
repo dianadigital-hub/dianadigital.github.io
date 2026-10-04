@@ -14,8 +14,7 @@ export function UeberMichPage({ data }: UeberMichPageProps) {
   const cv = d.curriculumVitae;
 
   const handleDownloadCv = () => {
-    const url = d.meta.cvDownloadUrl || `${DEPLOY_BASE}assets/diana-jeske-siegel-vita.pdf`;
-    window.open(url, "_blank");
+    window.open(d.meta.cvDownloadUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -46,7 +45,8 @@ export function UeberMichPage({ data }: UeberMichPageProps) {
                   </span>
                 </div>
 
-                {/* PDF Download Slot */}
+                {/* PDF Download Slot – nur sichtbar, wenn im CMS eine Vita-PDF hinterlegt ist */}
+                {d.meta.cvDownloadUrl && (
                 <div className="mt-8 border-t border-[#173530]/15 pt-6">
                   <button
                     type="button"
@@ -60,6 +60,7 @@ export function UeberMichPage({ data }: UeberMichPageProps) {
                     Kompakte einseitige Übersicht für Schulleitungen & Gremien
                   </p>
                 </div>
+                )}
               </Reveal>
             </div>
 

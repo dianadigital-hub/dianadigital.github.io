@@ -7,19 +7,21 @@ interface AngebotePageProps {
   data: Content;
 }
 
+/* Ordnet ein Angebot dem passenden Thema im Kontaktformular zu (auch von der Startseite genutzt). */
+export function serviceTopic(serviceTitle: string) {
+  const t = serviceTitle.toLowerCase();
+  if (t.includes("schulleitungen")) return "Beratung einer Schulleitung";
+  if (t.includes("schulen")) return "Beratung einer Schule";
+  return "Fortbildung für das Kollegium";
+}
+
 export function AngebotePage({ data }: AngebotePageProps) {
   const { navigate } = useRoute();
   const d = data;
   const detailed = d.detailedServices;
 
   const handleRequestService = (serviceTitle: string) => {
-    let topic = "Fortbildung für das Kollegium";
-    if (serviceTitle.toLowerCase().includes("schulen")) {
-      topic = "Beratung einer Schule";
-    } else if (serviceTitle.toLowerCase().includes("schulleitungen")) {
-      topic = "Beratung einer Schulleitung";
-    }
-    navigate("/kontakt", { topic });
+    navigate("/kontakt", { topic: serviceTopic(serviceTitle) });
   };
 
   return (
