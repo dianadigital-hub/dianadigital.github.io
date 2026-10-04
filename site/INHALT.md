@@ -45,7 +45,7 @@ Quelle: [`public/content/data.json`](public/content/data.json), sofern nicht and
 ### Philosophie / Haltung
 - Label: „Haltung“
 - Zitat: *„Digitalisierung ist Teil unserer Zukunft. Bildung ist und bleibt jedoch mehr als Technologie.“*
-- Text: *„Lernen braucht Beziehung, Kommunikation, soziale Erfahrung und echte Begegnung. Gleichzeitig sollen junge Menschen digitale Entwicklungen kritisch beurteilen, verantwortungsvoll handeln und ethische Urteilskraft entwickeln.“*
+- Text: *„Lernen braucht Beziehung, Kommunikation, soziale Erfahrung und echte Begegnung. Gleichzeitig sollen junge Menschen digitale Entwicklungen kritisch beurteilen, verantwortungsvoll handeln und ethische Urteilskompetenz entwickeln.“*
 
 ### Leistungen
 Label: „Expertise“ · Headline: „Digital denken. Pädagogisch handeln.“ · Subheadline: *„Praxisnahe Fortbildung und strategische Beratung für Lehrkräfte, Schulen und Schulleitungen.“*
@@ -56,7 +56,7 @@ Label: „Expertise“ · Headline: „Digital denken. Pädagogisch handeln.“ 
 | 02 | Beratung von Schulen | Digitale Strategien entwickeln, Prozesse gestalten und Strukturen im Schulalltag verankern — gemeinsam, realistisch und nachhaltig. | Schulentwicklung besprechen |
 | 03 | Beratung von Schulleitungen | Strategische Klarheit für Digitalisierung, KI und Schulentwicklung. Pädagogische, organisatorische und technische Perspektiven kommen zusammen. | Gespräch vereinbaren |
 
-**Fokus** (eigener Block am Ende der Sektion): Label „Fokus“ · Titel „KI, Medienbildung und ethische Urteilskraft.“ · Text: *„KI verändert Lernen, Arbeiten und gesellschaftliche Entscheidungsprozesse. Schule muss digitale Kompetenzen, kritisches Denken, Medienkompetenz und ethische Urteilskraft gleichermaßen fördern.“*
+**Fokus** (eigener Block am Ende der Sektion): Label „Fokus“ · Titel „KI, Medienbildung und ethische Urteilskompetenz.“ · Text: *„KI verändert Lernen, Arbeiten und gesellschaftliche Entscheidungsprozesse. Schule muss digitale Kompetenzen, kritisches Denken, Medienkompetenz und ethische Urteilskompetenz gleichermaßen fördern.“*
 
 ### Projekte
 Label: „Ausgewählte Projekte“ · Headline: „Innovation wird wirksam, wenn sie Haltung zeigt.“

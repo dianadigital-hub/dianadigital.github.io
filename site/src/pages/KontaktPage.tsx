@@ -73,8 +73,8 @@ export function KontaktPage({ data }: KontaktPageProps) {
 
   return (
     <div className="bg-[#c85d35] text-[#fffaf0]">
-      <section className="px-5 pt-36 pb-24 sm:px-8 sm:pt-44 sm:pb-32 lg:px-12">
-        <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+      <section className="px-5 pt-36 pb-20 sm:px-8 sm:pt-44 sm:pb-32 lg:px-12">
+        <div className="mx-auto grid max-w-[1280px] gap-10 sm:gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           {/* Left Column: Heading & Info */}
           <Reveal>
             <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#ffe0a0]">

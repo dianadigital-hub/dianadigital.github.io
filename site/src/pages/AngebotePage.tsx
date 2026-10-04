@@ -25,7 +25,7 @@ export function AngebotePage({ data }: AngebotePageProps) {
   return (
     <div className="bg-[#f6f5ef] text-[#12221f]">
       {/* ===================== PAGE HEADER ===================== */}
-      <section className="px-5 pt-36 pb-20 sm:px-8 sm:pt-44 sm:pb-24 lg:px-12">
+      <section className="px-5 pt-36 pb-14 sm:px-8 sm:pt-44 sm:pb-24 lg:px-12">
         <div className="mx-auto max-w-[1280px]">
           <Reveal className="grid gap-8 border-b border-[#173530]/20 pb-14 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:pb-16">
             <div className="flex flex-col items-start gap-4">
@@ -55,7 +55,7 @@ export function AngebotePage({ data }: AngebotePageProps) {
 
       {/* ===================== DIDAKTISCHES LEITBILD (Signatur Salbeigrün) ===================== */}
       {detailed?.didacticStatement && (
-        <section className="relative overflow-hidden bg-[#dce8dc] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+        <section className="relative overflow-hidden bg-[#dce8dc] px-5 py-16 sm:px-8 sm:py-28 lg:px-12">
           <span
             className="absolute -right-6 -top-12 font-serif text-[14rem] leading-none tracking-[-0.13em] text-[#b8d0bd]/60 sm:text-[20rem] pointer-events-none select-none"
             aria-hidden="true"
@@ -78,12 +78,12 @@ export function AngebotePage({ data }: AngebotePageProps) {
       )}
 
       {/* ===================== 3 DETAIL-LEISTUNGSPROFILE (Architektonische Editorial-Module) ===================== */}
-      <section className="px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
+      <section className="px-5 py-20 sm:px-8 sm:py-32 lg:px-12">
         <div className="mx-auto max-w-[1280px]">
-          <div className="space-y-16 lg:space-y-24">
+          <div className="space-y-12 sm:space-y-16 lg:space-y-24">
             {d.services.items.map((item, idx) => (
               <Reveal key={item.number} delay={idx * 90}>
-                <article className="border-b border-[#173530]/20 pb-16 lg:pb-20">
+                <article className="border-b border-[#173530]/20 pb-12 sm:pb-16 lg:pb-20">
                   {/* Modulkopf: Nummer, Titel, Zielgruppe */}
                   <div className="grid gap-6 sm:grid-cols-[86px_1fr_auto] sm:items-baseline sm:gap-8">
                     <span className="font-serif text-3xl font-bold tracking-[-0.06em] text-[#c85d35]">
@@ -162,7 +162,7 @@ export function AngebotePage({ data }: AngebotePageProps) {
 
       {/* ===================== 4-SCHRITTE-FAHRPLAN (Warmer Ocker-Block) ===================== */}
       {detailed?.processSteps && (
-        <section className="bg-[#e9be5b] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-36">
+        <section className="bg-[#e9be5b] px-5 py-20 sm:px-8 sm:py-32 lg:px-12 lg:py-36">
           <div className="mx-auto max-w-[1280px]">
             <Reveal className="grid gap-8 border-b border-[#173530]/25 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:pb-16">
               <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#725528]">
@@ -200,7 +200,7 @@ export function AngebotePage({ data }: AngebotePageProps) {
       )}
 
       {/* ===================== CALL TO ACTION (Signatur Terrakotta) ===================== */}
-      <section className="bg-[#c85d35] px-5 py-24 text-[#fffaf0] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+      <section className="bg-[#c85d35] px-5 py-20 text-[#fffaf0] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-[1120px] text-center">
           <Reveal>
             <p className="text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-[#ffe0a0]">

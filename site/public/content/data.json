@@ -14,7 +14,7 @@
     "subheadline": "Pädagogische Praxis, fundierte Expertise und Beratung für eine zukunftsfähige Schulentwicklung, die menschlich bleibt.",
     "ctaPrimary": "Zusammenarbeit anfragen",
     "ctaSecondary": "Angebote entdecken",
-    "scrollHint": "Scroll to explore",
+    "scrollHint": "Weiterlesen",
     "imageAlt": "Fortbildungssituation mit Lehrkräften an einem digitalen Whiteboard"
   },
   "heroSlides": [
@@ -37,7 +37,7 @@
       "badge": "Fortbildungsreihe",
       "type": "Fortbildung für Kollegien",
       "title": "KI als Lernbegleitung im Fachunterricht",
-      "teaser": "Praxisnahe Methodik für Lehrkräfte: Prompt-Laboratorien und ethische Urteilskraft für Schüler:innen didaktisch gewinnbringend verbinden.",
+      "teaser": "Praxisnahe Methoden für Lehrkräfte: Prompt-Labore im Unterricht nutzen und dabei die ethische Urteilskompetenz der Schüler:innen gezielt stärken.",
       "date": "Schuljahr 2026/27",
       "location": "Berlin & Brandenburg",
       "ctaLabel": "Fortbildung anfragen",
@@ -65,7 +65,7 @@
       "badge": "Zukunft & Didaktik",
       "type": "Medienpädagogik & VR",
       "title": "Immersive Lernräume & zeitgemäße Medienbildung",
-      "teaser": "Virtual Reality und innovative Medienformate reflektiert und verantwortungsvoll in den Fachunterricht und zeitgemäße Bildungsräume übersetzen.",
+      "teaser": "Virtual Reality und innovative Medienformate reflektiert und verantwortungsvoll in den Fachunterricht und in neue Bildungsräume übertragen.",
       "date": "Laufende Kooperationen",
       "location": "Berlin",
       "ctaLabel": "Fallstudien erkunden",
@@ -78,7 +78,7 @@
   "philosophy": {
     "label": "Haltung",
     "quote": "Digitalisierung ist Teil unserer Zukunft. Bildung ist und bleibt jedoch mehr als Technologie.",
-    "body": "Lernen braucht Beziehung, Kommunikation, soziale Erfahrung und echte Begegnung. Gleichzeitig müssen junge Menschen befähigt werden, digitale Entwicklungen kritisch zu beurteilen, verantwortungsvoll zu handeln und ethische Urteilskraft zu entwickeln."
+    "body": "Lernen braucht Beziehung, Kommunikation, soziale Erfahrung und echte Begegnung. Zugleich sollen junge Menschen lernen, digitale Entwicklungen kritisch einzuordnen, Chancen und Risiken abzuwägen und auf dieser Grundlage verantwortungsvoll zu handeln. Dafür brauchen sie ethische Urteilskompetenz."
   },
   "services": {
     "label": "Angebote",
@@ -106,7 +106,7 @@
       {
         "number": "02",
         "title": "Beratung von Schulen",
-        "description": "Schul- und Unterrichtsentwicklung nachhaltig gestalten: Digitale Strategien entwickeln, Medienbildung verankern und Veränderungsprozesse gemeinsam mit dem Kollegium tragen.",
+        "description": "Schul- und Unterrichtsentwicklung nachhaltig gestalten: Digitale Strategien erarbeiten, Medienbildung verankern und Veränderungsprozesse gemeinsam mit dem Kollegium tragen.",
         "action": "Schulentwicklung besprechen",
         "targetAudience": "Steuergruppen, Schulentwicklungsteams, Fachkonferenzen",
         "keyTopics": [
@@ -142,8 +142,8 @@
     ],
     "focus": {
       "label": "Fokus",
-      "title": "KI im Bildungskontext, Medienbildung und ethische Urteilskraft.",
-      "description": "Künstliche Intelligenz verändert Lernen, Arbeiten und gesellschaftliche Entscheidungsprozesse. Schule muss digitale Kompetenzen, kritisches Denken, Medienkompetenz und ethische Urteilskraft gleichermaßen fördern."
+      "title": "KI im Bildungskontext, Medienbildung und ethische Urteilskompetenz.",
+      "description": "Künstliche Intelligenz verändert, wie wir lernen, arbeiten und als Gesellschaft entscheiden. Schule muss deshalb digitale Fähigkeiten, kritisches Denken und Medienkompetenz ebenso fördern wie die Fähigkeit, die Auswirkungen von KI ethisch einzuordnen und Entscheidungen begründet zu treffen."
     }
   },
   "detailedServices": {
@@ -157,17 +157,17 @@
       {
         "step": "02",
         "title": "Maßgeschneidertes Format",
-        "text": "Gemeinsame Auswahl und Konzeption des passenden Formats – von der kompakten SchiLF über Steuergruppen-Klausuren bis zur modularen Begleitung."
+        "text": "Gemeinsam wählen und gestalten wir das passende Format – von der kompakten SchiLF über Steuergruppen-Klausuren bis zur modularen Begleitung."
       },
       {
         "step": "03",
         "title": "Praxisnahe Durchführung",
-        "text": "Interaktive Erprobung konkreter Methoden und digitaler Werkzeuge auf Augenhöhe mit spürbarem Alltagsbezug für den Schulunterricht."
+        "text": "Konkrete Methoden und digitale Werkzeuge gemeinsam ausprobieren – auf Augenhöhe und mit spürbarem Bezug zum Unterrichtsalltag."
       },
       {
         "step": "04",
         "title": "Nachhaltiger Transfer",
-        "text": "Konkrete Sicherung von Absprachen, Vorlagen und Routinen, damit gewonnene Erkenntnisse dauerhaft in den Fachkonferenzen ankommen."
+        "text": "Absprachen, Vorlagen und Routinen werden verbindlich festgehalten, damit die Ergebnisse dauerhaft in den Fachkonferenzen ankommen."
       }
     ]
   },
@@ -203,7 +203,7 @@
         "statusBadge": "Prämiert",
         "fullDescription": "Social Shift widmet sich der aktiven Auseinandersetzung Jugendlicher mit digitaler Meinungsbildung, Filterblasen und Desinformation in sozialen Netzwerken. Jugendliche lernen, Quellen kritisch zu hinterfragen und konstruktive Debattenkultur digital zu leben.",
         "highlights": [
-          "Förderpreis 'Medienkompetenz stärkt Brandenburg'",
+          "Förderpreis „Medienkompetenz stärkt Brandenburg“",
           "Handlungsorientierte Workshops für Klassen und Jugendgruppen",
           "Fokus auf Desinformationsmechanismen und Algorithmen-Reflexion"
         ]
@@ -243,7 +243,7 @@
         "label": "Unterrichtsentwicklung",
         "category": "ki",
         "title": "Digitale Lern- und Fortbildungsformate",
-        "copy": "Entwicklung und Erprobung digitaler Lernsettings sowie Fortbildungsformate für neue Medien, KI und zeitgemäße Unterrichtsgestaltung.",
+        "copy": "Entwicklung und Erprobung digitaler Lernsettings sowie von Fortbildungsformaten zu neuen Medien, KI und zeitgemäßer Unterrichtsgestaltung.",
         "note": "Vom einzelnen Impuls zur nachhaltig gelebten Praxis.",
         "statusBadge": "Laufend",
         "fullDescription": "Entwicklung, Pilotierung und Veröffentlichung digitaler Unterrichtsmaterialien, kollaborativer Padlets und Prompt-Bibliotheken für verschiedene Fachbereiche.",
@@ -284,10 +284,10 @@
     "role": "Oberstudienrätin · Beraterin für Schul- und Unterrichtsqualität · Fortbildnerin",
     "headline": "Pädagogische Praxis trifft zukunftsfähige Schulentwicklung.",
     "paragraphs": [
-      "Schulentwicklungsprozesse sind heute nicht mehr ohne digitale Transformation zu denken. Als Oberstudienrätin und langjährige Lehrerin kenne ich sowohl die inspirierenden Chancen als auch die ganz konkreten Hürden im echten Schulalltag aus erster Hand.",
-      "Mein Weg in die Beratung und Fortbildung ist genau hieraus gewachsen: Aus dem Wunsch, Unterricht praxisnah weiterzuentwickeln, Kollegien verlässlich mitzunehmen und Schule nicht von außen zu belehren, sondern von innen heraus zu stärken.",
+      "Schulentwicklung ist heute ohne den digitalen Wandel nicht mehr zu denken. Als Oberstudienrätin und langjährige Lehrerin kenne ich die Chancen ebenso wie die konkreten Hürden des Schulalltags aus erster Hand.",
+      "Daraus ist mein Weg in Beratung und Fortbildung gewachsen: aus dem Wunsch, Unterricht praxisnah weiterzuentwickeln, Kollegien verlässlich mitzunehmen und Schule nicht von außen zu belehren, sondern von innen heraus zu stärken.",
       "Im Mittelpunkt stehen für mich immer die vorhandenen Ressourcen und die konkreten Bedarfe vor Ort. Es geht nicht darum, möglichst viel Technologie in Klassenräume zu bringen, sondern digitale Werkzeuge dort einzusetzen, wo sie Lehren und Lernen spürbar erleichtern und bereichern.",
-      "Digitale Gesundheit, ethische Urteilskraft und AI Literacy bilden dabei mein pädagogisches Fundament – damit junge Menschen lernen, Technologien selbstbestimmt, kritisch und reflektiert für ihre Zukunft zu nutzen."
+      "Digitale Gesundheit, ethische Urteilskompetenz und AI Literacy bilden dabei mein pädagogisches Fundament – damit junge Menschen Technologien selbstbestimmt und kritisch nutzen, ihre Folgen abwägen und verantwortungsvoll für ihre Zukunft einsetzen."
     ],
     "quote": "Gute digitale Bildung beginnt für mich nicht mit einem Gerät oder einer App. Sie beginnt mit der Frage, was junge Menschen für ihre Zukunft brauchen und wie Schule sie dabei bestmöglich unterstützen kann."
   },
@@ -330,7 +330,7 @@
       {
         "year": "2024",
         "title": "M.E.T.A. AI Zusatzqualifikation",
-        "details": "Künstliche Intelligenz in Bildungskontexten, ethische Urteilskraft und verantwortungsvoller Einsatz generativer Systeme."
+        "details": "Künstliche Intelligenz in Bildungskontexten, ethische Urteilskompetenz und verantwortungsvoller Einsatz generativer Systeme."
       },
       {
         "year": "2022",

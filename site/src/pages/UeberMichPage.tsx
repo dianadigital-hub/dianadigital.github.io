@@ -21,9 +21,9 @@ export function UeberMichPage({ data }: UeberMichPageProps) {
   return (
     <div className="bg-[#f6f5ef] text-[#12221f]">
       {/* ===================== PAGE HEADER & BIO ===================== */}
-      <section className="px-5 pt-36 pb-20 sm:px-8 sm:pt-44 sm:pb-24 lg:px-12">
+      <section className="px-5 pt-36 pb-14 sm:px-8 sm:pt-44 sm:pb-24 lg:px-12">
         <div className="mx-auto max-w-[1280px]">
-          <div className="grid gap-14 lg:grid-cols-12 lg:items-start lg:gap-20">
+          <div className="grid gap-10 sm:gap-14 lg:grid-cols-12 lg:items-start lg:gap-20">
             {/* Portrait & Meta Links (5 Spalten) */}
             <div className="lg:col-span-5">
               <Reveal>
@@ -101,7 +101,7 @@ export function UeberMichPage({ data }: UeberMichPageProps) {
 
       {/* ===================== STRUKTURIERTER LEBENSLAUF (Warmer Ocker-Block) ===================== */}
       {cv && (
-        <section className="bg-[#e9be5b] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-36">
+        <section className="bg-[#e9be5b] px-5 py-20 sm:px-8 sm:py-32 lg:px-12 lg:py-36">
           <div className="mx-auto max-w-[1280px]">
             <Reveal className="grid gap-8 border-b border-[#173530]/25 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:pb-16">
               <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#725528]">
@@ -117,7 +117,7 @@ export function UeberMichPage({ data }: UeberMichPageProps) {
               </div>
             </Reveal>
 
-            <div className="mt-14 grid gap-12 lg:grid-cols-3">
+            <div className="mt-10 grid gap-10 sm:mt-14 sm:gap-12 lg:grid-cols-3">
               {/* 1. Beruflicher Werdegang */}
               <div className="border-t border-[#173530]/25 pt-6">
                 <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#173530]">
@@ -195,17 +195,17 @@ export function UeberMichPage({ data }: UeberMichPageProps) {
       )}
 
       {/* ===================== CALL TO ACTION (Signatur Terrakotta) ===================== */}
-      <section className="bg-[#c85d35] px-5 py-24 text-[#fffaf0] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+      <section className="bg-[#c85d35] px-5 py-20 text-[#fffaf0] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-[1120px] text-center">
           <Reveal>
             <p className="text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-[#ffe0a0]">
               Persönlicher Austausch
             </p>
             <h2 className="mt-4 font-serif text-[clamp(2.6rem,5.4vw,5.4rem)] leading-[0.95] tracking-[-0.06em] text-white text-balance">
-              Lassen Sie uns über Schulentwicklung sprechen
+              Lassen Sie uns über Schulentwicklung sprechen.
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-[0.98rem] leading-7 text-white/85 text-pretty">
-              Ob Impulsvortrag, Workshop-Reihe oder Schulentwicklungs-Beratung – ich freue mich über den fachlichen Austausch zu zukunftsorientierter Bildungsarbeit.
+              Ob Impulsvortrag, Workshop-Reihe oder Prozessberatung – ich freue mich über den fachlichen Austausch zu zukunftsorientierter Bildungsarbeit.
             </p>
             <div className="mt-10">
               <button

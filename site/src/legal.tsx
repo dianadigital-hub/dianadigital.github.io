@@ -50,8 +50,8 @@ export const DATENSCHUTZ: Block[] = [
     heading: "1. Verantwortliche",
     paragraphs: [
       "Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website ist:",
-      "Diana Jeske-Siegel\nPostfach [Nummer]\n[PLZ] Berlin-Köpenick\nDeutschland",
-      "E-Mail: [E-Mail-Adresse]",
+      "Diana Jeske-Siegel\nc/o Autorenglück #16521\nAlbert-Einstein-Str. 47\n02977 Hoyerswerda\nDeutschland",
+      "E-Mail: dianadigital@gmx.de",
     ],
   },
   {
@@ -120,7 +120,7 @@ export const DATENSCHUTZ: Block[] = [
     heading: "9. Aktualität dieser Datenschutzerklärung",
     paragraphs: [
       "Diese Datenschutzerklärung wird angepasst, wenn sich die technische Ausstattung oder die Art der Verarbeitung personenbezogener Daten auf dieser Website ändert.",
-      "Stand: [Monat Jahr]",
+      "Stand: Oktober 2026",
     ],
   },
 ];
@@ -129,45 +129,25 @@ export const IMPRESSUM: Block[] = [
   {
     heading: "Angaben gemäß § 5 DDG",
     paragraphs: [
-      "Diana Jeske-Siegel\n[ggf. vollständiger Vorname]\nPostfach [Nummer]\n[PLZ] Berlin-Köpenick\nDeutschland",
-      "E-Mail: [E-Mail-Adresse]",
+      "Diana Jeske-Siegel\nc/o Autorenglück #16521\nAlbert-Einstein-Str. 47\n02977 Hoyerswerda\nDeutschland",
     ],
   },
   {
-    heading: "Zweck dieser Website",
-    paragraphs: [
-      "Diese Website ist ein persönliches berufliches Portfolio und dient der Darstellung von beruflichen Erfahrungen, Projekten, Qualifikationen und fachlichen Arbeitsschwerpunkten im Bereich digitale Bildung, Medienbildung, KI und Schulentwicklung.",
-      "Die Website stellt kein privates gewerbliches Angebot für Beratungs-, Fortbildungs- oder sonstige Dienstleistungen dar.",
-      "Die auf dieser Website dargestellten Tätigkeiten und Projekte beziehen sich auf die berufliche Tätigkeit von Diana Jeske-Siegel, insbesondere im Rahmen ihrer Tätigkeit als Lehrkraft sowie ihrer Tätigkeit als Beraterin und Fortbildnerin für BliQ.",
-      "Die Website wird nicht im Namen des Senats für Bildung, Jugend und Familie (SenBJF), des BliQ oder einer anderen öffentlichen Stelle betrieben.",
-    ],
+    heading: "Kontakt",
+    paragraphs: ["E-Mail: dianadigital@gmx.de"],
   },
   {
-    heading: "Verantwortlich für die Inhalte",
+    heading: "Hinweis zum Charakter dieser Website",
     paragraphs: [
-      "Diana Jeske-Siegel\n[Anschrift entsprechend der rechtlich erforderlichen Anschrift]",
-      "E-Mail: [E-Mail-Adresse]",
-    ],
-  },
-  {
-    heading: "Haftung für Inhalte",
-    paragraphs: [
-      "Die Inhalte dieser Website wurden mit Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte wird jedoch keine Gewähr übernommen.",
-      "Als Diensteanbieterin ist Diana Jeske-Siegel für eigene Inhalte auf dieser Website nach den allgemeinen gesetzlichen Vorschriften verantwortlich. Eine Verpflichtung zur Überwachung übermittelter oder gespeicherter fremder Informationen besteht nur nach Maßgabe der gesetzlichen Vorschriften.",
-    ],
-  },
-  {
-    heading: "Haftung für Links",
-    paragraphs: [
-      "Diese Website kann Links zu externen Websites Dritter enthalten. Auf deren Inhalte besteht kein Einfluss. Für die Inhalte der verlinkten Seiten ist grundsätzlich der jeweilige Betreiber verantwortlich.",
-      "Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar.",
+      "Diese Website ist ein persönliches berufliches Portfolio von Diana Jeske-Siegel und dient der Darstellung beruflicher Erfahrungen, Projekte, Qualifikationen und fachlicher Arbeitsschwerpunkte insbesondere in den Bereichen digitale Bildung, Medienbildung, Künstliche Intelligenz und Schulentwicklung.",
+      "Die Website wird ausschließlich privat und nicht im Auftrag oder Namen des Landes Berlin, der Senatsverwaltung für Bildung, Jugend und Familie, des BliQ oder einer anderen öffentlichen Stelle betrieben.",
+      "Sie stellt kein eigenständiges privates Angebot entgeltlicher Beratungs-, Fortbildungs- oder sonstiger Dienstleistungen dar.",
     ],
   },
   {
     heading: "Urheberrecht",
     paragraphs: [
-      "Die auf dieser Website veröffentlichten Inhalte und Werke unterliegen dem deutschen Urheberrecht. Eine Vervielfältigung, Bearbeitung, Verbreitung oder sonstige Verwertung außerhalb der Grenzen des Urheberrechts bedarf der vorherigen Zustimmung der jeweiligen Rechteinhaberin bzw. des jeweiligen Rechteinhabers.",
-      "Soweit Inhalte auf dieser Website nicht von Diana Jeske-Siegel stammen, werden die Rechte der jeweiligen Urheberinnen und Urheber beachtet.",
+      "Die auf dieser Website veröffentlichten eigenen Inhalte und Werke unterliegen dem deutschen Urheberrecht. Rechte Dritter werden beachtet.",
     ],
   },
 ];
@@ -187,15 +167,14 @@ export function LegalOverlay({ page, onClose }: { page: "datenschutz" | "impress
         <h2 className="mt-6 font-serif text-4xl tracking-[-0.05em] text-[#173530] sm:text-5xl">{title}</h2>
         <div className="mt-10">{page && <Blocks sections={sections} />}</div>
         {page === "impressum" && (
-          <section className="mt-10">
-            <h3 className="font-serif text-xl tracking-[-0.02em] text-[#173530]">Technische Umsetzung</h3>
-            <p className="mt-4 text-[0.95rem] leading-7 text-[#3e4a44]">
-              Friedrich Börner —{" "}
-              <a href="https://servermitte.tailecbf0f.ts.net/fb/" target="_blank" rel="noopener noreferrer" className="underline decoration-[#e9be5b] underline-offset-2 hover:text-[#173530]">
-                servermitte.tailecbf0f.ts.net/fb
-              </a>
-            </p>
-          </section>
+          <p className="mt-16 border-t border-[#173530]/10 pt-6 text-[0.7rem] leading-6 text-[#7a857f]">
+            <span className="font-semibold uppercase tracking-[0.15em]">Technische Umsetzung</span>
+            <br />
+            Friedrich Börner ·{" "}
+            <a href="https://servermitte.tailecbf0f.ts.net/fb/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-[#173530]">
+              servermitte.tailecbf0f.ts.net/fb
+            </a>
+          </p>
         )}
       </div>
     </div>

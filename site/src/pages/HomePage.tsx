@@ -305,7 +305,7 @@ export function HomePage({ data }: HomePageProps) {
       </section>
 
       {/* ===================== PHILOSOPHIE / HALTUNG ===================== */}
-      <section id="haltung" className="relative overflow-hidden bg-[#dce8dc] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+      <section id="haltung" className="relative overflow-hidden bg-[#dce8dc] px-5 py-20 sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <span
           className="absolute -right-6 -top-14 font-serif text-[15rem] leading-none tracking-[-0.13em] text-[#b8d0bd]/65 sm:text-[23rem] pointer-events-none select-none"
           aria-hidden="true"
@@ -313,7 +313,7 @@ export function HomePage({ data }: HomePageProps) {
           “
         </span>
         <Reveal className="relative mx-auto max-w-[1120px]">
-          <div className="grid gap-10 lg:grid-cols-[minmax(150px,0.35fr)_1fr] lg:gap-20">
+          <div className="grid gap-6 sm:gap-10 lg:grid-cols-[minmax(150px,0.35fr)_1fr] lg:gap-20">
             <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#527267]">
               {d.philosophy.label}
             </p>
@@ -330,7 +330,7 @@ export function HomePage({ data }: HomePageProps) {
       </section>
 
       {/* ===================== ANGEBOTE DIGEST ===================== */}
-      <section className="bg-[#f6f5ef] px-5 py-24 text-[#12221f] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+      <section className="bg-[#f6f5ef] px-5 py-20 text-[#12221f] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-[1280px]">
           <Reveal className="grid gap-8 border-b border-[#173530]/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:pb-16">
             <div className="flex flex-col items-start gap-4">
@@ -404,7 +404,7 @@ export function HomePage({ data }: HomePageProps) {
       </section>
 
       {/* ===================== PROJEKTE HIGHLIGHTS ===================== */}
-      <section className="bg-[#173530] px-5 py-24 text-[#f6f5ef] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+      <section className="bg-[#173530] px-5 py-20 text-[#f6f5ef] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-[1280px]">
           {/* Section Header */}
           <Reveal className="grid gap-8 border-b border-white/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:pb-16">
@@ -437,7 +437,7 @@ export function HomePage({ data }: HomePageProps) {
                   <div className="lg:col-span-7">
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="rounded-full bg-[#e9be5b]/20 border border-[#e9be5b]/40 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#e9be5b]">
-                        Flagship Pilotprojekt
+                        Flagship-Pilotprojekt
                       </span>
                       <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#a9c6b0]">
                         {d.projects.items[0].label}
@@ -455,7 +455,7 @@ export function HomePage({ data }: HomePageProps) {
                     {/* Highlights Chips */}
                     <div className="mt-6 flex flex-wrap gap-2">
                       <span className="rounded-md bg-white/10 px-2.5 py-1 text-[0.68rem] text-white/90">
-                        ✦ 100% DSGVO-sicher
+                        ✦ 100 % DSGVO-sicher
                       </span>
                       <span className="rounded-md bg-white/10 px-2.5 py-1 text-[0.68rem] text-white/90">
                         ✦ KI-Bewerbungscoach
@@ -633,9 +633,9 @@ export function HomePage({ data }: HomePageProps) {
       </section>
 
       {/* ===================== ÜBER MICH ===================== */}
-      <section className="bg-[#f6f5ef] px-5 py-24 text-[#12221f] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+      <section className="bg-[#f6f5ef] px-5 py-20 text-[#12221f] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-[1280px]">
-          <Reveal className="grid gap-14 lg:grid-cols-[0.7fr_1.3fr] lg:items-start lg:gap-20">
+          <Reveal className="grid gap-10 sm:gap-14 lg:grid-cols-[0.7fr_1.3fr] lg:items-start lg:gap-20">
             <div>
               <div className="portrait-stage mx-auto max-w-sm lg:mx-0">
                 <div className="relative z-10 overflow-hidden bg-[#173530] shadow-xl">
@@ -663,7 +663,7 @@ export function HomePage({ data }: HomePageProps) {
               <h2 className="mt-6 max-w-3xl font-serif text-[clamp(2.5rem,5.15vw,5.25rem)] leading-[0.95] tracking-[-0.067em] text-[#173530] text-balance">
                 {d.about.headline}
               </h2>
-              <div className="mt-9 grid max-w-4xl gap-x-14 gap-y-7 text-[0.97rem] leading-7 text-[#5c6962] sm:grid-cols-2 text-pretty">
+              <div className="mt-9 grid max-w-4xl gap-x-14 gap-y-5 sm:gap-y-7 text-[0.97rem] leading-7 text-[#5c6962] sm:grid-cols-2 text-pretty">
                 {d.about.paragraphs.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
@@ -682,7 +682,7 @@ export function HomePage({ data }: HomePageProps) {
             </div>
           </Reveal>
 
-          <Reveal className="mt-20 border-l-2 border-[#c85d35] pl-6 sm:ml-[35%] sm:pl-8 lg:mt-28">
+          <Reveal className="mt-14 border-l-2 sm:mt-20 border-[#c85d35] pl-6 sm:ml-[35%] sm:pl-8 lg:mt-28">
             <blockquote className="max-w-3xl font-serif text-[clamp(1.85rem,3.7vw,3.65rem)] leading-[1.05] tracking-[-0.055em] text-[#173530] text-balance">
               “{d.about.quote}”
             </blockquote>
@@ -691,7 +691,7 @@ export function HomePage({ data }: HomePageProps) {
       </section>
 
       {/* ===================== QUALIFIKATION & ERFAHRUNG (Warmer Ocker-Block) ===================== */}
-      <section className="bg-[#e9be5b] px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-36">
+      <section className="bg-[#e9be5b] px-5 py-20 sm:px-8 sm:py-32 lg:px-12 lg:py-36">
         <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
           <Reveal>
             <p className="text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[#725528]">
@@ -719,7 +719,7 @@ export function HomePage({ data }: HomePageProps) {
       </section>
 
       {/* ===================== FAST CONTACT BANNER (Signatur Terrakotta) ===================== */}
-      <section className="bg-[#c85d35] px-5 py-24 text-[#fffaf0] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+      <section className="bg-[#c85d35] px-5 py-20 text-[#fffaf0] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-[1120px] text-center">
           <Reveal>
             <p className="text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-[#ffe0a0]">

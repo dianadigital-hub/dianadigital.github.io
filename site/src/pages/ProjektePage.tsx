@@ -24,7 +24,7 @@ const PROJECT_META: Record<
     image: "images/hero/hero-1-lernprojekt.webp",
     imageAlt: "JobImpact Schüler-Lernprojekt",
     badgeStyle: "bg-[#e9be5b]/20 text-[#e9be5b] border-[#e9be5b]/40",
-    badgeLabel: "Flagship Pilotprojekt",
+    badgeLabel: "Flagship-Pilotprojekt",
   },
   "social-shift": {
     image: "images/hero/hero-3-workshop.webp",
@@ -73,7 +73,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
   return (
     <div className="bg-[#173530] text-[#f6f5ef]">
       {/* ===================== PAGE HEADER ===================== */}
-      <section className="px-5 pt-36 pb-16 sm:px-8 sm:pt-44 sm:pb-20 lg:px-12">
+      <section className="px-5 pt-36 pb-12 sm:px-8 sm:pt-44 sm:pb-20 lg:px-12">
         <div className="mx-auto max-w-[1280px]">
           <Reveal className="grid gap-8 border-b border-white/20 pb-12 lg:grid-cols-[0.65fr_1.35fr] lg:items-start lg:pb-16">
             <div className="flex flex-col items-start gap-4">
@@ -125,7 +125,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
       </section>
 
       {/* ===================== PROJEKTE BENTO SHOWCASE ===================== */}
-      <section className="px-5 pb-24 sm:px-8 sm:pb-32 lg:px-12">
+      <section className="px-5 pb-20 sm:px-8 sm:pb-32 lg:px-12">
         <div className="mx-auto max-w-[1280px]">
           {/* ============ 1. FLAGSHIP HERO: Wenn JobImpact im aktuellen Filter ist ============ */}
           {filteredProjects.some((p) => p.id === "jobimpact") && (
@@ -136,7 +136,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
                   <div className="lg:col-span-7">
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="rounded-full bg-[#e9be5b]/20 border border-[#e9be5b]/40 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#e9be5b]">
-                        Flagship Pilotprojekt
+                        Flagship-Pilotprojekt
                       </span>
                       <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#a9c6b0]">
                         Berufsorientierung & KI
@@ -154,7 +154,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
                     {/* Highlights */}
                     <div className="mt-6 flex flex-wrap gap-2">
                       <span className="rounded-md bg-white/10 px-2.5 py-1 text-[0.68rem] text-white/90">
-                        ✦ 100% DSGVO-sicher & datensparsam
+                        ✦ 100 % DSGVO-sicher & datensparsam
                       </span>
                       <span className="rounded-md bg-white/10 px-2.5 py-1 text-[0.68rem] text-white/90">
                         ✦ Interaktives Bewerbungs-Rollenspiel
@@ -316,7 +316,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
       </section>
 
       {/* ===================== CALL TO ACTION (Signatur Terrakotta) ===================== */}
-      <section className="bg-[#c85d35] px-5 py-24 text-[#fffaf0] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
+      <section className="bg-[#c85d35] px-5 py-20 text-[#fffaf0] sm:px-8 sm:py-32 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-[1120px] text-center">
           <Reveal>
             <p className="text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-[#ffe0a0]">
