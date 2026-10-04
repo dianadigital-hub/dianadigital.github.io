@@ -30,13 +30,13 @@ const PROJECT_META: Record<
     image: "images/hero/hero-3-workshop.webp",
     imageAlt: "Social Shift Medienbildung",
     badgeStyle: "bg-[#c85d35] text-white border-transparent",
-    badgeLabel: "🏆 Förderpreis Brandenburg",
+    badgeLabel: "Förderpreis Brandenburg",
   },
   "vr-holocaust": {
     image: "images/hero/hero-4-vr-medien.webp",
     imageAlt: "Holocaustvermittlung in VR",
     badgeStyle: "bg-[#1c403a] text-[#e9be5b] border-white/20",
-    badgeLabel: "🔬 Forschung & Didaktik (HU/Fraunhofer)",
+    badgeLabel: "Forschung & Didaktik (HU/Fraunhofer)",
   },
   steuergruppe: {
     image: "images/hero/hero-2-whiteboard.webp",

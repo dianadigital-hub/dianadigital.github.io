@@ -531,7 +531,7 @@ export function HomePage({ data }: HomePageProps) {
                       <div className="absolute inset-0 bg-gradient-to-t from-[#142c27] via-[#142c27]/40 to-transparent" />
                       <div className="absolute top-4 left-4">
                         <span className="rounded-full bg-[#c85d35] px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-white shadow-md">
-                          🏆 Ausgezeichnet
+                          Ausgezeichnet
                         </span>
                       </div>
                     </div>

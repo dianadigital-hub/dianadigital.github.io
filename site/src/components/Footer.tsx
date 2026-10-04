@@ -98,9 +98,6 @@ export function Footer({
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#fffaf0]/10 pt-8 text-center text-xs text-[#a9b9b0] sm:flex-row sm:text-left">
           <p>© {new Date().getFullYear()} Diana Jeske-Siegel. Alle Rechte vorbehalten.</p>
-          <p className="tracking-wide">
-            Design & redaktionelle Konzeption im P1-Standard
-          </p>
         </div>
       </div>
     </footer>
