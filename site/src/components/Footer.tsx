@@ -91,6 +91,15 @@ export function Footer({
                   Anfrage & Feedback
                 </button>
               </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => navigate("/material")}
+                  className="text-sm text-[#e9e6da] transition-colors hover:text-[#e9be5b] focus:outline-none"
+                >
+                  Material (Zugang)
+                </button>
+              </li>
             </ul>
           </div>
         </div>
