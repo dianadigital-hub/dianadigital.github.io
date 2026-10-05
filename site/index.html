@@ -1,18 +1,222 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <meta name="theme-color" content="#173530" />
-    <!-- Favicon-Links werden in main.tsx per DEPLOY_BASE gesetzt, nicht hier fest verdrahtet -->
-    <title>diana. – Entwurf (nicht öffentlich)</title>
+
+    <title>Diana Jeske-Siegel | Digitale Unterrichtsentwicklung, KI & Medienbildung</title>
+    <meta
+      name="description"
+      content="Diana Jeske-Siegel — Oberstudienrätin, zertifizierte Schulberaterin und Fortbildnerin für digitale Unterrichtsentwicklung, KI im Bildungskontext und Medienbildung in Berlin & Brandenburg."
+    />
+    <meta name="author" content="Diana Jeske-Siegel" />
+    <link rel="canonical" href="https://www.dianadigital.de" />
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://www.dianadigital.de" />
+    <meta property="og:title" content="Diana Jeske-Siegel | Digitale Unterrichtsentwicklung, KI & Medienbildung" />
+    <meta
+      property="og:description"
+      content="Praxisnahe Fortbildung und strategische Beratung für Lehrkräfte, Schulen und Schulleitungen zu KI, digitaler Unterrichtsentwicklung und Medienbildung."
+    />
+    <meta property="og:image" content="https://www.dianadigital.de/images/hero.webp" />
+    <meta property="og:locale" content="de_DE" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Diana Jeske-Siegel | Digitale Unterrichtsentwicklung, KI & Medienbildung" />
+    <meta
+      name="twitter:description"
+      content="Praxisnahe Fortbildung und strategische Beratung für Lehrkräfte, Schulen und Schulleitungen zu KI, digitaler Unterrichtsentwicklung und Medienbildung."
+    />
+    <meta name="twitter:image" content="https://www.dianadigital.de/images/hero.webp" />
+
+    <!-- Strukturierte Daten / Schema.org Graph für LLM-Zitation & GEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://www.dianadigital.de/#diana",
+          "name": "Diana Jeske-Siegel",
+          "givenName": "Diana",
+          "familyName": "Jeske-Siegel",
+          "jobTitle": "Oberstudienrätin, zertifizierte Schulberaterin & Fortbildnerin",
+          "description": "Oberstudienrätin und Beraterin für digitale Schul- und Unterrichtsentwicklung mit den Schwerpunkten KI im Bildungskontext, Medienbildung, AI Literacy und ethische Urteilskompetenz.",
+          "url": "https://www.dianadigital.de",
+          "image": "https://www.dianadigital.de/images/hero.webp",
+          "sameAs": [
+            "https://www.dianadigital.de",
+            "https://github.com/kburna243/dianadigital.github.io"
+          ],
+          "knowsAbout": [
+            "Künstliche Intelligenz in der Schule",
+            "Digitale Unterrichtsentwicklung",
+            "Medienbildung & AI Literacy",
+            "Schulentwicklungsberatung & Steuergruppen",
+            "Medienkompetenzrahmen Berlin-Brandenburg",
+            "Didaktische Prozessbegleitung",
+            "Ethische Urteilskompetenz im digitalen Wandel",
+            "Alternative prozessorientierte Prüfungsformate"
+          ],
+          "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Humboldt-Universität zu Berlin"
+          },
+          "award": [
+            "Förderpreis Medienkompetenz stärkt Brandenburg (Projekt: Social Shift)"
+          ],
+          "hasCredential": [
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Zertifizierte Schulberaterin",
+              "credentialCategory": "Schulentwicklung & Prozessbegleitung"
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Zusatzqualifikation Künstliche Intelligenz (M.E.T.A. AI)",
+              "credentialCategory": "KI, Bildung & verantwortungsvolle Anwendung"
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Zusatzstudium Digitale Unterrichtsentwicklung",
+              "credentialCategory": "Digitale Lehr- und Lernprozesse"
+            }
+          ]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://www.dianadigital.de/#service",
+          "name": "Diana Digital",
+          "alternateName": "Diana Digital — Fortbildung & Beratung für Schulen",
+          "url": "https://www.dianadigital.de",
+          "logo": "https://www.dianadigital.de/favicon.svg",
+          "image": "https://www.dianadigital.de/images/hero.webp",
+          "description": "Fortbildung für Lehrkräfte sowie strategische Beratung von Schulen und Schulleitungen zu digitaler Unterrichtsentwicklung, KI und Medienbildung.",
+          "provider": { "@id": "https://www.dianadigital.de/#diana" },
+          "areaServed": [
+            { "@type": "AdministrativeArea", "name": "Berlin" },
+            { "@type": "AdministrativeArea", "name": "Brandenburg" },
+            { "@type": "Country", "name": "Deutschland" }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Angebote für Schulen, Lehrkräfte und Schulleitungen",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Fortbildungen für Lehrkräfte (SchiLF / Fachtage)",
+                  "description": "Praxisnahe Formate zu KI im Fachunterricht, Prompt-Laboren, Medienbildung und alternativen Prüfungsformaten."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Beratung von Schulen & Steuergruppen",
+                  "description": "Digitale Strategien entwickeln, Medienentwicklungsplanung und Prozessbegleitung für Kollegien."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Strategische Beratung von Schulleitungen",
+                  "description": "Strategische Klarheit für Digitalisierung, KI und Schulentwicklung unter Berücksichtigung pädagogischer, organisatorischer und datenschutzrechtlicher Aspekte."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.dianadigital.de/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Welche Fortbildungen zu Künstlicher Intelligenz (KI) bietet Diana Jeske-Siegel für Schulen an?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Diana Jeske-Siegel bietet praxisnahe Fortbildungen und SchiLF-Formate für Fachkollegien und Gesamtschulen in Berlin und Brandenburg an. Schwerpunkte sind der didaktisch sinnvolle Einsatz von KI-Werkzeugen im Fachunterricht, Prompting-Kompetenz im Schüler-Labor, alternative Bewertungsformate sowie die Förderung ethischer Urteilskompetenz und AI Literacy."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Wie unterstützt Diana Digital Schulleitungen bei der Schulentwicklung?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Als zertifizierte Schulberaterin und Oberstudienrätin begleitet Diana Jeske-Siegel Schulleitungen und Steuergruppen bei der Medienentwicklungsplanung, Teambildung und nachhaltigen Verankerung digitaler Prozesse im Schulalltag — orientiert an den realen Bedarfen des Kollegiums."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "In welchen Regionen können Fortbildungen und Beratung gebucht werden?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Präsenz-Fortbildungen, Fachtage und Steuergruppen-Begleitungen finden schwerpunktmäßig im Raum Berlin und Brandenburg statt. Vorträge, Impulsworkshops und Beratungsformate sind auch bundesweit sowie digital durchführbar."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Welche Referenzen und Auszeichnungen weist Diana Jeske-Siegel auf?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Zu den Projekten zählen das Berliner Pilotprojekt JobImpact (DSGVO-sicherer KI-Bewerbungscoach für Schüler:innen), das mit dem Förderpreis Medienkompetenz Brandenburg ausgezeichnete Projekt Social Shift sowie didaktische Kooperationen mit dem Fraunhofer-Institut und der Humboldt-Universität zu Berlin (Holocaustvermittlung in VR)."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Statischer semantischer Fallback für RAG-Bots und Crawler ohne JavaScript-Ausführung -->
+    <noscript>
+      <header>
+        <h1>Diana Jeske-Siegel — Digitale Unterrichtsentwicklung, KI &amp; Medienbildung</h1>
+        <p>Oberstudienrätin, zertifizierte Schulberaterin und Fortbildnerin für Schulen und Schulleitungen in Berlin und Brandenburg.</p>
+      </header>
+      <main>
+        <section>
+          <h2>Haltung</h2>
+          <blockquote>„Digitalisierung ist Teil unserer Zukunft. Bildung ist und bleibt jedoch mehr als Technologie.“</blockquote>
+          <p>Lernen braucht Beziehung, Kommunikation, soziale Erfahrung und echte Begegnung. Zugleich sollen junge Menschen lernen, digitale Entwicklungen kritisch einzuordnen und ethische Urteilskompetenz zu entwickeln.</p>
+        </section>
+        <section>
+          <h2>Angebote</h2>
+          <ul>
+            <li><strong>Fortbildungen für Lehrkräfte:</strong> SchiLF und Fachtage zu KI-Werkzeugen im Unterricht, Prompting-Kompetenz und Medienbildung.</li>
+            <li><strong>Beratung von Schulen:</strong> Medienentwicklungsplanung, Teambegleitung und Steuergruppenberatung.</li>
+            <li><strong>Beratung von Schulleitungen:</strong> Strategische Begleitung digitaler Transformationsprozesse.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Ausgewählte Projekte</h2>
+          <ul>
+            <li><strong>JobImpact:</strong> KI-Bewerbungscoach für Schüler:innen der 9. Klasse (Pilot Berlin).</li>
+            <li><strong>Social Shift:</strong> Ausgezeichnet mit dem Förderpreis Medienkompetenz stärkt Brandenburg.</li>
+            <li><strong>Holocaustvermittlung in VR:</strong> Kooperation mit Fraunhofer und der Humboldt-Universität zu Berlin.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Kontakt</h2>
+          <p>Website: <a href="https://www.dianadigital.de">www.dianadigital.de</a></p>
+        </section>
+      </main>
+    </noscript>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
