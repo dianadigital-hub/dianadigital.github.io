@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext, useContext, ReactNode } from "react";
 
-export type RoutePath = "/" | "/angebote" | "/projekte" | "/ueber-mich" | "/kontakt";
+export type RoutePath = "/" | "/angebote" | "/projekte" | "/ueber-mich" | "/kontakt" | "/material";
 
 interface RouterContextType {
   path: RoutePath;
@@ -21,7 +21,7 @@ export function RouterProvider({ children }: { children: ReactNode }) {
     const [pathAndQuery] = raw.split("#");
     const [pathname, queryString] = pathAndQuery.split("?");
 
-    const validRoutes: RoutePath[] = ["/", "/angebote", "/projekte", "/ueber-mich", "/kontakt"];
+    const validRoutes: RoutePath[] = ["/", "/angebote", "/projekte", "/ueber-mich", "/kontakt", "/material"];
     const matched = validRoutes.includes(pathname as RoutePath) ? (pathname as RoutePath) : "/";
     const searchParams = new URLSearchParams(queryString || "");
 

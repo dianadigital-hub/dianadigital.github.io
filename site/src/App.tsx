@@ -12,6 +12,7 @@ import { AngebotePage } from "./pages/AngebotePage";
 import { ProjektePage } from "./pages/ProjektePage";
 import { UeberMichPage } from "./pages/UeberMichPage";
 import { KontaktPage } from "./pages/KontaktPage";
+import { MaterialPage } from "./pages/MaterialPage";
 import { CmsOverlay } from "./cms/CmsOverlay";
 
 function AppView({
@@ -70,6 +71,8 @@ function AppView({
         return <UeberMichPage data={data} />;
       case "/kontakt":
         return <KontaktPage data={data} />;
+      case "/material":
+        return <MaterialPage />;
       case "/":
       default:
         return <HomePage data={data} />;
