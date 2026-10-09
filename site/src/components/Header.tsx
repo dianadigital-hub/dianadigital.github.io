@@ -40,7 +40,7 @@ export function Header({ data }: { data: Content }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-8 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         hasScrolled
           ? "border-b border-[#173530]/10 bg-[#f6f5ef]/95 py-3 shadow-[0_1px_0_0_rgba(18,34,31,0.08)] backdrop-blur-md"
           : isDarkInitial
