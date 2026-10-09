@@ -136,7 +136,7 @@ export function HomePage({ data }: HomePageProps) {
       <section
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
-        className="relative flex min-h-[94vh] flex-col justify-between overflow-hidden bg-[#12221f] px-5 pb-8 pt-28 text-white sm:px-8 sm:pb-12 sm:pt-36 lg:min-h-screen lg:px-12 lg:pb-16 lg:pt-40"
+        className="relative flex min-h-[94vh] flex-col justify-between overflow-hidden bg-[#12221f] px-5 pb-8 pt-44 text-white sm:px-8 sm:pb-12 sm:pt-48 lg:min-h-screen lg:px-12 lg:pb-16 lg:pt-48"
       >
         {/* ================= BACKGROUND IMAGES (Crossfade) ================= */}
         {stories.map((story, idx) => {
@@ -163,8 +163,14 @@ export function HomePage({ data }: HomePageProps) {
         <div className="relative z-10 mx-auto w-full max-w-[1400px]">
           <div className="max-w-4xl">
             {/* Steady Brand Title */}
-            <h1 className="hero-reveal hero-brand font-serif text-[clamp(5.7rem,17vw,15rem)] leading-[0.67] tracking-[-0.095em]">
-              {d.meta.brand}
+            <h1 className="hero-reveal hero-brand">
+              <img
+                src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-dark.svg?v=2`}
+                alt="diana. — Diana Jeske-Siegel"
+                width="420"
+                height="180"
+                className="h-auto w-[min(100%,520px)]"
+              />
             </h1>
 
             {/* Dynamic Animated Content Slot */}
