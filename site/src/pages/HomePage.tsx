@@ -165,7 +165,7 @@ export function HomePage({ data }: HomePageProps) {
             {/* Steady Brand Title */}
             <h1 className="hero-reveal hero-brand">
               <img
-                src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-dark.svg`}
+                src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-dark.svg?v=2`}
                 alt="diana. — Diana Jeske-Siegel"
                 width="420"
                 height="180"

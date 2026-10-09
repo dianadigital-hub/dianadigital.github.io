@@ -26,7 +26,7 @@ export function Footer({
           {/* Brand Info */}
           <div className="space-y-4 lg:col-span-2">
             <img
-              src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-dark.svg`}
+              src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-dark.svg?v=2`}
               alt="Diana Jeske-Siegel"
               width={420}
               height={180}

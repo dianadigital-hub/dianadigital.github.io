@@ -59,7 +59,7 @@ export function Header({ data }: { data: Content }) {
           <img
             src={`${DEPLOY_BASE}images/logo/${
               showDarkTheme ? "logo-horizontal-on-dark.svg" : "logo-horizontal-on-light.svg"
-            }`}
+            }?v=2`}
             alt="Diana Jeske-Siegel"
             width={420}
             height={180}
