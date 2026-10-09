@@ -28,7 +28,7 @@ export function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#173530] px-6">
       <form onSubmit={submit} className="w-full max-w-sm text-center">
-        <img src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-dark.svg`} alt="diana." className="mx-auto h-12 w-auto" />
+        <img src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-dark.svg`} alt="Diana Jeske-Siegel" width={420} height={180} className="mx-auto h-auto w-[260px] max-w-full" />
         <p className="mt-5 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[#e9be5b]">Entwurf — nicht öffentlich</p>
         <p className="mt-6 text-sm leading-6 text-white/70">Diese Website befindet sich in Vorbereitung. Bitte Zugangspasswort eingeben.</p>
         <input

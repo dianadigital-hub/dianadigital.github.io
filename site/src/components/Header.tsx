@@ -60,8 +60,10 @@ export function Header({ data }: { data: Content }) {
             src={`${DEPLOY_BASE}images/logo/${
               showDarkTheme ? "logo-horizontal-on-dark.svg" : "logo-horizontal-on-light.svg"
             }`}
-            alt={`${data.meta.brand} ${data.meta.brandSubtitle}`}
-            className="h-9 w-auto object-contain transition-transform group-hover:scale-[1.02] sm:h-10"
+            alt="Diana Jeske-Siegel"
+            width={420}
+            height={180}
+            className="h-auto w-[180px] object-contain transition-transform group-hover:scale-[1.02] sm:w-[200px]"
           />
         </button>
 
