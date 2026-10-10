@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent } from "react";
+import { useState, useEffect, useRef, FormEvent } from "react";
 import { Content } from "../types/content";
 import { useRoute } from "../router";
 import { Reveal } from "../components/Reveal";
@@ -16,6 +16,8 @@ export function KontaktPage({ data }: KontaktPageProps) {
   const [selectedTopic, setSelectedTopic] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const submissionPending = useRef(false);
 
   // Parameter aus URL (z.B. ?topic=Fortbildung) übernehmen
   useEffect(() => {
@@ -34,6 +36,9 @@ export function KontaktPage({ data }: KontaktPageProps) {
 
   const submitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submissionPending.current) return;
+    setSubmitError("");
+    submissionPending.current = true;
     setIsSubmitting(true);
 
     const formId =
@@ -43,18 +48,11 @@ export function KontaktPage({ data }: KontaktPageProps) {
 
     const form = e.currentTarget;
 
-    if (!formId) {
-      console.info(
-        `VITE_FORMSPREE_${formMode === "feedback" ? "FEEDBACK" : "CONTACT"}_ID ist nicht gesetzt – Simulation erfolgreich.`
-      );
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setFormSubmitted(true);
-      }, 500);
-      return;
-    }
-
     try {
+      if (!formId?.trim()) {
+        setSubmitError("Das Formular ist derzeit nicht eingerichtet. Ihre Angaben bleiben erhalten. Bitte versuchen Sie es später erneut.");
+        return;
+      }
       const res = await fetch(`https://formspree.io/f/${formId}`, {
         method: "POST",
         headers: { Accept: "application/json" },
@@ -63,10 +61,14 @@ export function KontaktPage({ data }: KontaktPageProps) {
       if (res.ok) {
         setFormSubmitted(true);
         form.reset();
+      } else {
+        setSubmitError("Ihre Nachricht konnte nicht gesendet werden. Ihre Angaben bleiben erhalten. Bitte versuchen Sie es erneut.");
       }
     } catch (err) {
       console.error("Formularübertragungsfehler:", err);
+      setSubmitError("Die Verbindung ist fehlgeschlagen. Ihre Angaben bleiben erhalten. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.");
     } finally {
+      submissionPending.current = false;
       setIsSubmitting(false);
     }
   };
@@ -104,9 +106,11 @@ export function KontaktPage({ data }: KontaktPageProps) {
                 type="button"
                 role="tab"
                 aria-selected={formMode === "contact"}
+                disabled={isSubmitting}
                 onClick={() => {
                   setFormMode("contact");
                   setFormSubmitted(false);
+                  setSubmitError("");
                 }}
                 className={`form-tab ${formMode === "contact" ? "is-active" : ""}`}
               >
@@ -116,9 +120,11 @@ export function KontaktPage({ data }: KontaktPageProps) {
                 type="button"
                 role="tab"
                 aria-selected={formMode === "feedback"}
+                disabled={isSubmitting}
                 onClick={() => {
                   setFormMode("feedback");
                   setFormSubmitted(false);
+                  setSubmitError("");
                 }}
                 className={`form-tab ${formMode === "feedback" ? "is-active" : ""}`}
               >
@@ -143,7 +149,7 @@ export function KontaktPage({ data }: KontaktPageProps) {
                 </button>
               </div>
             ) : (
-              <form className="mt-9" onSubmit={submitForm}>
+              <form className="mt-9" onSubmit={submitForm} aria-busy={isSubmitting}>
                 <div className="grid gap-x-6 gap-y-7 sm:grid-cols-2">
                   <label className="form-label">
                     <span>Name {formMode === "feedback" && <em>(optional)</em>}</span>
@@ -222,6 +228,12 @@ export function KontaktPage({ data }: KontaktPageProps) {
                     Ich habe den Datenschutzhinweis zur Kenntnis genommen und stimme der Verarbeitung meiner Angaben zu.
                   </span>
                 </label>
+
+                {submitError && (
+                  <p role="alert" className="mt-6 text-sm leading-6 text-[#ffe0a0]">
+                    {submitError}
+                  </p>
+                )}
 
                 <button
                   type="submit"
