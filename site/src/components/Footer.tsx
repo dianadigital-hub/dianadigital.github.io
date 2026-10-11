@@ -26,9 +26,11 @@ export function Footer({
           {/* Brand Info */}
           <div className="space-y-4 lg:col-span-2">
             <img
-              src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-dark.svg`}
-              alt={data.meta.brand}
-              className="h-10 w-auto object-contain"
+              src={`${DEPLOY_BASE}images/logo/logo-horizontal-on-dark.svg?v=2`}
+              alt="Diana Jeske-Siegel"
+              width={420}
+              height={180}
+              className="h-auto w-[220px] max-w-full object-contain"
             />
             <p className="max-w-md font-serif text-lg leading-relaxed text-[#e9e6da]">
               „Schule gestalten, die Menschen auf eine digitale Zukunft vorbereitet.“

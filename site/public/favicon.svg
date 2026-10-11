@@ -1,14 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-<rect width="64" height="64" fill="#f6f5ef" rx="14"/>
-<g transform="translate(12.72,47.12)">
-<path d="M484 784V109Q484 64 500.5 42.5Q517 21 560 21V0Q529 3 498 3Q469 3 442.5 0.0Q416 -3 394 -11V664Q394 709 378.0 730.5Q362 752 318 752V773Q350 770 380 770Q409 770 435.5 773.5Q462 777 484 784ZM274 529Q318 529 356.5 508.0Q395 487 408 436L395 426Q381 468 351.5 487.0Q322 506 282 506Q223 506 183.5 445.0Q144 384 145 257Q145 176 160.5 122.5Q176 69 206.5 42.5Q237 16 281 16Q323 16 357.0 52.0Q391 88 398 158L410 144Q402 68 361.5 27.0Q321 -14 252 -14Q190 -14 143.5 16.0Q97 46 72.5 106.0Q48 166 48 257Q48 348 79.5 408.5Q111 469 162.5 499.0Q214 529 274 529Z" fill="#173530" transform="translate(0.000,0.000) scale(0.03328,-0.03328)"/>
-<g transform="translate(22.57,0)">
-<rect x="0.00" y="-10.04" width="4.49" height="4.49" fill="#a9c6b0"/>
-<rect x="6.51" y="-10.04" width="4.49" height="4.49" fill="#a9c6b0"/>
-<rect x="6.51" y="-16.55" width="4.49" height="4.49" fill="#c85d35"/>
-<rect x="13.03" y="-10.04" width="4.49" height="4.49" fill="#a9c6b0"/>
-<rect x="13.03" y="-16.55" width="4.49" height="4.49" fill="#a9c6b0"/>
-<rect x="13.03" y="-23.07" width="4.49" height="4.49" fill="#e9be5b"/>
-</g>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title"><title id="title">diana. — Jeske-Siegel</title><circle cx="128" cy="128" r="128" fill="#F6F5EF"/><g transform="translate(49 35) scale(.72)"><rect x="74" y="32" width="18" height="18" rx="0.8" fill="#A9C6B0"/><rect x="48" y="55" width="18" height="18" rx="0.8" fill="#527267"/><rect x="74" y="59" width="18" height="18" rx="0.8" fill="#A9C6B0"/><rect x="24" y="67" width="18" height="18" rx="0.8" fill="#E9BE5B"/><rect x="0" y="90" width="18" height="18" rx="0.8" fill="#A9C6B0"/><rect x="24" y="90" width="18" height="18" rx="0.8" fill="#527267"/><rect x="48" y="87" width="18" height="18" rx="0.8" fill="#C85D35"/><rect x="74" y="86" width="18" height="18" rx="0.8" fill="#527267"/><rect x="0" y="117" width="18" height="18" rx="0.8" fill="#A9C6B0"/><rect x="24" y="117" width="18" height="18" rx="0.8" fill="#E9BE5B"/><rect x="48" y="117" width="18" height="18" rx="0.8" fill="#527267"/><rect x="24" y="143" width="18" height="18" rx="0.8" fill="#A9C6B0"/><path fill="#173530" fill-rule="evenodd" d="M145 9 C163 8 180 5 197 0 L197 211 C197 224 201 228 220 228 L220 235 L174 235 L174 211 C160 229 144 237 123 237 C83 237 57 207 57 163 C57 121 82 89 120 89 C142 89 159 96 171 111 L171 34 C171 18 166 16 145 16 Z M121 96 C91 96 83 127 83 163 C83 204 94 231 123 231 C150 231 174 205 174 165 C174 126 155 96 121 96 Z"/></g></svg>

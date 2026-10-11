@@ -7,4 +7,4 @@ export const DEPLOY_BASE = import.meta.env.VITE_DEPLOY_BASE ?? "/diana/";
 
 /* Entwurfsfunktionen (Passwortsperre, Banner, CMS-Button) nur in der Vorschau unter /diana/,
    nicht auf der eigenen Domain. */
-export const IS_PREVIEW = DEPLOY_BASE !== "/";
+export const IS_PREVIEW = false;

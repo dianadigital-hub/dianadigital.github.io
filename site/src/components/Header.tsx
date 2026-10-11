@@ -40,7 +40,7 @@ export function Header({ data }: { data: Content }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-8 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         hasScrolled
           ? "border-b border-[#173530]/10 bg-[#f6f5ef]/95 py-3 shadow-[0_1px_0_0_rgba(18,34,31,0.08)] backdrop-blur-md"
           : isDarkInitial
@@ -59,9 +59,11 @@ export function Header({ data }: { data: Content }) {
           <img
             src={`${DEPLOY_BASE}images/logo/${
               showDarkTheme ? "logo-horizontal-on-dark.svg" : "logo-horizontal-on-light.svg"
-            }`}
-            alt={`${data.meta.brand} ${data.meta.brandSubtitle}`}
-            className="h-9 w-auto object-contain transition-transform group-hover:scale-[1.02] sm:h-10"
+            }?v=2`}
+            alt="Diana Jeske-Siegel"
+            width={420}
+            height={180}
+            className="h-auto w-[180px] object-contain transition-transform group-hover:scale-[1.02] sm:w-[200px]"
           />
         </button>
 
