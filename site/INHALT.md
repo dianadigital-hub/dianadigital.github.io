@@ -193,7 +193,11 @@ VITE_FORMSPREE_FEEDBACK_ID=xqpkkwlr
 VITE_DEPLOY_BASE=/diana/
 ```
 
-Ohne gesetzte Formspree-IDs läuft das Formular nur simuliert (kein echter Versand).
+Ohne gesetzte Formspree-IDs zeigt das Formular einen Fehler; es wird kein erfolgreicher Versand vorgetäuscht.
+
+Der GitHub-Pages-Build verwendet die oben genannten öffentlichen Formular-IDs als Standard. Unter Repository → Settings → Secrets and variables → Actions → Variables können `VITE_FORMSPREE_CONTACT_ID` und `VITE_FORMSPREE_FEEDBACK_ID` überschrieben werden. Bestehende gleichnamige Secrets bleiben als zweite Wahl unterstützt. Formular-IDs sind keine Zugangsdaten und werden im Browser ausgeliefert.
+
+Nach dem Merge wird die Seite automatisch veröffentlicht. Anschließend unter Kontakt jeweils eine Anfrage und ein Feedback senden und den tatsächlichen Eingang in Formspree sowie im Empfängerpostfach prüfen. Falls Formspree eine Freischaltung verlangt, muss die Kontoinhaberin dort die Empfängeradresse bestätigen und gegebenenfalls die erlaubte Domain prüfen. Zugang zum Formspree-Konto und Empfang sind durch den Build allein nicht bestätigt.
 
 ### 3.5 Offene Punkte / TODOs
 
@@ -201,7 +205,7 @@ Ohne gesetzte Formspree-IDs läuft das Formular nur simuliert (kein echter Versa
 - [x] ~~Erfolgsmeldungen im Kontaktformular umformulieren~~ — erledigt
 - [ ] **GitHub-Actions-Workflow** (`.github/workflows/deploy-pages.yml`) muss manuell im Ziel-Repo angelegt werden (Details im zugehörigen PR — konnte wegen fehlendem Token-Scope nicht mitgepusht werden)
 - [ ] **Repo-Settings → Pages** auf „GitHub Actions“ als Quelle umstellen
-- [ ] **Formspree-IDs als Actions-Secrets** hinterlegen (`VITE_FORMSPREE_CONTACT_ID`, `VITE_FORMSPREE_FEEDBACK_ID`)
+- [x] **Formspree-IDs im Pages-Build** hinterlegt; optionale Overrides über Actions-Variables oder bestehende Secrets
 - [ ] Passwortschutz ist rein clientseitig (siehe Kommentar in `PasswordGate.tsx`) — für echten Schutz später Server-seitige Basic-Auth ergänzen
 - [ ] „ENTWURF“-Banner und Passwort-Gate entfernen, sobald die Seite offiziell live geht
 
