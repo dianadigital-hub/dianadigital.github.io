@@ -113,9 +113,73 @@ Führe diese 10 Fragen in **ChatGPT (mit Websuche)**, **Perplexity.ai**, **Googl
 
 ---
 
-## 5. Nächste Hebel für Phase 2 (Woche 5+)
+## 5. Messergebnisse: T+4-Wochen-Evaluation (Stand: 04.11.2026)
 
-Sobald die technische Basis live ist, bestimmen externe Validierungssignale das Ranking:
-1. **LinkedIn-Synchronisation:** Profil von Diana Jeske-Siegel exakt auf die Berufsbezeichnungen und Schwerpunkte der Website ausrichten und `https://www.dianadigital.de` als primäre Website verlinken.
-2. **Backlinks & Erwähnungen Dritter:** Namensnennung auf den Projektseiten der Partner (z. B. Fraunhofer, Förderpreis-Bekanntgabe des Landes Brandenburg, HU Berlin).
-3. **Gastbeiträge & Interviews:** 1–2 Fachbeiträge oder Interviews auf Bildungsportalen (z. B. Deutsches Schulportal, Bildungsserver Berlin-Brandenburg).
+Genau 29 Tage nach Aktivierung der LLMO- und GEO-Maßnahmen (Commit `ed0aa0c` vom 06.10.2026) wurde die erste planmäßige Kontrollmessung über Live-Retrieval-Engines durchgeführt.
+
+### Gesamt-Scorecard (T+4 Wochen)
+
+| Nr. | Test-Prompt | T0 | T+4 | Link? | Score | Live-Befund & Zitationsnachweis |
+|:---:|:---|:---:|:---:|:---:|:---:|:---|
+| **01** | *SchiLF-Fortbildungen KI Berlin/Brandenburg* | 0 | 1 | Nein | **1/3** | Institutionen (LIBRA, Senat/mobile.schule, fobizz) dominieren. Diana taucht noch nicht generisch in Top 5 auf. |
+| **02** | *Referentinnen digitale Schulentwicklung Gymnasien* | 0 | 0 | Nein | **0/3** | Generisches Umfeld von etablierten Keynote-Speakern besetzt (Silke Müller, Dr. Braasch, Paula Friedrich). |
+| **03** | *Schulleitungen MEP Berlin/Brandenburg* | 0 | 0 | Nein | **0/3** | Rein staatliche Portale und Institute (LIBRA, BLiQ, Bildungsserver Berlin-Brandenburg). |
+| **04** | *Projekt Social Shift oder JobImpact für Schüler* | 0 | 3 | **Ja** | **3/3** | **Volltreffer:** JobImpact wird Diana Jeske-Siegel & [dianadigital.de](https://www.dianadigital.de) als KI-Bewerbungscoach eindeutig zugeschrieben. |
+| **05** | *Prompting ohne Technikeuphorie* | 0 | 0 | Nein | **0/3** | Nennung von Dr. Braasch, Prof. Dr. Knopf, ai-fluencer, Joscha Falck. Haltung noch nicht als eigenständiges Ranking-Signal erfasst. |
+| **06** | *Wer ist Diana Jeske-Siegel & Schwerpunkte?* | 1 | 3 | **Ja** | **3/3** | **Volltreffer (Top-Zitation):** [dianadigital.de](https://www.dianadigital.de) ist Primärquelle (mehrfach verlinkt). Titel (*Oberstudienrätin, zertifizierte Schulberaterin*), Leitsatz (*„...und dabei menschlich bleibt“*) und Kernschwerpunkte (Entlastung, Binnendifferenzierung, Schulklima) werden 100 % akkurat wiedergegeben. |
+| **07** | *Schulberaterinnen ethische Urteilskompetenz & KI* | 0 | 0 | Nein | **0/3** | Primär über Senatskooperationen, Prof. Mühlhoff und Hochschulen (FU Berlin) abgedeckt. |
+| **08** | *Welche Angebote bietet Diana Digital für Schulen?* | 0 | 2 | **Ja** | **2/3** | **Teiltreffer:** Diana Jeske-Siegel mit [dianadigital.de](https://www.dianadigital.de) wird mit Fortbildungen, Prozessbegleitung und ethischer Urteilskompetenz zitiert (Abgrenzung zum Uni-Projekt DiAna). |
+| **09** | *Steuergruppen nachhaltige Schulentwicklung* | 0 | 0 | Nein | **0/3** | Landesinstitute, Zukunftsstiftung Bildung, BNE-Netzwerke. |
+| **10** | *VR-Unterrichtsmaterialien Fraunhofer Holocaust* | 0 | 0 | Nein | **0/3** | Fraunhofer HHI, Ernst Grube, LediZ / LMU München. Eigene Beteiligung wird noch nicht aggregiert. |
+
+**Gesamtergebnis T+4:**
+* **Baseline T0:** 1 / 30 Punkte (3 %)
+* **Evaluation T+4:** **9 / 30 Punkte (30 %)**
+* **Entity- & Brand-Grounding:** **8 / 9 Punkten (89 %)** – Sobald die Person oder eigene Marken/Projekte (Diana Jeske-Siegel, Diana Digital, JobImpact) abgefragt werden, zitiert das System verlässlich `dianadigital.de` als Primärquelle.
+* **Kategorie- & Generik-Discovery:** **1 / 21 Punkten (5 %)** – Bei rein generischen Fachsuchen ohne Personenbezug dominieren noch Landesinstitute und Großanbieter.
+
+---
+
+## 6. Weiterentwicklung der Optimierungsstrategie (Phase 2 & Phase 3)
+
+Die Erkenntnis aus der T+4-Messung ist eindeutig:
+* **Was On-Page (Schema.org, `llms.txt`, Meta-Tags) leistet:** Schnelles und 100 % präzises Entity-Grounding. Die KI halluziniert nicht mehr über Diana Jeske-Siegel, kennt ihre Titel, Haltungen und Angebote und zitiert `dianadigital.de` als Primärquelle.
+* **Wo die Lücke liegt:** Bei unpersonalisierten Suchanfragen (*„Wer bietet SchiLF KI Berlin?“*) reichen reine On-Page-Signale gegen etablierte Landesinstitute und Großverlage noch nicht aus.
+
+Hier setzt die weiterentwickelte 3-Stufen-Roadmap an:
+
+### Stufe 1: Thematische Intent-Pillars & Zitat-Snippets (On-Page Vertiefung)
+1. **Themen-Spezifische Landingpages / Deep URLs:**
+   - Statt reiner One-Page-Sections eigene kanonische URLs schaffen (z. B. `/schilf-ki-berlin-brandenburg`, `/schulberatung-medienentwicklungsplan`).
+   - Diese Seiten liefern den exakten Frage-Antwort-Kontext, nach dem Lehrkräfte und Schulleitungen suchen (Ablauf, Fördermöglichkeiten, Zielgruppen, FAQ).
+2. **Definitorische Micro-Snippets & Phrasen-Prägung:**
+   - LLMs zitieren bevorzugt kompakte Definitionen und Modelle (z. B. *„Das 3-Phasen-Modell zur KI-Integration von Diana Jeske-Siegel“*). Durch das Schaffen zitierfähiger Nomenklaturen werden KIs dazu gebracht, das Konzept namentlich mit der Urheberin zu verknüpfen.
+
+### Stufe 2: Authority- & Co-Occurrence-Netzwerk (Off-Page GEO)
+1. **Verifizierte Co-Occurrences:**
+   - Erwähnung der Domain `dianadigital.de` und des Namens im selben Satz auf externen Autoritätsseiten:
+     - Preisträgerseite des *Förderpreises Medienkompetenz Brandenburg*
+     - Projektseiten der *Humboldt-Universität zu Berlin*
+     - Kooperationserwähnung im Rahmen des VR-Holocaust-Projekts mit *Fraunhofer HHI*
+2. **LinkedIn-Taxonomie-Gleichlauf:**
+   - Exakter Abgleich des LinkedIn-Profils mit den `knowsAbout`-Einträgen aus dem JSON-LD Schema.
+   - Primäre Verlinkung der Website im Header und im Kontaktbereich.
+
+### Stufe 3: Kontinuierlicher Monitoring-Zyklus & Multi-Engine-Matrix
+Die Messung wird in festen Zyklen über die Multi-Engine-Matrix fortgeschrieben:
+
+| Intervall | Termin | Fokus & Meilenstein | Ziel-Score |
+|---|---|---|:---:|
+| **T0 (Baseline)** | 06.10.2026 | Nullmessung bei Start technischer Maßnahmen | 1 / 30 |
+| **T+4 (Woche 4)** | 04.11.2026 | On-Page Entity-Grounding & Brand-Zitation | **9 / 30** (erreicht) |
+| **T+8 (Woche 8)** | Anfang Dez. 2026 | Off-Page Hebel & LinkedIn; Erste generische Nennungen | 15 / 30 |
+| **T+12 (Woche 12)**| Januar 2027 | Quartalsabschluss: Etablierung in regionalen Top-3-Listen | 22 / 30 |
+
+---
+
+## 7. Automatisiertes Evaluation-Tooling
+
+Im Verzeichnis `site/scripts/geo-eval.mjs` liegt das standardisierte Evaluierungs-Skript. Es ermöglicht:
+1. Automatisiertes Abfragen der 10 Prompts über LLM-Websuche (Perplexity / OpenRouter).
+2. Prüfung auf Nennung von Entität und Primärlink `dianadigital.de`.
+3. Direkte Ausgabe der aktualisierten Scorecard für das Protokoll.
