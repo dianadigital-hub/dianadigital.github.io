@@ -53,3 +53,11 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+      # IndexNow: meldet Bing (und Yandex, Seznam …) nach jedem Deploy, dass sich die Seite geändert hat.
+      # Der Schlüssel ist absichtlich öffentlich, er liegt als Datei unter /48f1c414bef50781cca834ac424a02f2.txt.
+      - name: IndexNow ping
+        continue-on-error: true
+        run: |
+          curl -sS -o /dev/null -w "IndexNow HTTP %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{"host":"www.dianadigital.de","key":"48f1c414bef50781cca834ac424a02f2","keyLocation":"https://www.dianadigital.de/48f1c414bef50781cca834ac424a02f2.txt","urlList":["https://www.dianadigital.de/","https://www.dianadigital.de/llms.txt"]}'

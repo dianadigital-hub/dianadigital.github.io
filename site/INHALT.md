@@ -63,7 +63,7 @@ Label: „Ausgewählte Projekte“ · Headline: „Innovation wird wirksam, wenn
 
 | Kategorie | Titel | Beschreibung | Hinweis | Link |
 |---|---|---|---|---|
-| Berufsorientierung | **JobImpact** | Ein Bewerbungs-Coach für Schüler:innen der 9. Klasse: Stärken entdecken, Lebenslauf, Anschreiben und Vorstellungsgespräch üben — anonym, DSGVO-sicher und kostenlos für Schulen. | Gemeinsam mit meinem Bruder entwickelt — aktuell im Pilotbetrieb in Berlin. | „Pilot ansehen“ → `servermitte.tailecbf0f.ts.net/pilot` |
+| Berufsorientierung | **Wegfunke** | Ein Bewerbungs-Coach für Schüler:innen der 9. Klasse: Stärken entdecken, Lebenslauf, Anschreiben und Vorstellungsgespräch üben — anonym, DSGVO-sicher und kostenlos für Schulen. | Gemeinsam mit Answer 42 entwickelt: ich die Pädagogik, Answer 42 die Technik – ab 13.11. im Pilotbetrieb in Berlin. | „Pilot ansehen“ → `servermitte.tailecbf0f.ts.net/pilot` |
 | Demokratiebildung | Social Shift | Ein medienpädagogisches Projekt für Medienkompetenz, gesellschaftliche Teilhabe und reflektierte Meinungsbildung. | Ausgezeichnet mit dem Förderpreis Medienkompetenz stärkt Brandenburg. | — |
 | Virtual Reality | Holocaustvermittlung in VR | Didaktische Materialien für immersive Zeitzeugeninterviews, entwickelt in Kooperation mit dem Fraunhofer-Institut und der Humboldt-Universität zu Berlin. | Historisches Lernen verantwortungsvoll in neue Erfahrungsräume übersetzen. | — |
 | Schulentwicklung | Steuergruppe Digitalisierung | Leitung und Koordination eines Entwicklungsteams mit Fokus auf Strategie, Evaluation, Fortbildungsplanung und Projektinitiierung. | Entwicklung braucht Orientierung, Beteiligung und einen tragfähigen Prozess. | — |

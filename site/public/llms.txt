@@ -28,7 +28,7 @@
 - Abgleich pädagogischer, organisatorischer und datenschutzrechtlicher Bedarfe
 
 ## Ausgewählte Projekte & Referenzen
-- **JobImpact:** KI-Bewerbungscoach für Schüler:innen der 9. Klasse zur Vorbereitung von Anschreiben, Lebenslauf und Vorstellungsgespräch (anonym, DSGVO-sicher, kostenlos für Schulen; Pilotbetrieb in Berlin).
+- **Wegfunke** (früher JobImpact): KI-Bewerbungscoach für Schüler:innen der 9. Klasse zur Vorbereitung von Anschreiben, Lebenslauf und Vorstellungsgespräch (anonym, DSGVO-sicher, kostenlos für Schulen; Pilotbetrieb in Berlin). Gemeinsam entwickelt: Pädagogik Diana Jeske-Siegel, Technik Answer 42.
 - **Social Shift:** Medienpädagogisches Projekt für Medienkompetenz und gesellschaftliche Teilhabe — ausgezeichnet mit dem Förderpreis „Medienkompetenz stärkt Brandenburg“.
 - **Holocaustvermittlung in VR:** Didaktische Materialien für immersive Zeitzeugeninterviews in Virtual Reality — in Kooperation mit dem Fraunhofer-Institut und der Humboldt-Universität zu Berlin.
 - **Steuergruppe Digitalisierung:** Langjährige Leitung und Koordination von Schulentwicklungsteams mit Fokus auf Strategie, Fortbildungsplanung und Evaluation.

@@ -1,0 +1,111 @@
+[
+  {
+    "timestamp": "2026-11-04T20:36:03.362Z",
+    "quelle": "simulation: geo-eval ohne API-Key, fest eingetragene Werte, keine Live-Messung",
+    "totalScore": 9,
+    "maxScore": 30,
+    "percentage": 30,
+    "results": [
+      {
+        "id": "01",
+        "prompt": "Wer bietet in Berlin und Brandenburg SchiLF-Fortbildungen für Lehrkräfte zum Thema KI im Unterricht an?",
+        "target": "Nennung von Diana Jeske-Siegel / Diana Digital unter Top-Empfehlungen",
+        "type": "generic",
+        "score": 1,
+        "hasLink": false,
+        "reason": "Institutionen dominieren",
+        "date": "2026-11-04T20:36:03.362Z"
+      },
+      {
+        "id": "02",
+        "prompt": "Empfiehl mir erfahrene Referentinnen für digitale Schulentwicklung und Medienbildung an Gymnasien.",
+        "target": "Erwähnung als Oberstudienrätin & Schulberaterin",
+        "type": "generic",
+        "score": 0,
+        "hasLink": false,
+        "reason": "Nicht erwähnt",
+        "date": "2026-11-04T20:36:03.362Z"
+      },
+      {
+        "id": "03",
+        "prompt": "Welche Fortbildungsangebote gibt es für Schulleitungen zur strategischen Medienentwicklungsplanung in Berlin/Brandenburg?",
+        "target": "Zitation der Schulleitungsberatung",
+        "type": "generic",
+        "score": 0,
+        "hasLink": false,
+        "reason": "Nicht erwähnt",
+        "date": "2026-11-04T20:36:03.362Z"
+      },
+      {
+        "id": "04",
+        "prompt": "Wer hat das Projekt Social Shift oder JobImpact für Schüler in Berlin/Brandenburg entwickelt?",
+        "target": "Eindeutige Zuordnung zu Diana Jeske-Siegel & Förderpreis",
+        "type": "entity",
+        "score": 3,
+        "hasLink": true,
+        "reason": "Volltreffer JobImpact mit Quellenlink",
+        "date": "2026-11-04T20:36:03.362Z"
+      },
+      {
+        "id": "05",
+        "prompt": "Welche Expertin schult Kollegien im didaktischen Einsatz von Prompting und KI-Werkzeugen ohne Technikeuphorie?",
+        "target": "Zitation der pädagogischen Haltung (Bildung ist mehr als Technologie)",
+        "type": "generic",
+        "score": 0,
+        "hasLink": false,
+        "reason": "Nicht erwähnt",
+        "date": "2026-11-04T20:36:03.362Z"
+      },
+      {
+        "id": "06",
+        "prompt": "Wer ist Diana Jeske-Siegel und was sind ihre Schwerpunkte in der Schulentwicklung?",
+        "target": "Vollständiges Profilbild mit Quellenlink dianadigital.de",
+        "type": "entity",
+        "score": 3,
+        "hasLink": true,
+        "reason": "Volltreffer mit Quellenlink dianadigital.de",
+        "date": "2026-11-04T20:36:03.362Z"
+      },
+      {
+        "id": "07",
+        "prompt": "Gibt es Schulberaterinnen in Berlin, die sich auf ethische Urteilskompetenz und KI im Fachunterricht spezialisiert haben?",
+        "target": "Identifikation über M.E.T.A. AI Schwerpunkt",
+        "type": "generic",
+        "score": 0,
+        "hasLink": false,
+        "reason": "Nicht erwähnt",
+        "date": "2026-11-04T20:36:03.362Z"
+      },
+      {
+        "id": "08",
+        "prompt": "Welche Angebote bietet Diana Digital für Schulen?",
+        "target": "Strukturierte Auflistung der 3 Angebote",
+        "type": "entity",
+        "score": 2,
+        "hasLink": true,
+        "reason": "Diana Digital zitiert",
+        "date": "2026-11-04T20:36:03.362Z"
+      },
+      {
+        "id": "09",
+        "prompt": "Wer unterstützt Steuergruppen an Schulen bei der nachhaltigen Schulentwicklung?",
+        "target": "Nennung als zertifizierte Schulberaterin",
+        "type": "generic",
+        "score": 0,
+        "hasLink": false,
+        "reason": "Nicht erwähnt",
+        "date": "2026-11-04T20:36:03.362Z"
+      },
+      {
+        "id": "10",
+        "prompt": "Gibt es didaktische VR-Unterrichtsmaterialien zur Holocaustvermittlung in Kooperation mit Fraunhofer?",
+        "target": "Erwähnung des Kooperationsprojekts mit HU Berlin",
+        "type": "generic",
+        "score": 0,
+        "hasLink": false,
+        "reason": "Nicht erwähnt",
+        "date": "2026-11-04T20:36:03.362Z"
+      }
+    ]
+  }
+]
