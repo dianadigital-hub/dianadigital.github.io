@@ -22,7 +22,7 @@ const PROJECT_META: Record<
 > = {
   jobimpact: {
     image: "images/hero/hero-1-lernprojekt.webp",
-    imageAlt: "JobImpact Schüler-Lernprojekt",
+    imageAlt: "Wegfunke Schüler-Lernprojekt",
     badgeStyle: "bg-[#e9be5b]/20 text-[#e9be5b] border-[#e9be5b]/40",
     badgeLabel: "Flagship-Pilotprojekt",
   },
@@ -127,7 +127,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
       {/* ===================== PROJEKTE BENTO SHOWCASE ===================== */}
       <section className="px-5 pb-20 sm:px-8 sm:pb-32 lg:px-12">
         <div className="mx-auto max-w-[1280px]">
-          {/* ============ 1. FLAGSHIP HERO: Wenn JobImpact im aktuellen Filter ist ============ */}
+          {/* ============ 1. FLAGSHIP HERO: Wenn Wegfunke im aktuellen Filter ist ============ */}
           {filteredProjects.some((p) => p.id === "jobimpact") && (
             <Reveal className="mb-14">
               <div className="group relative overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-[#1c403a] via-[#173530] to-[#12221f] p-8 shadow-2xl transition-all duration-500 hover:border-[#e9be5b]/60 sm:p-12">
@@ -144,7 +144,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
                     </div>
 
                     <h2 className="mt-5 font-serif text-[clamp(2.4rem,4.2vw,3.8rem)] leading-[1.02] tracking-[-0.05em] text-white">
-                      JobImpact
+                      Wegfunke
                     </h2>
 
                     <p className="mt-4 max-w-xl text-[0.98rem] leading-7 text-white/85 text-pretty">
@@ -166,7 +166,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
 
                     {/* Founder Note in Gold */}
                     <div className="mt-7 border-l-2 border-[#e9be5b] pl-4 text-xs italic leading-relaxed text-[#e9be5b]">
-                      Ein echtes Familienstück: Gemeinsam mit meinem Bruder entwickelt – aktuell im Pilotbetrieb in Berlin.
+                      Gemeinsam mit Answer 42 entwickelt: ich die Pädagogik, Answer 42 die Technik – ab 13.11. im Pilotbetrieb in Berlin.
                     </div>
 
                     {/* Actions */}
@@ -195,7 +195,7 @@ export function ProjektePage({ data }: ProjektePageProps) {
                     <div className="aspect-[16/10] overflow-hidden">
                       <img
                         src={`${DEPLOY_BASE}images/hero/hero-1-lernprojekt.webp`}
-                        alt="JobImpact Schüler-Lernprojekt"
+                        alt="Wegfunke Schüler-Lernprojekt"
                         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                     </div>

@@ -1,6 +1,7 @@
 [
   {
     "timestamp": "2026-11-04T20:36:03.362Z",
+    "quelle": "simulation: geo-eval ohne API-Key, fest eingetragene Werte, keine Live-Messung",
     "totalScore": 9,
     "maxScore": 30,
     "percentage": 30,

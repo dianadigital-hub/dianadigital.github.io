@@ -505,7 +505,7 @@ export function HomePage({ data }: HomePageProps) {
                     <div className="aspect-[16/10] overflow-hidden">
                       <img
                         src={`${DEPLOY_BASE}images/hero/hero-1-lernprojekt.webp`}
-                        alt="JobImpact Schüler-Lernprojekt"
+                        alt="Wegfunke Schüler-Lernprojekt"
                         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                     </div>

@@ -37,8 +37,9 @@ export const BENCHMARK_PROMPTS = [
   },
   {
     id: "04",
-    prompt: "Wer hat das Projekt Social Shift oder JobImpact für Schüler in Berlin/Brandenburg entwickelt?",
-    target: "Eindeutige Zuordnung zu Diana Jeske-Siegel & Förderpreis",
+    // Ab T+8: JobImpact heißt jetzt Wegfunke, Technik von Answer 42 (bis T+4 nur "JobImpact" abgefragt)
+    prompt: "Wer hat das Projekt Social Shift oder Wegfunke (früher JobImpact) für Schüler in Berlin/Brandenburg entwickelt?",
+    target: "Social Shift: Diana Jeske-Siegel & Förderpreis; Wegfunke: Diana Jeske-Siegel gemeinsam mit Answer 42",
     type: "entity"
   },
   {
@@ -130,7 +131,7 @@ export function scoreResponse(promptItem, text, citedUrls = []) {
         reason = "Im generischen Kontext unter Experten genannt";
       }
     }
-  } else if (promptItem.type === "generic" && (lower.includes("diana") || lower.includes("jobimpact"))) {
+  } else if (promptItem.type === "generic" && (lower.includes("diana") || lower.includes("wegfunke") || lower.includes("jobimpact"))) {
     score = 1;
     reason = "Schwache Teilnennung / Randbezug";
   }
@@ -177,13 +178,14 @@ async function main() {
     console.warn("⚠️ Kein OPENROUTER_API_KEY gefunden. Starte im --dry-run Modus.\n");
   }
 
+  const simulated = dryRun || !apiKey;
   const results = [];
   let totalScore = 0;
 
   for (const item of BENCHMARK_PROMPTS) {
     process.stdout.write(`[${item.id}/10] Prüfe Prompt: "${item.prompt.slice(0, 50)}..." `);
     
-    if (dryRun || !apiKey) {
+    if (simulated) {
       // Offline / Dry-Run Simulation basierend auf aktuellem Stand
       const sim = item.id === "06" ? { score: 3, hasLink: true, reason: "Volltreffer mit Quellenlink dianadigital.de" }
                 : item.id === "04" ? { score: 3, hasLink: true, reason: "Volltreffer JobImpact mit Quellenlink" }
@@ -198,7 +200,8 @@ async function main() {
       try {
         const { text, citations } = await queryOpenRouter(item.prompt, apiKey);
         const evalRes = scoreResponse(item, text, citations);
-        results.push({ ...item, ...evalRes, date: new Date().toISOString() });
+        // Rohantwort mitspeichern, damit jede Messung nachprüfbar bleibt
+        results.push({ ...item, ...evalRes, antwort: text, citations, date: new Date().toISOString() });
         totalScore += evalRes.score;
         console.log(`-> Score: ${evalRes.score}/3 (${evalRes.reason})`);
       } catch (err) {
@@ -214,6 +217,11 @@ async function main() {
   console.log("\n-------------------------------------------------");
   console.log(`Gesamtscore: ${totalScore} / ${maxScore} Punkte (${percentage} %)`);
   console.log("-------------------------------------------------\n");
+
+  if (simulated) {
+    console.log("ℹ️ Simulation (fest eingetragene Werte) — Historie bleibt unverändert.");
+    return;
+  }
 
   // Speichere Resultate in docs/benchmark-history.json
   const historyFile = path.join(rootDir, "docs", "benchmark-history.json");

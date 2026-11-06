@@ -135,6 +135,7 @@ Genau 29 Tage nach Aktivierung der LLMO- und GEO-Maßnahmen (Commit `ed0aa0c` vo
 **Gesamtergebnis T+4:**
 * **Baseline T0:** 1 / 30 Punkte (3 %)
 * **Evaluation T+4:** **9 / 30 Punkte (30 %)**
+* **Hinweis (06.11.2026):** Zu dieser Messung sind keine Rohantworten gespeichert, der Eintrag in `benchmark-history.json` stammt aus dem Simulationsmodus. Belastbar wird die Reihe ab T+8 (echter Lauf mit API-Key, Antworten werden mitgespeichert). Prompt 04 fragt ab T+8 nach „Wegfunke (früher JobImpact)“.
 * **Entity- & Brand-Grounding:** **8 / 9 Punkten (89 %)** – Sobald die Person oder eigene Marken/Projekte (Diana Jeske-Siegel, Diana Digital, JobImpact) abgefragt werden, zitiert das System verlässlich `dianadigital.de` als Primärquelle.
 * **Kategorie- & Generik-Discovery:** **1 / 21 Punkten (5 %)** – Bei rein generischen Fachsuchen ohne Personenbezug dominieren noch Landesinstitute und Großanbieter.
 
