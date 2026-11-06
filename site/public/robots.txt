@@ -1,38 +1,9 @@
 # robots.txt for https://www.dianadigital.de
+# Eine Gruppe für alle Crawler (Bingbot, GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot,
+# Google-Extended, Applebot-Extended …). Eigene Gruppen pro Bot würden die Disallow-Regeln aufheben.
 
 User-agent: *
 Allow: /
-
-# LLM & Generative Engine Crawlers (GEO / Search Integration)
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-# Protected internal areas
-Disallow: /#/material
 Disallow: /material/
 
 Sitemap: https://www.dianadigital.de/sitemap.xml
